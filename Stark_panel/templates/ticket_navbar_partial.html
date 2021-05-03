@@ -1,0 +1,21 @@
+{% load static i18n %}
+<div>
+    <i class="fa fa-plus"></i>
+    <a href="{% url 'pannel:addTicket' %}" class="zoom mx-1-2">{% translate 'ثبت تیکت جدید' %}</a>
+</div>
+<div>
+    <img src="{% static 'img/tickets/all-ticket.png' %}" alt="all ticket">
+    <a href="{% url 'pannel:allTicket' %}" class="text-center mx-1-2 zoom {% if '/ticket/all/' in request.path %}c-gold{% endif %}">{% translate 'همه تیکت ها' %}</a>
+</div>
+<div>
+    <img src="{% static 'img/tickets/bot-sub.png' %}" alt="bot-sub">
+    <a href="{% url 'pannel:detailTicket' 'bot-sub' %}" class="text-center mx-1-2 zoom {% if '/ticket/detail/bot-sub' in request.path %}c-gold{% endif %}">{% translate 'تیکت های اشتراک ربات' %}</a>
+</div>
+<div>
+    <img src="{% static 'img/tickets/buy-bc.png' %}" alt="buy-bc">
+    <a href="{% url 'pannel:detailTicket' 'in-out' %}" class="text-center mx-1-2 zoom {% if '/ticket/detail/in-out' in request.path %}c-gold{% endif %}">{% translate 'پرداختی / برداشتی' %}</a>
+</div>
+<div>
+    <img src="{% static 'img/tickets/sell-bc.png' %}" alt="sell-bc">
+    <a href="{% url 'pannel:detailTicket' 'buy-sell' %}" class="text-center mx-1-2 zoom {% if '/ticket/detail/buy-sell' in request.path %}c-gold{% endif %}">{% translate 'تیکت های خرید و فروش' %}</a>
+</div>

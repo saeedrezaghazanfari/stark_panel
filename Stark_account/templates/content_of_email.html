@@ -1,0 +1,10 @@
+<!-- this html file for email activation code -->
+
+با عرض سلام خدمت {{ user.username }} عزیز و گرامی
+<br>
+حساب کاربری شما با موفقیت ساخته شد. 
+<br>
+برای فعالسازی حساب کاربری خود، کافی است که بر روی لینک زیر کلیک کنید:
+<br>
+
+http://{{ domain }}{% url 'account:activate' uidb64=uid token=token %}

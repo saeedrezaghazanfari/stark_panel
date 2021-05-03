@@ -1,0 +1,71 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static %}
+
+{% block keywordContent %}
+    <meta name="description" content="SARK UserPanel">
+{% endblock %}
+
+{% block titlePage %}
+    {% if '/en/' in request.path %}
+        STARK | 404
+    {% elif '/fa/' in request.path %}
+        استارک | یافت نشد
+    {% elif '/ar/' in request.path %}
+        استارک | غير موجود
+    {% endif %}
+{% endblock %}
+
+{% block linkStatic %}
+    {% if '/en/' in request.path %}
+        <link rel="stylesheet" href="{% static 'css/ltr-style/auth-ltr.css' %}">
+    {% else %}
+        <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    {% endif %}
+{% endblock %}
+8
+{% block AuthContent %}
+    <section class="login-page"> 
+        <div class="top-change-lang">
+            <a href="{% url 'pannel:ch_lang' %}?lang=en&next=/fa/{{ request.path|slice:'4:' }}" {% if '/fa/' in request.path %}class="c-gold"{% endif %}>fa</a> | 
+            <a href="{% url 'pannel:ch_lang' %}?lang=en&next=/en/{{ request.path|slice:'4:' }}" {% if '/en/' in request.path %}class="c-gold"{% endif %}>en</a> | 
+            <a href="{% url 'pannel:ch_lang' %}?lang=en&next=/ar/{{ request.path|slice:'4:' }}" {% if '/ar/' in request.path %}class="c-gold"{% endif %}>ar</a>
+        </div>
+
+        <div class="bg-img"></div>
+
+        <div class="login-form">
+
+            <p class="digit cl404">
+                4
+                <span class="c-white">0</span>
+                4
+            </p>
+            <p class="clp">
+                {% if '/en/' in request.path %}
+                    Not Founded!
+                {% elif '/fa/' in request.path %}
+                    صفحه ی مورد نظر شما یافت نشد.
+                {% elif '/ar/' in request.path %}
+                    الصفحة التي كنت تبحث عنها لا يمكن العثور عليها.
+                {% endif %}
+                
+            </p>
+            <button onclick="javascript: window.history.back()" class="mt-3 clan">
+                {% if '/en/' in request.path %}
+                    Return to previous page
+                {% elif '/fa/' in request.path %}
+                    بازگشت به صفحه ی قبلی
+                {% elif '/ar/' in request.path %}
+                    العودة إلى الصفحة السابقة   
+                {% endif %}
+            
+            </button>
+        </div>
+
+    </section>
+
+{% endblock %}
+
+{% block scriptStatic %}
+    {% if '/fa/' in request.path %}<script src="{% static 'js/persianumber.min.js' %}"></script>{% endif %}
+{% endblock %}

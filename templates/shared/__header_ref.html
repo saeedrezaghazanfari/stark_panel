@@ -1,0 +1,17 @@
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!-- jquery cdn -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<!-- fontison: fontawesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+<link rel="stylesheet" href="{% static 'css/config.css' %}">
+
+{% if LANGUAGE_CODE == 'en' %}
+    <link rel="stylesheet" href="{% static 'css/ltr-style/custom-ltr.css' %}">
+{% else %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endif %}
+
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}" media="screen and (max-width: 1400px)">
+<link rel="stylesheet" href="{% static 'css/mobile.css' %}" media="screen and (max-width: 700px)">

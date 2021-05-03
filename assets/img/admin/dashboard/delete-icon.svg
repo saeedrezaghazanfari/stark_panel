@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" viewBox="0 0 90 90">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.072" y1="0.092" x2="0.846" y2="0.897" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f9b80e"/>
+      <stop offset="1" stop-color="#f96114"/>
+    </linearGradient>
+  </defs>
+  <g id="delete_icon" data-name="delete icon" transform="translate(-989 -412)">
+    <g id="Component_12_3" data-name="Component 12 – 3" transform="translate(1022 445)">
+      <rect id="Rectangle_29" data-name="Rectangle 29" width="12" height="12" rx="6" transform="translate(6 6)" fill="#feb95a"/>
+      <rect id="Rectangle_28" data-name="Rectangle 28" width="23" height="23" rx="8" fill="url(#linear-gradient)"/>
+    </g>
+    <path id="Path_77" data-name="Path 77" d="M5,5l7.5,7.5M5,12.5,12.5,5" transform="translate(1024.5 447.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+  </g>
+</svg>

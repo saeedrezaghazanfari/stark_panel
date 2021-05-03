@@ -1,0 +1,202 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static i18n l10n %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'استارک، پنل کاربری استارک، ارز دیجیتال، خرید و فروش ارز دیجیتال' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate ' استارک | خرید فروش' %} {% endblock %}
+
+{% block linkStatic %}
+    <link rel="stylesheet" href="{% static 'css/buy-sell.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- start BODY -->
+<article class="body-page m-1">
+    <h4 class="mb-1">{% translate 'خرید و فروش ارز دیجیتال' %}</h4>
+
+    <div class="buy-sell-card">
+
+        <div class="right-card" id="request-realtime">
+
+            <div>
+                <h5 class="c-light mb-1">{% translate 'موجودی توکن‌های شما:' %}</h5>
+
+                <div class="boxes-tokens">
+                    <div class="box-token">
+                        <p class="c-gold font-bold">ST<span class="c-white">1</span></p>
+                        <p class="c-light">{{ user_token_st1_count }}</p>
+                    </div>
+
+                    <div class="box-token">
+                        <p class="c-gold font-bold">ST<span class="c-white">2</span></p>
+                        <p class="c-light">{{ user_token_st2_count }}</p>
+                    </div>
+                    <div class="box-token">
+                        <p class="c-gold font-bold">ST<span class="c-white">3</span></p>
+                        <p class="c-light">{{ user_token_st3_count }}</p>
+                    </div>
+
+                    <div class="box-token">
+                        <p class="c-gold font-bold">ST<span class="c-white">4</span></p>
+                        <p class="c-light">{{ user_token_st4_count }}</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <form method="POST" action="{% url 'pannel:buySellTicketsend' %}">
+                {% csrf_token %}
+                {% verbatim %}
+                <div class="form-group">
+                    <label for="type-token">{% endverbatim %}{% translate 'عنوان ارز' %}{% verbatim %}:</label>
+                    <select v-model="typeToken" name="type-token" id="type-token">
+                        <option value="st1">ST1</option> <!-- مسکن -->
+                        <option value="st2">ST2</option> <!--  -->
+                        <option value="st3">ST3</option> <!--  -->
+                        <option value="st4">ST4</option>  <!-- ارزدیجیتال -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="type-order">{% endverbatim %}{% translate 'نوع درخواست' %}{% verbatim %}:</label>
+                    <select v-model="typeOrder" name="type-order" id="type-order">
+                        <option value="buytoken">{% endverbatim %}{% translate 'خرید' %}{% verbatim %}</option>
+                        <option value="selltoken">{% endverbatim %}{% translate 'فروش' %}{% verbatim %}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="opacity-order">{% endverbatim %}{% translate 'حجم درخواستی (بر حسب تتر)' %}{% verbatim %}:</label>
+                    <input @keydown="get_total_token" name="opacity-order" v-model="opacityOrder" type="number" id="opacity-order" class="text-center">
+                </div>
+
+                <div class="form-group">
+                    <label for="total">{% endverbatim %}{% translate 'مبلغ سفارش (برحسب توکن)' %}{% verbatim %}:</label>
+                    <input v-model="total" type="text" id="total" disabled class="text-center">
+                </div>
+                <p class="font-small c-muted pt-1">{% endverbatim %}{% translate 'حجم درخواستی شما بر حسب قیمت آخرین توکن موجود محاسبه میشود.' %}{% verbatim %}</p>
+                <button class="btn" type="submit">{% endverbatim %}{% translate 'ارسال درخواست' %}{% verbatim %}</button>
+            
+                {% endverbatim %}
+            </form>
+        </div>
+
+        <div class="left-card">
+            <div class="tow-box-top-cnv">
+
+                <div class="two-box-img-title">
+                    {% if 'st1' in request.path %}
+                        <img src="{% static 'img/tokens/st1.svg' %}" alt="st1 token image">
+                    {% elif 'st2' in request.path %}
+                        <img src="{% static 'img/tokens/st2.png' %}" alt="st2 token image">
+                    {% elif 'st3' in request.path %}
+                        <img src="{% static 'img/tokens/st3.svg' %}" alt="st3 token image">
+                    {% elif 'st4' in request.path %}
+                        <img src="{% static 'img/tokens/st4.svg' %}" alt="st4 token image">
+                    {% endif %}
+                    <div class="h1-and-span-top">
+                        <h4>{% translate 'نمودار توکن' %} {{name_chart}}</h4>
+                        <span class="font-small c-gold pt-1-2">{% translate 'قیمت امروز (بر حسب تتر)' %}: {{ last_price_chart }}</span>    
+                    </div>
+                </div>
+
+                <div class="links-box-charts show-buysell-page">
+                    <a href="{% url 'pannel:buySellToken' 'st1' %}" class="link-to-fade-chart {% if '/en/' in request.path %}float-right{% else %}float-left{% endif %} font-small c-gold ml-1 {% if 'st1' in request.path %}c-white{% endif %}">ST1 <img src="{% static 'img/tokens/st1.svg' %}" alt="chart image"></a>
+                    <a href="{% url 'pannel:buySellToken' 'st2' %}" class="link-to-fade-chart {% if '/en/' in request.path %}float-right{% else %}float-left{% endif %} font-small c-gold ml-1 {% if 'st2' in request.path %}c-white{% endif %}">ST2 <img src="{% static 'img/tokens/st2.png' %}" alt="chart image"></a>
+                    <a href="{% url 'pannel:buySellToken' 'st3' %}" class="link-to-fade-chart {% if '/en/' in request.path %}float-right{% else %}float-left{% endif %} font-small c-gold ml-1 {% if 'st3' in request.path %}c-white{% endif %}">ST3 <img src="{% static 'img/tokens/st3.svg' %}" alt="chart image"></a>
+                    <a href="{% url 'pannel:buySellToken' 'st4' %}" class="link-to-fade-chart {% if '/en/' in request.path %}float-right{% else %}float-left{% endif %} font-small c-gold ml-1 {% if 'st4' in request.path %}c-white{% endif %}">ST4 <img src="{% static 'img/tokens/st4.svg' %}" alt="chart image"></a>
+                </div>
+                <div class="links-box-charts show-chart-page">
+                    <p class="mb-1 c-light">{% translate 'نمایش نمودار‌ها:' %}</p>
+                    <a href="{% url 'pannel:show_charts' 'st1' %}" class="link-to-fade-chart {% if '/en/' in request.path %}float-right{% else %}float-left{% endif %} font-small c-gold ml-1">ST1 <img src="{% static 'img/tokens/st1.svg' %}" alt="chart image"></a>
+                    <a href="{% url 'pannel:show_charts' 'st2' %}" class="link-to-fade-chart {% if '/en/' in request.path %}float-right{% else %}float-left{% endif %} font-small c-gold ml-1">ST2 <img src="{% static 'img/tokens/st2.png' %}" alt="chart image"></a>
+                    <a href="{% url 'pannel:show_charts' 'st3' %}" class="link-to-fade-chart {% if '/en/' in request.path %}float-right{% else %}float-left{% endif %} font-small c-gold ml-1">ST3 <img src="{% static 'img/tokens/st3.svg' %}" alt="chart image"></a>
+                    <a href="{% url 'pannel:show_charts' 'st4' %}" class="link-to-fade-chart {% if '/en/' in request.path %}float-right{% else %}float-left{% endif %} font-small c-gold ml-1">ST4 <img src="{% static 'img/tokens/st4.svg' %}" alt="chart image"></a>
+                </div>
+            </div>
+            <canvas id="stark-chart" class="remove-in-sm"></canvas>
+            <div class="text-center">
+                {% if 'st1' in request.path %}
+                    <a href="{% url 'pannel:show_charts' 'st1' %}" class="link-to--chart">{% translate 'نمایش نمودار' %}</a>
+                {% elif 'st2' in request.path %}
+                    <a href="{% url 'pannel:show_charts' 'st2' %}" class="link-to--chart">{% translate 'نمایش نمودار' %}</a>
+                {% elif 'st3' in request.path %}
+                    <a href="{% url 'pannel:show_charts' 'st3' %}" class="link-to--chart">{% translate 'نمایش نمودار' %}</a>
+                {% elif 'st4' in request.path %}
+                    <a href="{% url 'pannel:show_charts' 'st4' %}" class="link-to--chart">{% translate 'نمایش نمودار' %}</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+</article>
+<!-- end BODY -->
+    
+{% endblock %}
+
+{% block scriptStatic %}
+<script type="text/javascript" src="{% static 'frameworks/chart.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/buysell_vueaxios.js' %}"></script>
+
+<!-- chart -->
+<script type="text/javascript">
+var ctx = document.getElementById('stark-chart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [
+            {% for date in dates_chart %}
+                '{{ date }}',
+            {% endfor %}
+        ],
+        datasets: [{
+
+            label: '',
+
+            data: [
+                {% localize off %}
+                    {% for price in prices_dollar_chart %}
+                        {{ price }},
+                    {% endfor %}
+                {% endlocalize %}
+            ], 
+
+            backgroundColor: [
+                'transparent',
+            ],
+            
+            pointBackgroundColor: '#eeb00e',
+            pointBorderColor: '#eeb00e',
+            pointBorderWidth: '1',
+            borderColor: [
+                'rgba(255, 255, 255, 0.5)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        legend: {
+            display: true,
+        },
+        title: {
+            display: true,
+            text: '{% translate "نمودار قیمت توکن" %} {{ name_chart }}',
+            position: 'right',
+            fontFamily: 'IRANSanse'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    min: 0
+                }
+            }]
+        },
+    }
+});
+</script> 
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static widget_tweaks i18n %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'پنل کاربری استارک، ارز دیجیتال، اضافه کردن تیکت، ارسال تیکت' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate ' استارک | ارسال تیکت' %} {% endblock %}
+
+{% block linkStatic %}
+    {% if '/en/' in request.path %}
+    <link rel="stylesheet" href="{% static 'css/ltr-style/tickets-ltr.css' %}">
+    {% else %}
+    <link rel="stylesheet" href="{% static 'css/tickets.css' %}">
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- start BODY -->
+<article class="body-page m-1">
+    <h4 class="mb-1">{% translate 'درخواست تیکت جدید' %}</h4>
+
+    <div class="top-boxes-option">
+        {% include 'ticket_navbar_partial.html' %}
+    </div>
+
+    <div class="ticket-add">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group-ticket">
+                <label for="{{ ticket_form.title.id_for_label }}">{% translate 'موضوع پیام' %}:</label>
+                {% render_field ticket_form.title %}
+            </div>
+            
+            <div class="form-group-ticket">
+                <label for="{{ ticket_form.subject.id_for_label }}">{% translate 'عنوان پیام' %}:</label>
+                {% render_field ticket_form.subject %}
+            </div>
+            
+            <div class="form-group-ticket">
+                <label for="msg-ticket">{% translate 'متن تیکت' %}:</label>
+                {% render_field ticket_form.message id="msg-ticket" rows="5" %}
+            </div>
+
+            <div class="container-btn">
+                <button type="submit" class="btn">{% translate 'ارسال تیکت' %}</button>
+            </div>
+
+        </form>
+    </div>
+
+</article>
+<!-- end BODY -->
+{% endblock %}
+
+{% block scriptStatic %}
+    {% if '/fa/' in request.path %}<script src="{% static 'js/persianumber.min.js' %}"></script>{% endif %}
+{% endblock %}

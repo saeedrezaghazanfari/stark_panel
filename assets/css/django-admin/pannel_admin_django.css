@@ -1,0 +1,80 @@
+@font-face {
+    font-family: IRANSanse;
+    src: url('../../font/iransansfont/IRANSans-web.eot');
+    src: url('../../font/iransansfont/IRANSans-web.eot') format('embedded-opentype'),
+        url('../../font/iransansfont/IRANSans-web.woff2') format('woff2'),
+        url('../../font/iransansfont/IRANSans-web.woff') format('woff'),
+        url('../../font/iransansfont/IRANSans-web.ttf') format('truetype');
+    font-weight: normal;
+}
+@font-face {
+    font-family: IRANSanse;
+    src: url('../../font/iransansfont/IRANSans-Bold-web.eot');
+    src: url('../../font/iransansfont/IRANSans-Bold-web.eot') format('embedded-opentype'),
+        url('../../font/iransansfont/IRANSans-Bold-web.woff2') format('woff2'),
+        url('../../font/iransansfont/IRANSans-Bold-web.woff') format('woff'),
+        url('../../font/iransansfont/IRANSans-Bold-web.ttf') format('truetype');
+    font-weight: bold;
+}
+body, *, html {
+    background-color: #121212 !important;
+    color: white !important;
+}
+#header #branding h1#site-name a { background-color: #f3b61ac0  !important; }
+#header #branding { background-color: #f3b61ac0  !important; }
+div#main {
+    background-color: #121212 !important;
+}
+div#main label {
+    color: #ccc !important;
+}
+*, html, body, a, button, a:link {
+    font-family: 'IRANSanse';
+}
+#header {
+    background-color: #f3b61ac0 !important;
+}
+.breadcrumbs {
+    background-color: #eeb00e !important;
+}
+caption {
+    background-color: #f3b61ac0 !important;
+}
+table th:nth-child(odd){
+    background-color: #121212 !important;
+}
+a.addlink, a.addlink:nth-child(even) {
+    background-color: #121212 !important;
+}
+a:link, a:visited {
+    color: white !important;
+}
+input[type='submit'] {
+    background-color: #eeb00e !important;
+    font-family: 'IRANSanse';
+}
+input[type='text'], input[type='email'], input[type='number'] {
+    padding: 0.5rem 1rem !important;
+}
+table#result_list th {
+    line-height: 2rem !important;
+    text-align: center;
+}
+div#toolbar {
+    background-color: #151515 !important;
+}
+table#result_list tr:nth-child(even) {
+    background-color: #151515 !important;
+}
+table#result_list thead tr .text a, span {
+    background-color:  #151515 !important;
+    font-size: 10pt !important;
+    color: #eeb00e !important;
+}
+table#result_list td {
+    text-align: center;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background-color: #f3b61ac0 !important;
+}

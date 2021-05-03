@@ -1,0 +1,18 @@
+
+// Background Colors
+$bgc-all: #0c0b10;
+$bgc-card: #131216;
+$bg-linear-gold: linear-gradient(to right bottom, #e3a80e , #ff6600);
+$bg-field: #1b1a1f;
+
+// Colors
+$c-gold-oil: #e3a80e;
+$c-gold: #eeb00e;
+$c-red: #e22c2d;
+$c-green: #1eec1e;
+$c-white: #fff;
+$c-muted: rgb(212, 212, 212);
+
+// box shadow
+$box-shdow: 15px 15px 25px 1px $bgc-all, -15px 0 25px 1px $bgc-all;
+$box-shdow-gold: 0px 0px 8px 2px #000000, 0px 0px 12px 2px #e3a80e;

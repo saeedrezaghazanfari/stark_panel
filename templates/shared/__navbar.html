@@ -1,0 +1,129 @@
+{% load static navbarTag i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_ticket request.user.id as newTickets %}
+{% get_notify as notifications %}
+
+<!-- start navbar -->
+<section class="top-div-navbar m-1">
+    
+    <!-- buttons -->
+    <div class="buttons-top-page">
+
+        <div class="icon-button-wallet pk-title pk-title-bottom">
+            <img src="{% static 'img/navbar/wallet.svg' %}" alt="wallet">
+            &nbsp;
+            <span class="c-gold">{{ request.user.stoke }} &dollar;</span>
+            <span class="pk-title-text pk-title-text-bottom">{% if LANGUAGE_CODE == 'en' %}Cash account balance{% elif LANGUAGE_CODE == 'fa' %} موجودی نقد حساب{% elif LANGUAGE_CODE == 'ar' %}رصيد الحساب النقدي{% endif %}</span>
+        </div>
+        <div class="pk-title pk-title-bottom">
+            <a class="cur-poi" onclick="openModal('modalNotify')">
+                <img src="{% static 'img/navbar/alarm.svg' %}" class="icon-button {% if notifications %}anim-bell{% endif %}" alt="alarm">
+            </a>
+            <span class="pk-title-text pk-title-text-bottom">{% if LANGUAGE_CODE == 'en' %}Stark Notifications{% elif LANGUAGE_CODE == 'fa' %}اعلانات استارک{% elif LANGUAGE_CODE == 'ar' %}إعلانات استارک{% endif %}</span>
+        </div>
+        <div class="pk-title pk-title-bottom">
+            <a class="cur-poi" onclick="openModal('modalTicket')">
+                <img src="{% static 'img/navbar/ticket.svg' %}" class="icon-button {% if newTickets %}anim-ticket{% endif %}" alt="ticket">
+            </a>
+            <span class="pk-title-text pk-title-text-bottom">{% if LANGUAGE_CODE == 'en' %}Unread Tickets{% elif LANGUAGE_CODE == 'fa' %}تیکت های ناخوانده{% elif LANGUAGE_CODE == 'ar' %}تذاكر غير مرغوب فيها{% endif %}</span>
+        </div>
+        <div class="change-lang">
+            <p class="font-small" id="lang-hch"><i class="fa fa-language" ></i></p>
+            <div id="menu-change-lang">
+                <p><a href="{% url 'pannel:ch_lang' %}?lang=en&next=/fa/{{ request.path|slice:'4:' }}"  {% if '/fa/' in request.path %}class="c-gold"{% endif %}>{% if LANGUAGE_CODE == 'en' %}Persian{% elif LANGUAGE_CODE == 'fa' %}فارسی{% elif LANGUAGE_CODE == 'ar' %}الفارسية{% endif %}</a></p>
+                <p><a href="{% url 'pannel:ch_lang' %}?lang=en&next=/en/{{ request.path|slice:'4:' }}"  {% if '/en/' in request.path %}class="c-gold"{% endif %}>{% if LANGUAGE_CODE == 'en' %}English{% elif LANGUAGE_CODE == 'fa' %}انگلیسی{% elif LANGUAGE_CODE == 'ar' %}الإنجليزية{% endif %}</a></p>
+                <p><a href="{% url 'pannel:ch_lang' %}?lang=en&next=/ar/{{ request.path|slice:'4:' }}"  {% if '/ar/' in request.path %}class="c-gold"{% endif %}>{% if LANGUAGE_CODE == 'en' %}Arabic{% elif LANGUAGE_CODE == 'fa' %}عربی{% elif LANGUAGE_CODE == 'ar' %}عربى{% endif %}</a></p>
+            </div>
+        </div>
+        <div class="change-lang pk-title pk-title-bottom">
+            {% if '/en/' in request.path %}
+                <a href="https://st4w.net" target="_blank" class="font-smal"><i class="fa fa-globe"></i></a>
+            {% elif '/fa/' in request.path %}
+                <a href="https://st4w.net/fa/" target="_blank" class="font-smal"><i class="fa fa-globe"></i></a>
+            {% elif '/ar/' in request.path %}
+                <a href="https://st4w.net/ar/" target="_blank" class="font-smal"><i class="fa fa-globe"></i></a>
+            {% endif %}
+            <span class="pk-title-text pk-title-text-bottom">{% if LANGUAGE_CODE == 'en' %}Stark Website{% elif LANGUAGE_CODE == 'fa' %}وبسایت استارک{% elif LANGUAGE_CODE == 'ar' %}موقع استارك{% endif %}</span>
+        </div>
+        <div class=" pk-title {% if '/en/' in request.path %}pk-title-left{% else %}pk-title-right{% endif %}">
+            <a href="{% url 'account:signout' %}">
+                <img src="{% static 'img/navbar/exit.svg' %}" class="icon-button" alt="exit">
+            </a>
+            <span class="pk-title-text {% if '/en/' in request.path %}pk-title-text-left{% else %}pk-title-text-right{% endif %}">{% if LANGUAGE_CODE == 'en' %}Exit the User Panel{% elif LANGUAGE_CODE == 'fa' %}خروج از پنل کاربری{% elif LANGUAGE_CODE == 'ar' %}اخرج من لوحة المستخدم{% endif %}</span>
+        </div>
+        
+    </div>
+</section>
+
+<!-- modal: view Ticket -->
+<div class="modal" id="modalTicket">
+    <div class="bg-img-wrapper">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="mt-1-2 c-black">{% if LANGUAGE_CODE == 'en' %}New Tickets{% elif LANGUAGE_CODE == 'fa' %}تیکت های جدید{% elif LANGUAGE_CODE == 'ar' %}تذاكر جديدة{% endif %}</h4>
+                <button class="modal-close" onclick="closeModal('modalTicket')">&times;</button>
+            </div>
+            <div class="modal-body">
+                {% for newTicket in newTickets %}
+                    <div class="bg-light p-1 border-rad-sm text-center">
+    
+                        {% if newTicket.title == 'crashPay' %}
+                            <h4 class="c-dark"> {% if LANGUAGE_CODE == 'en' %}Grouping{% elif LANGUAGE_CODE == 'fa' %}دسته بندی{% elif LANGUAGE_CODE == 'ar' %}التجمع{% endif %}: <span class="c-gold">{% if LANGUAGE_CODE == 'en' %}Robot Subscription tickets{% elif LANGUAGE_CODE == 'fa' %}تیکت های اشتراک ربات{% elif LANGUAGE_CODE == 'ar' %}تذاكر اشتراك الروبوت{% endif %}</span></h4>
+                        {% elif newTicket.title == 'InOut' %}
+                            <h4 class="c-dark"> {% if LANGUAGE_CODE == 'en' %}Grouping{% elif LANGUAGE_CODE == 'fa' %}دسته بندی{% elif LANGUAGE_CODE == 'ar' %}التجمع{% endif %}: <span class="c-gold">{% if LANGUAGE_CODE == 'en' %}Withdrawal Payment tickets{% elif LANGUAGE_CODE == 'fa' %}تیکت های پرداختی برداشتی{% elif LANGUAGE_CODE == 'ar' %}سحب تذاكر الدفع{% endif %}</span></h4>
+                        {% else %}
+                            <h4 class="c-dark"> {% if LANGUAGE_CODE == 'en' %}Grouping{% elif LANGUAGE_CODE == 'fa' %}دسته بندی{% elif LANGUAGE_CODE == 'ar' %}التجمع{% endif %}: <span class="c-gold">{% if LANGUAGE_CODE == 'en' %}Buy and Sell tickets{% elif LANGUAGE_CODE == 'fa' %}تیکت های خرید و فروش{% elif LANGUAGE_CODE == 'ar' %}شراء وبيع التذاكر{% endif %}</span></h4>
+                        {% endif %}
+    
+                        <p class="c-dark font-small">{% if LANGUAGE_CODE == 'en' %}Ticket Subject{% elif LANGUAGE_CODE == 'fa' %}عنوان تیکت{% elif LANGUAGE_CODE == 'ar' %}عنوان التذكرة{% endif %}: <span class="c-gold">{{newTicket.subject}}</span></p>
+                        {% if LANGUAGE_CODE == 'fa' %}<p class="c-dark font-small">{% if LANGUAGE_CODE == 'en' %}Date Received{% elif LANGUAGE_CODE == 'fa' %}تاریخ دریافت{% elif LANGUAGE_CODE == 'ar' %}تاريخ الاستلام{% endif %}: <span class="c-gold">{{newTicket.date}}</span></p>{% endif %}
+                        
+                        {% if newTicket.title == 'crashPay' %}
+                            <a href="{% url 'pannel:detailTicket' 'bot-sub' %}" class="font-small c-dark font-bold">{% if LANGUAGE_CODE == 'en' %}View{% elif LANGUAGE_CODE == 'fa' %}مشاهده{% elif LANGUAGE_CODE == 'ar' %}منظر{% endif %} <i class="fa fa-eye c-dark"></i></a>
+                        {% elif newTicket.title == 'InOut' %}
+                            <a href="{% url 'pannel:detailTicket' 'in-out' %}" class="font-small c-dark font-bold">{% if LANGUAGE_CODE == 'en' %}View{% elif LANGUAGE_CODE == 'fa' %}مشاهده{% elif LANGUAGE_CODE == 'ar' %}منظر{% endif %} <i class="fa fa-eye c-dark"></i></a>
+                        {% else %}
+                            <a href="{% url 'pannel:detailTicket' 'buy-sell' %}" class="font-small c-dark font-bold">{% if LANGUAGE_CODE == 'en' %}View{% elif LANGUAGE_CODE == 'fa' %}مشاهده{% elif LANGUAGE_CODE == 'ar' %}منظر{% endif %} <i class="fa fa-eye c-dark"></i></a>
+                        {% endif %}
+    
+                    </div>
+                {% empty %}
+                    <p class="notify-classmodal p-1 c-dark font-small">{% if LANGUAGE_CODE == 'en' %}Your ticket inbox is empty.{% elif LANGUAGE_CODE == 'fa' %}صندوق دریافتی تیکت شما خالی است.{% elif LANGUAGE_CODE == 'ar' %}صندوق وارد تذكرتك فارغ.{% endif %}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal: view notification -->
+<div class="modal" id="modalNotify">
+    <div class="bg-img-wrapper">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="mt-1-2 c-black">{% if LANGUAGE_CODE == 'en' %}Notifications Board{% elif LANGUAGE_CODE == 'fa' %}تابلوی اعلانات{% elif LANGUAGE_CODE == 'ar' %}لوح الإعلانات{% endif %}</h4>
+                <button class="modal-close" onclick="closeModal('modalNotify')">&times;</button>
+            </div>
+            <div class="modal-body">
+                {% for notification in notifications %}
+                    <div class="p-1 notify-classmodal">
+                        {% if LANGUAGE_CODE == 'fa' %}<span class="c-dark float-left font-small">{{ notification.date }}</span>{% endif %}
+                        <h4 class="c-dark">
+                            {% if LANGUAGE_CODE == 'fa' %}{{ notification.title_fa }}
+                            {% elif LANGUAGE_CODE == 'en' %}{{ notification.title_en }}
+                            {% elif LANGUAGE_CODE == 'ar' %}{{ notification.title_ar }}{% endif %}
+                        </h4>
+                        <p class="c-dark mt-1">
+                            {% if LANGUAGE_CODE == 'fa' %}{{ notification.message_fa }}
+                            {% elif LANGUAGE_CODE == 'en' %}{{ notification.message_en }}
+                            {% elif LANGUAGE_CODE == 'ar' %}{{ notification.message_ar }}{% endif %}
+                        </p>
+                        {% if notification.link %}<a href="{{ notification.link }}" target="_blank" class="c-dark font-small {% if LANGUAGE_CODE == 'en' %}float-right{% else %}float-left{% endif %} font-bold">{% if LANGUAGE_CODE == 'en' %}More details{% elif LANGUAGE_CODE == 'fa' %}جزئیات بیشتر{% elif LANGUAGE_CODE == 'ar' %}المزيد من التفاصيل{% endif %} <i class="fa fa-eye c-dark"></i></a><br>{% endif %}
+                    </div>
+                {% empty %}
+                    <p class="notify-classmodal p-1 c-dark font-small">{% if LANGUAGE_CODE == 'en' %}Your Notifications board is empty.{% elif LANGUAGE_CODE == 'fa' %}تابلوی اعلانات شما خالی است.{% elif LANGUAGE_CODE == 'ar' %}لوحة الإعلانات الخاصة بك فارغة.{% endif %}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end navbar -->

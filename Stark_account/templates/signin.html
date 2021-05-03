@@ -1,0 +1,85 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static widget_tweaks i18n %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'استارک، پنل کاربری استارک، ارز دیجیتال، ورود' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate 'استارک | ورود' %}{% endblock %}
+
+{% block linkStatic %}
+    {% if '/en/' in request.path %}
+        <link rel="stylesheet" href="{% static 'css/ltr-style/auth-ltr.css' %}">
+        {% else %}
+        <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    {% endif %}
+{% endblock %}
+8
+{% block AuthContent %}
+    <section class="login-page"> 
+        <div class="top-change-lang">
+            <a href="{% url 'pannel:ch_lang' %}?lang=en&next=/fa/{{ request.path|slice:'4:' }}" {% if '/fa/' in request.path %}class="c-gold"{% endif %}>fa</a> | 
+            <a href="{% url 'pannel:ch_lang' %}?lang=en&next=/en/{{ request.path|slice:'4:' }}" {% if '/en/' in request.path %}class="c-gold"{% endif %}>en</a> | 
+            <a href="{% url 'pannel:ch_lang' %}?lang=en&next=/ar/{{ request.path|slice:'4:' }}" {% if '/ar/' in request.path %}class="c-gold"{% endif %}>ar</a>
+        </div>
+
+        <div class="bg-img"></div>
+
+        <div class="login-form">
+
+            <div class="top-logo">
+                <img src="{%static 'img/logo.svg' %}" alt="stark logo">
+                <p>{% translate 'ورود به استارک' %}</p>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="{{ login_form.emailORusername.id_for_label }}">{% translate 'نام کاربری / ایمیل:' %}</label>
+                    {% render_field login_form.emailORusername autofocus="" %} 
+                
+                    {% for err in login_form.emailORusername.errors %}
+                        <span class="err-msg">{{ err }}</span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ login_form.password.id_for_label }}">{% translate 'رمز عبور:' %}</label>
+                    {% render_field login_form.password %}
+                    {% for err in login_form.password.errors %}
+                        <span class="err-msg">{{ err }}</span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group-codesec">
+                    <div class="code-inp">
+                        <label for="code-sec">{% translate 'کدامنیتی' %}:</label>
+                        <div class="inline-codes">
+                            <!-- <a class="cur-poi captcha captcha-refresh d-none"><img src="{% static 'img/auth/refresh.png' %}" alt=""></a> -->
+                            <a class="captcha captcha-refresh {% if '/en/' in request.path %}ml-2{% else %}mr-2{% endif %}"></a>
+                            {% render_field login_form.captcha id="code-sec" %}    
+                        </div>
+                    </div>
+                    
+                    {% for err in login_form.captcha.errors %}
+                        <span class="err-msg">{{ err }}</span>
+                    {% endfor %}
+                </div>
+
+                <button type="submit" class="btn">{% translate 'ورود' %}</button>
+
+                <p class="c-muted text-center mt-1 font-small">
+                    {% translate 'حسابی ندارید؟ ' %}
+                    <a href="{% url 'account:signup' %}" class="c-gold">{% translate 'ثبت نام کنید' %}</a>
+                </p>
+
+            </form>
+        </div>
+
+    </section>
+
+{% endblock %}
+
+{% block scriptStatic %}{% endblock %}

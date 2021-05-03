@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="{% if '/en/' in request.path %}en{% elif '/fa/' in request.path %}fa{% elif '/ar/' in request.path %}ar{% endif %}">
+<head>
+
+    {% include 'shared/__header.html' %}
+
+    {% block keywordContent %}{% endblock %}
+
+    {% include 'shared/__header_ref.html' %}
+
+    <title>{% block titlePage %}پنل کاربری هشیاربات{% endblock %}</title>
+
+    {% block linkStatic %}{% endblock %}
+
+</head>
+<body>
+
+    {% if 'sign' in request.path %}
+        {% block AuthContent %}{% endblock %}
+    {% endif %}
+
+    {% if not 'sign' in request.path %}
+    
+    <!-- start quick navbar -->
+    {% include 'shared/__quicknavbar.html' %}
+    <!-- end quick navbar -->
+
+    <!-- start search suggest -->
+    {% include 'shared/partials/search_suggest.html' %}
+    <!-- end search suggest -->
+
+    <div class="container">
+
+        <!-- start sidebar -->
+        {% include 'shared/__sidebar.html' %}        
+        <!-- end sidebar -->
+
+        <!-- start sidebar -->
+        <main>
+
+            <!-- start navabar -->
+            {% include 'shared/__navbar.html' %}
+            <!-- end navabar -->
+
+            <!-- start BODY -->
+            {% block content %}{% endblock %}
+            <!-- end BODY -->
+
+        </main>
+        <!-- end content -->
+
+    </div>
+    {% endif %}
+
+    <!-- start loading image -->
+    <div id="loadinggif-part"></div>
+    <!-- end loading image -->
+
+    <!-- start message Box -->
+    {% if messages %}
+        <div id="msg-s-box">
+            {% for message in messages %}
+            <div class="msg-msgs">
+                <p>{{ message }}</p>
+                <button onclick="close_msg({{ forloop.counter }})"><i class="fa fa-times"></i></button>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <!-- end message Box -->
+
+{% include 'shared/__footer_ref.html' %}
+
+<!-- start script static files -->
+{% block scriptStatic %}{% endblock %}
+<!-- end script static files -->
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static i18n humanize %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate ' پنل کاربری استارک، ارز دیجیتال، تیکت، جزئیات تیکت' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate ' استارک | تیکت' %} {% endblock %}
+
+{% block linkStatic %}
+    {% if '/en/' in request.path %}
+        <link rel="stylesheet" href="{% static 'css/ltr-style/tickets-ltr.css' %}">
+    {% else %}
+        <link rel="stylesheet" href="{% static 'css/tickets.css' %}">
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- start BODY -->
+<article class="body-page m-1">
+    <h4 class="mb-1">{% translate 'تیکت های شما' %}</h4>
+
+    <div class="top-boxes-option">
+        {% include 'ticket_navbar_partial.html' %}
+    </div>
+
+    <div class="ticket-detail">
+
+        <div class="top-header">
+            {% if 'buy-sell' in request.path %}
+                <h5>{% translate 'تیکت های خرید و فروش' %}</h5>
+            {% elif 'in-out' in request.path %}
+                <h5>{% translate 'تیکت های پرداختی و برداشتی' %}</h5>
+            {% elif 'bot-sub' in request.path %}
+                <h5>{% translate 'تیکت های اشتراک ربات' %}</h5>
+            {% endif %}
+        </div>
+
+        <div class="tickets">
+
+            {% for ticket in tickets %}
+                {% if not ticket.is_suppurt %}
+                <div class="ticket-user">
+                    <div class="ticket-body">
+                        {% if request.user.avatar %}
+                            <img class="avatar" src="{{ request.user.avatar.url }}" alt="{{ request.user }}">
+                        {% else %}
+                            <img class="avatar" src="{% static 'img/logo.svg' %}" alt="logo">
+                        {% endif %}
+                        <div class="msg">
+                            <h4 class="mb-1 c-gold">{{ ticket.subject }}</h4>
+                            <p>{{ ticket.message }}</p>
+                        </div>
+                    </div>
+                    <div class="time">
+                        <img src="{% static 'img/tickets/watch.svg' %}" class="mx-1" alt="watch">
+                        {% if '/fa/' in request.path %}<span class="digit">{{ ticket.j_date }}</span>
+                        {% else %}<span class="digit ltr">{{ ticket.date|naturaltime }}</span>{% endif %}
+                    </div>
+                </div>
+                {% else%}
+                <div class="ticket-suppurt">
+                    <div class="ticket-body">
+                        <img class="avatar" src="{% static 'img/tickets/headphones.png' %}" alt="suppurter">
+                        <div class="msg">
+                            <h4 class="mb-1 c-gold">{{ ticket.subject }}</h4>
+                            <p>{{ ticket.message }}</p>
+                        </div>
+                    </div>
+                    <div class="time">
+                        <img src="{% static 'img/tickets/watch.svg' %}" class="mx-1" alt="watch">
+                        {% if '/fa/' in request.path %}<span class="digit">{{ ticket.j_date }}</span>
+                        {% else %}<span class="ltr">{{ ticket.date|naturaltime }}</span>{% endif %}
+                    </div>
+                </div>
+                {% endif %}
+            {% empty %}
+                <p class="c-light font-small mx-1">{% translate 'تیکتی با این عنوان موجود نیست.' %}</p>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</article>
+<!-- end BODY -->
+{% endblock %}
+
+{% block scriptStatic %}
+    {% if '/fa/' in request.path %}<script src="{% static 'js/persianumber.min.js' %}"></script>{% endif %}
+{% endblock %}

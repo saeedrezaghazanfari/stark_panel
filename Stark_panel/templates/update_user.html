@@ -1,0 +1,97 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static widget_tweaks i18n %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'پنل کاربری استارک، ارز دیجیتال، ویرایش کاربر' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate 'استارک | ویرایش اطلاعات ' %}{% endblock %}
+
+{% block linkStatic %}
+    <link rel="stylesheet" href="{% static 'css/change-data.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- start BODY -->
+<article class="body-page m-1">
+    <h4 class="mb-1">{% translate 'ویرایش اطلاعات' %}</h4>
+
+    <form method="POST" enctype="multipart/form-data" class="change-user-data">
+        {% csrf_token %}
+        <div class="avatar-upload">
+            <div>
+                {% if request.user.avatar %}
+                    <a href="{{ request.user.avatar.url }}"><div style="background: url('{{ request.user.avatar.url }}') no-repeat center center / cover;" class="img-top-avatar mt-1"></div></a>
+                {%else%}
+                    <img src="{% static 'img/logo.svg' %}" alt="{{ request.user }}">
+                {% endif %}
+                <div class="overlay-avatar cur-poi">
+                    <label for="{{ form.avatar.id_for_label }}"><i class="fa fa-camera c-dark"></i></label>
+                    <div class="d-none">{{ form.avatar }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group-inline">
+            <div>
+                <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}:</label>
+                {% render_field form.first_name value=request.user.first_name %}
+            </div>
+            <div>
+                <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}:</label>
+                {% render_field form.last_name value=request.user.last_name %}
+            </div>
+        </div>
+        <div  class="form-group-chus">
+            <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}:</label>
+            {% render_field form.phone value=request.user.phone %}
+        </div>
+        <div  class="form-group-chus">
+            <label for="{{ form.national_code.id_for_label }}">{{ form.national_code.label }}:</label>
+            {% render_field form.national_code value=request.user.national_code %}
+        </div>
+
+        <div  class="form-group-chus">
+            <div class="upload-file">
+                <img src="{% static 'img/edit-user/upload.svg' %}" alt="upload image">
+                <label class="cur-poi text-center px-1" for="{{ form.national_code_image.id_for_label }}">{% translate 'لطفا عکس کارت ملی خود را آپلود نمایید' %}</label>
+                {% if request.user.national_code_image %}
+                    <p class="font-small mt-1-2"><a href="{{ request.user.national_code_image.url }}">{% translate 'مشاهده ی تصویر فعلی' %}</a></p>
+                {% endif %}
+                <div class="d-none">{{ form.national_code_image }}</div>
+            </div>
+        </div>
+
+        <div>
+            {% for err in form.national_code_image.errors %}
+                <span class="c-red font-small">{{ err }}</span><br />
+            {% endfor %}
+            {% for err in form.avatar.errors %}
+                <span class="c-red font-small">{{ err }}</span><br />
+            {% endfor %}
+            {% for err in form.first_name.errors %}
+                <span class="c-red font-small">{{ err }}</span><br />
+            {% endfor %}
+            {% for err in form.last_name.errors %}
+                <span class="c-red font-small">{{ err }}</span><br />
+            {% endfor %}
+            {% for err in form.phone.errors %}
+                <span class="c-red font-small">{{ err }}</span><br />
+            {% endfor %}
+            {% for err in form.national_code.errors %}
+                <span class="c-red font-small">{{ err }}</span><br />
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="btn">{% translate 'ویرایش' %}</button>
+
+    </div>
+
+</article>
+<!-- end BODY -->
+
+{% endblock %}
+
+{% block scriptStatic %}{% endblock %}

@@ -1,0 +1,137 @@
+@import 'variables';
+
+// start buy-sell
+.body-page {
+    background-color: $bgc-card;
+    padding: 1.5rem;
+    border-radius: 15px;
+    min-height: calc(100vh - 14%);
+    overflow-y: auto;
+    min-width: 300px !important;
+}
+
+
+.buy-sell-card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    .right-card {
+        padding: 1rem;
+        flex: 1;
+        min-width: 300px;
+
+        div.boxes-tokens { 
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            .box-token {
+                font-size: 10pt;
+                margin: 0.6rem;
+                text-align: center;
+                p:nth-child(1) {
+                    font-size: 16pt;
+                    letter-spacing: 2px;
+                }
+            }
+        }
+    }
+    .left-card {
+        min-width: 300px;
+        padding: 1rem;
+        flex: 3;
+        div.tow-box-top-cnv {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            
+            div.two-box-img-title {
+                display: flex;
+                align-items: center;
+                img {
+                    height: 100px;
+                    width: 100px;
+                }
+                .h1-and-span-top {
+                    margin: 0 1.5rem;
+                    h4 {
+                        margin-bottom: 0.5rem;
+                    }
+                }
+            }
+
+            .links-box-charts {
+                align-self: flex-end;
+                margin-top: 1rem;
+                a.link-to-fade-chart {
+                    display: flex;
+                    margin: 0 1.2rem;
+                    align-items: center;
+                    img {   
+                        height: 25px;
+                        margin-right: 5px;
+                        width: 25px;
+                    }
+                }
+            }
+            .show-chart-page{ display: none; }
+        } 
+
+        canvas {
+            width: 100%;
+        }
+        a.link-to--chart {
+            background: $bg-linear-gold;
+            color: $bgc-card;
+            border-radius: 25px;
+            padding: 0.25rem 2rem;
+            font-weight: bold;
+            font-size: 10pt;
+            text-align: center;
+            i { color: $bgc-card; }
+        }
+    }
+}  
+
+.form-group input, .form-group select {
+    background-color: $bg-field;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+label {
+    font-size: 10pt;
+    color: #dbdbdb;
+}
+
+.form-group {
+    margin-top: 1.5rem;
+}
+
+form button {
+    background-color: $c-gold;
+    font-weight: bolder;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    color: $bgc-card;
+    font-family: IRANSanse;
+}
+
+@media (max-width: 750px) {
+    .links-box-charts a.link-to-fade-chart {
+        margin: 0 0.5rem !important;
+    }
+    .right-card {
+        order: 2 !important;
+    }
+    .left-card {
+        order: 1 !important;
+    }
+}
+// end buy-sell

@@ -1,0 +1,96 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static i18n %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'استارک، پنل کاربری استارک، ارز دیجیتال، اشتراک ربات' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %} {% translate 'استارک | اشتراک ربات' %} {% endblock %}
+
+{% block linkStatic %}
+    <link rel="stylesheet" href="{% static 'css/robot.css' %}">    
+    <link rel="stylesheet" href="{% static 'frameworks/video-js.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- start BODY -->
+<article class="body-page m-1">
+    <h4 class="mb-1">{% translate 'اشتراک روبات' %}</h4>
+
+    <p class="py-1 mr-1">{% translate 'تعرفه ها' %}</p>
+    <div class="boxes-4">
+        {% for bot_category in bot_categories %}
+        <div class="box-tarefe">
+            <div>
+                <span class="f-big-box digit">{{ bot_category.days }}</span><span class="f-small-box"> {% translate 'روزه' %}</span>
+            </div>
+            <div class="f-small-box digit">
+                {% if not bot_category.free_days == 0 %}
+                    + {{ bot_category.free_days }} {% translate 'روز هدیه' %}
+                {% else %}
+                    <br>
+                {% endif %}
+            </div>
+            <div class="ltr">
+                {% if bot_category.price == 0.0 %}
+                    <span class="c-gold f-big-box f-med">{% translate 'رایگان' %}</span>
+                {% else %}
+                    <span class="c-gold f-big-box ">{{ bot_category.price }}</span><span class="c-gold"> USDT</span>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+            <div class="c-red font-small mx-1">{% translate 'هنوز تعرفه ای ایجاد نشده است.' %}</div>
+        {% endfor %}
+    </div>
+    <br>
+    <p class="py-1 mr-1">{% translate 'ویدئو راهنمای اشتراک ربات' %}</p>
+    <div class="video-ticket">
+        <div class="box-video">
+
+            <video class="video-js w-100" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "poster":"{{ videos.first.poster.url }}"}'>
+                {% for videoo in videos %}
+                    <source src="{{ videoo.video.url }}" type="{{ videoo.ext }}">
+                {% endfor%}
+            </video>
+
+        </div>
+        <div class="box-send-req">
+            <p class="text-center">{% translate 'ارسال درخواست خرید' %}</p>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+                <span class="c-gold font-small">{% translate 'موجودی نقدی حساب(USDT)' %}: <span class="c-gold">{{ request.user.stoke }}</span></span>
+                <div class="form-group-send-req">
+                    <label for="type-bot-sub">{% translate 'نوع اشتراک' %}:</label>
+                    <select id="type-bot-sub" name="type-bot-sub">
+                        <option value="none">---------</option>
+                        {% for i in bot_categories.values %}
+                            {% if i.price < request.user.stoke %}
+                                <option value="{{ i.days }}">{{ i.days }} {% translate 'روزه' %} + {{ i.free_days }} {% translate 'روز هدیه' %} ( {{ i.price }} {% translate 'تتر' %} )</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group-send-req-sure">
+                    <input type="checkbox" id="ensure-pay-bot" name="ensure-pay-bot">&nbsp;
+                    
+                    <label for="ensure-pay-bot">{% translate 'آیا مطمئن هستید؟' %}</label>
+                </div>
+                <br>
+                <button type="submit" class="btn cur-poi">{% translate 'ارسال درخواست' %}</button>
+            </form>
+        </div>
+    </div>
+
+</article>
+<!-- end BODY -->
+
+{% endblock %}
+
+{% block scriptStatic %}
+    <script type="text/javascript" src="{% static 'frameworks/video-js.js' %}"></script>
+    {% if not '/en/' in request.path %}<script type="text/javascript" src="{% static 'js/persianumber.min.js' %}"></script>{% endif %}
+{% endblock %}

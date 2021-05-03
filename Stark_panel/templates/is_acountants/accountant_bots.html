@@ -1,0 +1,74 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static i18n %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'استارک، پنل کاربری استارک، ارز دیجیتال، رمز ارز، حسابدار' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate 'استارک | نمای جدول' %} {% endblock %}
+
+{% block linkStatic %}
+    <link rel="stylesheet" href="{% static 'css/auditor.css' %}">    
+{% endblock %}
+
+{% block content %}
+
+<!-- start BODY -->
+<article class="body-page m-1">
+
+    <p id="open-parg" class="mb-1 font-small cur-poi" onclick="open_form()"><i class="c-gold fa fa-plus"></i>&nbsp;{% translate 'برای اضافه کردن کلیک کنید' %}</p>
+    <p id="close-parg" class="mb-1 font-small cur-poi" style="display: none;" onclick="close_form()"><i class="c-gold fa fa-minus"></i>&nbsp;{% translate 'برای اضافه کردن کلیک کنید' %}</p>
+
+    <div id="form-div-wrapper" style="display: none;">
+        <form method="POST" id="form-add">
+            {% csrf_token %}
+            {{ add_form }}
+            <div class="container-btn">
+                <button type="submit">{% translate 'اعمال' %}</button>
+            </div>
+        </form>
+    </div>
+    <br>
+
+    <h4 class="mb-1">{% translate 'لیست اشتراک ربات ها' %}</h4>
+
+    <div id="list-chart">
+        <table>
+            <tr>
+                <th>#</th>
+                <th>{% translate 'کد کاربری' %}</th>
+                <th>{% translate 'کد ربات' %}</th>
+                <th>{% translate 'تعرفه' %}</th>
+                <th>{% translate 'تاریخ' %}</th>
+                <th>{% translate 'پرداخت شده' %}</th>
+                <th>{% translate 'فعال' %}</th>
+                <th>{% translate 'تاریخ انقضا' %}</th>
+                <th>{% translate 'تغییرات' %}</th>
+            </tr>
+
+            {% for obj in object_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ obj.user.user_code }}</td>
+                <td>{{ obj.bot_code }}</td>
+                <td>{{ obj.time_subscription }}</td>
+                <td>{% if '/fa/' in request.path %}{{ obj.j_date }}{% else %}{{ obj.date }}{% endif %}</td>
+                <td>{% if obj.is_paid %} <i class="fa fa-plus"></i> {% else %} <i class="fa fa-minus"></i> {% endif %}</td>
+                <td>{% if obj.is_active %} <i class="fa fa-plus"></i> {% else %} <i class="fa fa-minus"></i> {% endif %}</td>
+                <td>{% if '/fa/' in request.path %}{{ obj.j_last_date }}{% else %}{{ obj.last_date }}{% endif %}</td>
+                <td><a href="{% url 'pannel:ac_bots_id' obj.id %}">{% translate 'ویرایش' %}</a></td>
+            </tr>
+            {% empty %}
+                <div class="my-1 c-red font-small">{% translate 'جدول خالی میباشد.' %}</div>
+            {% endfor %}
+
+        </table>
+
+    </div>
+</article>
+<!-- end BODY -->
+
+{% endblock %}
+
+{% block scriptStatic %}{% endblock %}

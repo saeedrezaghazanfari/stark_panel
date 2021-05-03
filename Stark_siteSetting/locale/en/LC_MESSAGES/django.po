@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-03 22:37+0430\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\apps.py:8
+msgid "تنظیمات وبسایت"
+msgstr "Panel Settings"
+
+#: .\models.py:18
+msgid "ویدئوی راهنما"
+msgstr "Video guide"
+
+#: .\models.py:19
+msgid "فرمت ویدئو"
+msgstr "Video Format"
+
+#: .\models.py:20
+msgid "پوستر ویدئوی راهنما"
+msgstr "Help Video Poster"
+
+#: .\models.py:23
+msgid "تنظیمات ویدئو"
+msgstr "Video setting"
+
+#: .\models.py:24
+msgid "تنظیمات ویدئوها"
+msgstr "Videos setting"
+
+#: .\models.py:31
+msgid "تعداد روزها"
+msgstr "Number of days"
+
+#: .\models.py:32
+msgid "تعداد روزهای هدیه"
+msgstr "Number of gift days"
+
+#: .\models.py:33
+msgid "قیمت تعرفه بر حسب تتر"
+msgstr "Tariff price in terms of USDT"
+
+#: .\models.py:36
+msgid "تنظیمات تعرفه"
+msgstr "Tariff setting"
+
+#: .\models.py:37
+msgid "تنظیمات تعرفه ها"
+msgstr "Tariffs setting"
+
+#: .\models.py:44
+msgid "عنوان اعلان به فارسی"
+msgstr "Notify subject in Persian"
+
+#: .\models.py:45
+msgid "عنوان اعلان به انگلیسی"
+msgstr "Notify subject in English"
+
+#: .\models.py:46
+msgid "عنوان اعلان به عربی"
+msgstr "Notify subject in Arabic"
+
+#: .\models.py:47
+msgid "متن اعلان به فارسی"
+msgstr "Notify text in Persian"
+
+#: .\models.py:48
+msgid "متن اعلان به انگلیسی"
+msgstr "Notify text in English"
+
+#: .\models.py:49
+msgid "متن اعلان به عربی"
+msgstr "Notify text in Arabic"
+
+#: .\models.py:50
+msgid "لینک پیوست"
+msgstr "Attached Link"
+
+#: .\models.py:51 .\models.py:60
+msgid "تاریخ و زمان"
+msgstr "date and time"
+
+#: .\models.py:52
+msgid "فعال / غیرفعال"
+msgstr "Active/InActive"
+
+#: .\models.py:54
+msgid "اعلان"
+msgstr "Notification"
+
+#: .\models.py:55
+msgid "اعلانات"
+msgstr "Notifications"
+
+#~ msgid "عنوان اعلان"
+#~ msgstr "Notify title"

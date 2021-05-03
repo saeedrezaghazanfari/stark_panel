@@ -1,0 +1,34 @@
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<section class="quick-navbar d-none">
+    <div>
+        <!-- <a class="close-quick-navbar cur-poi" onclick="close_sidebar()">&times;</a> -->
+        <ul>
+            <br>
+            <li><a href="{% url 'pannel:home' %}" class="pr-1 {% if request.path == '/fa/' or request.path == '/en/' or request.path == '/ar/' %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-home.png' %}" class="fonticon-quicknavbar" alt="dashboard"> {% if LANGUAGE_CODE == 'en' %}Dashboard{% elif LANGUAGE_CODE == 'fa' %}داشبورد{% elif LANGUAGE_CODE == 'ar' %}لوحة القيادة{% endif %}</a></li>
+            
+            {% if request.user.is_acountants %}
+                <li><a href="{% url 'pannel:ac_home' %}" class="pr-1 {% if 'acountants' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-users.svg' %}" class="fonticon-quicknavbar" alt="accountant"> {% if LANGUAGE_CODE == 'en' %}Accounting{% elif LANGUAGE_CODE == 'fa' %}حسابداری{% elif LANGUAGE_CODE == 'ar' %}محاسبة{% endif %}</a></li>
+            {% endif %}
+
+            {% if request.user.is_suppurt %}
+                <li><a href="{% url 'pannel:su_home' %}" class="pr-1 {% if 'support' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-users.svg' %}" class="fonticon-quicknavbar" alt="supporter"> {% if LANGUAGE_CODE == 'en' %}Support{% elif LANGUAGE_CODE == 'fa' %}پشتیبان{% elif LANGUAGE_CODE == 'ar' %}الدعم{% endif %}</a></li>
+            {% endif %}
+
+            <li><a href="{% url 'pannel:userWallet' %}" class="pr-1 {% if 'wallet' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-wallet.svg' %}" class="fonticon-quicknavbar" alt="wallet"> {% if LANGUAGE_CODE == 'en' %}Wallet{% elif LANGUAGE_CODE == 'fa' %}کیف پول{% elif LANGUAGE_CODE == 'ar' %}محفظة جيب{% endif %}</a></li>
+            
+            <li><a href="{% url 'pannel:buySellToken' 'st1' %}" class="pr-1 {% if 'buy' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-sell-buy.svg' %}" class="fonticon-quicknavbar" alt="buy and sell"> {% if LANGUAGE_CODE == 'en' %}Buy & Sell digital Currency{% elif LANGUAGE_CODE == 'fa' %}خرید و فروش ارز دیجیتال{% elif LANGUAGE_CODE == 'ar' %}بيع وشراء العملات الرقمية{% endif %}</a></li>
+            
+            <li><a href="{% url 'pannel:robot' %}" class="pr-1 {% if 'bot' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-share-robot.svg' %}" class="fonticon-quicknavbar" alt="robot subscription"> {% if LANGUAGE_CODE == 'en' %}Robot Subscription{% elif LANGUAGE_CODE == 'fa' %}اشتراک ربات{% elif LANGUAGE_CODE == 'ar' %}اشتراك الروبوت{% endif %}</a></li>
+            
+            <li><a href="{% url 'pannel:editUser' request.user.id %}" class="pr-1 {% if 'user/edit' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-edit.svg' %}" class="fonticon-quicknavbar" alt="edit user information"> {% if LANGUAGE_CODE == 'en' %}Edit Informations{% elif LANGUAGE_CODE == 'fa' %}ویرایش اطلاعات{% elif LANGUAGE_CODE == 'ar' %}تحرير المعلومات{% endif %}</a></li>
+            
+            <li><a href="{% url 'pannel:changePw' %}" class="pr-1 {% if 'password' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-lock.svg' %}" class="fonticon-quicknavbar" alt="change password"> {% if LANGUAGE_CODE == 'en' %}Change Password{% elif LANGUAGE_CODE == 'fa' %}تغییر رمزعبور{% elif LANGUAGE_CODE == 'ar' %}تغيير كلمة المرور{% endif %}</a></li>
+            
+            <li><a href="{% url 'pannel:allTicket' %}" class="pr-1 {% if 'ticket/' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-ticket.svg' %}" class="fonticon-quicknavbar" alt="tickets"> {% if LANGUAGE_CODE == 'en' %}Ticket{% elif LANGUAGE_CODE == 'fa' %}تیکت{% elif LANGUAGE_CODE == 'ar' %}تذكرة{% endif %}</a></li>
+            
+            <li class="mb-2"><a class="pr-1 cur-poi" onclick="close_sidebar()"><i class="fa fa-times c-gold"></i>&nbsp; {% if LANGUAGE_CODE == 'en' %}Close{% elif LANGUAGE_CODE == 'fa' %}بستن{% elif LANGUAGE_CODE == 'ar' %}لإغلاق{% endif %}</a></li>
+        </ul>
+    </div>
+</section>

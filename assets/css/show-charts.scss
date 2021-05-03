@@ -1,0 +1,41 @@
+@import 'variables';
+
+.body-page {
+    background-color: $bgc-card;
+    padding: 1.5rem;
+    border-radius: 15px;
+    min-height: calc(100vh - 14%);
+    overflow-y: auto;
+    min-width: 300px !important;
+}
+
+aside {
+    display: none !important;
+}
+.container {
+    width: 1500px !important;
+    margin: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+a.parg-link {
+    background-color: $c-gold;
+    color: $bgc-card;
+    margin: 0 20px;
+    padding: 0.2rem 2rem;
+    font-size: 10pt;
+    border-radius: 5px;
+    font-weight: bolder;
+}
+
+section#showchart-sec {
+    width: 1300px;
+    background-color: #111;
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin: auto;
+    canvas {
+        height: 100%;
+        width: 100%;
+    }
+}

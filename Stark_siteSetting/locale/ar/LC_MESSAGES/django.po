@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-03 22:37+0430\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\apps.py:8
+msgid "تنظیمات وبسایت"
+msgstr "إعدادات موقع الويب"
+
+#: .\models.py:18
+msgid "ویدئوی راهنما"
+msgstr "فيديو المساعدة"
+
+#: .\models.py:19
+msgid "فرمت ویدئو"
+msgstr "شكل الفيديو"
+
+#: .\models.py:20
+msgid "پوستر ویدئوی راهنما"
+msgstr "ملصق فيديو مساعدة"
+
+#: .\models.py:23
+msgid "تنظیمات ویدئو"
+msgstr "اعدادات الفيديو"
+
+#: .\models.py:24
+msgid "تنظیمات ویدئوها"
+msgstr "اعدادات الفيديو"
+
+#: .\models.py:31
+msgid "تعداد روزها"
+msgstr "عدد الأيام"
+
+#: .\models.py:32
+msgid "تعداد روزهای هدیه"
+msgstr "عدد أيام الإهداء"
+
+#: .\models.py:33
+msgid "قیمت تعرفه بر حسب تتر"
+msgstr "سعر التعرفة فی USDT"
+
+#: .\models.py:36
+msgid "تنظیمات تعرفه"
+msgstr "إعدادات التعرفة"
+
+#: .\models.py:37
+msgid "تنظیمات تعرفه ها"
+msgstr "إعدادات التعرفة"
+
+#: .\models.py:44
+msgid "عنوان اعلان به فارسی"
+msgstr "عنوان الإعلان باللغة الفارسية"
+
+#: .\models.py:45
+msgid "عنوان اعلان به انگلیسی"
+msgstr "عنوان إعلان باللغة الإنجليزية"
+
+#: .\models.py:46
+msgid "عنوان اعلان به عربی"
+msgstr "عنوان إعلان باللغة العربية"
+
+#: .\models.py:47
+msgid "متن اعلان به فارسی"
+msgstr "نص إعلان باللغة الفارسية"
+
+#: .\models.py:48
+msgid "متن اعلان به انگلیسی"
+msgstr "نص إعلان باللغة الإنجليزية"
+
+#: .\models.py:49
+msgid "متن اعلان به عربی"
+msgstr "نص إعلان باللغة العربية"
+
+#: .\models.py:50
+msgid "لینک پیوست"
+msgstr "ارتباط مرفق"
+
+#: .\models.py:51 .\models.py:60
+msgid "تاریخ و زمان"
+msgstr "التاريخ و الوقت"
+
+#: .\models.py:52
+msgid "فعال / غیرفعال"
+msgstr "نشط / سلبي"
+
+#: .\models.py:54
+msgid "اعلان"
+msgstr "إعلان"
+
+#: .\models.py:55
+msgid "اعلانات"
+msgstr "الإعلانات"
+
+#~ msgid "عنوان اعلان"
+#~ msgstr "عنوان الإعلان"

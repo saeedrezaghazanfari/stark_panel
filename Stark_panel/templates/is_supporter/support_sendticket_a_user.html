@@ -1,0 +1,62 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static i18n humanize  %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'استارک، پنل کاربری استارک، ارز دیجیتال، رمز ارز، پشتیبان' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate 'استارک | ارسال تیکت' %} {% endblock %}
+
+{% block linkStatic %}
+    <link rel="stylesheet" href="{% static 'css/suppurt.css' %}">    
+{% endblock %}
+
+{% block content %}
+
+<!-- start BODY -->
+<article class="body-page m-1">
+
+    <div class="three-boxes-top-supp">
+
+        <div class="box-top-supp bg-box-gold">
+            <a href="{% url 'pannel:su_home' %}">
+                <span class="c-dark">{% translate 'بازگشت به صفحه ی اصلی' %} </span>
+            </a>
+        </div>
+
+        <div class="box-top-supp">
+            <a href="{% url 'pannel:su_all_tickets' %}">
+                <img src="{% static 'img/tickets/all-ticket.png' %}" alt="">
+                <span>{% translate 'مشاهده ی تمامی تیکت ها' %} </span>
+            </a>
+        </div>
+
+        <div class="box-top-supp">
+            <a href="{% url 'pannel:su_useraccount' %}">
+                <img src="{% static 'img/tickets/all-ticket.png' %}" alt="">
+                <span>{% translate 'تنظیمات حساب' %} </span>
+            </a>
+        </div>
+        
+    </div>
+
+    <br><br>
+
+    <h4 class="mb-1">{% translate 'ارسال تیکت به کاربر' %}</h4>
+    <div class="all-tickets">
+        
+        <form id="form-send-a-ticket" method="POST">
+            {% csrf_token %}
+            {{sendticket_form}}
+            <div class="container-btn btn"><button type="submit">ارسال تیکت</button></div>
+        </form>
+        
+    </div>
+
+</article>
+<!-- end BODY -->
+
+{% endblock %}
+
+{% block scriptStatic %}{% endblock %}

@@ -1,0 +1,1410 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-03 22:35+0430\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\apps.py:8
+msgid "ماژول توکن"
+msgstr "Token Module"
+
+#: .\csv_views.py:32 .\csv_views.py:115
+msgid "آیدی در دیتابیس"
+msgstr "ID in DataBase"
+
+#: .\csv_views.py:33
+msgid "کدکاربری"
+msgstr "User ID"
+
+#: .\csv_views.py:34
+msgid "نام کاربری"
+msgstr "User name"
+
+#: .\csv_views.py:35
+msgid "ایمیل"
+msgstr "E-mail"
+
+#: .\csv_views.py:36
+msgid "نام"
+msgstr "First Name"
+
+#: .\csv_views.py:37
+msgid "نام خانوادگی"
+msgstr "Last Name"
+
+#: .\csv_views.py:38 .\csv_views.py:122
+msgid "فعال/غیرفعال"
+msgstr "Active/Inactive"
+
+#: .\csv_views.py:39
+msgid "وضعیت حسابدار"
+msgstr "Accountant Status"
+
+#: .\csv_views.py:40
+msgid "وضعیت پشتیبان"
+msgstr "Backup Status"
+
+#: .\csv_views.py:41
+msgid "وضعیت ادمین"
+msgstr "SuperUser Status"
+
+#: .\csv_views.py:42
+msgid "شماره همراه"
+msgstr "Phone number"
+
+#: .\csv_views.py:43
+msgid "کدملی"
+msgstr "National ID"
+
+#: .\csv_views.py:44
+msgid "موجودی فعلی"
+msgstr "Current Balance"
+
+#: .\csv_views.py:45
+msgid "کل پرداختی"
+msgstr "Total payment"
+
+#: .\csv_views.py:46
+msgid "کل برداشتی"
+msgstr "Total impression"
+
+#: .\csv_views.py:47 .\models.py:133 .\models.py:150
+#: .\templates\is_supporter\support_all_ticket.html:54
+#: .\templates\is_supporter\support_response.html:32
+#: .\templates\is_supporter\support_response.html:56
+#: .\templates\is_supporter\support_set_user_acc.html:56
+#: .\templates\is_supporter\supporter_panel.html:55
+msgid "اشتراک ربات"
+msgstr "Bot subscription"
+
+#: .\csv_views.py:48
+msgid "موجودی کل"
+msgstr "Total Inventory"
+
+#: .\csv_views.py:49
+msgid "تاریخ پیوستن"
+msgstr "Date joined"
+
+#: .\csv_views.py:50
+msgid "آخرین ورود"
+msgstr "Last Login"
+
+#: .\csv_views.py:116
+msgid "کدربات"
+msgstr "Bot ID"
+
+#: .\csv_views.py:117 .\csv_views.py:187 .\csv_views.py:237 .\csv_views.py:278
+msgid "نام کاربری کاربر"
+msgstr "User Name"
+
+#: .\csv_views.py:118 .\models.py:125
+msgid "مدت اشتراک"
+msgstr "Subscription period"
+
+#: .\csv_views.py:119 .\csv_views.py:241 .\models.py:46 .\models.py:56
+#: .\models.py:95 .\models.py:107 .\models.py:117 .\models.py:139
+#: .\models.py:157 .\models.py:168
+msgid "تاریخ و زمان"
+msgstr "Date and Time"
+
+#: .\csv_views.py:120 .\models.py:47 .\models.py:108 .\models.py:127
+#: .\templates\is_acountants\accountant_bots.html:44
+#: .\templates\is_acountants\accountant_buy_sells.html:46
+#: .\templates\is_acountants\accountant_walletusers.html:45
+msgid "پرداخت شده"
+msgstr "Paid"
+
+#: .\csv_views.py:121 .\models.py:129 .\models.py:143
+msgid "تاریخ و زمان انقضا"
+msgstr "Expiry date and time"
+
+#: .\csv_views.py:123 .\models.py:130
+msgid "منقضی شده؟"
+msgstr "expired?"
+
+#: .\csv_views.py:166 .\models.py:11 .\templates\buy_sell_tokens.html:55
+msgid "عنوان ارز"
+msgstr "Cryptocurrency name"
+
+#: .\csv_views.py:167 .\csv_views.py:316 .\models.py:12 .\models.py:25
+#: .\templates\is_acountants\list-editor\audit-token-price.html:34
+msgid "قیمت به دلار"
+msgstr "Price in USD"
+
+#: .\csv_views.py:168 .\models.py:13 .\models.py:44
+#: .\templates\is_acountants\accountant_buy_sells.html:43
+#: .\templates\is_acountants\accountant_user_stokes.html:43
+msgid "تعداد"
+msgstr "Count"
+
+#: .\csv_views.py:186
+msgid "ارسال توسط پشتیبان"
+msgstr "Post by Support"
+
+#: .\csv_views.py:188 .\models.py:154
+msgid "عنوان تیکت"
+msgstr "Ticket title"
+
+#: .\csv_views.py:189
+msgid "موضوع تیکت"
+msgstr "Ticket Subject"
+
+#: .\csv_views.py:190 .\templates\ticket_add.html:42
+msgid "متن تیکت"
+msgstr "Text"
+
+#: .\csv_views.py:191
+msgid "ارسال از پشتیبان بوده؟"
+msgstr "Posted from Support?"
+
+#: .\csv_views.py:192
+msgid "تاریخ و زمان ارسال"
+msgstr "Date and Time of submission"
+
+#: .\csv_views.py:193
+msgid "دیده شده توسط پشتیبان"
+msgstr "Seen by support"
+
+#: .\csv_views.py:194
+msgid "دیده شده توسط کاربر"
+msgstr "Seen by user"
+
+#: .\csv_views.py:238 .\csv_views.py:279 .\csv_views.py:315
+#: .\templates\is_acountants\accountant_buy_sells.html:42
+#: .\templates\is_acountants\accountant_user_stokes.html:42
+msgid "نام ارز"
+msgstr "Cryptocurrency name"
+
+#: .\csv_views.py:239
+msgid "تعداد ارز"
+msgstr "Number of Currencies"
+
+#: .\csv_views.py:240
+msgid "خرید/فروش"
+msgstr "Buy/Sell"
+
+#: .\csv_views.py:242
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:41
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:46
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:46
+msgid "پرداخت شده؟"
+msgstr "is Paid?"
+
+#: .\csv_views.py:280 .\models.py:64
+msgid "تعداد دارایی"
+msgstr "Assets"
+
+#: .\csv_views.py:281 .\models.py:65 .\models.py:74
+msgid "آخرین زمان ثبت دارایی"
+msgstr "Latest asset register date"
+
+#: .\csv_views.py:317 .\models.py:26 .\models.py:35
+#: .\templates\is_acountants\accountant_bots.html:43
+#: .\templates\is_acountants\accountant_buy_sells.html:45
+#: .\templates\is_acountants\accountant_user_stokes.html:44
+#: .\templates\is_acountants\accountant_wallet_addr.html:27
+#: .\templates\is_acountants\accountant_walletusers.html:46
+#: .\templates\is_acountants\acountant_chart_token_price.html:27
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:49
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:50
+#: .\templates\is_acountants\list-editor\audit-token-price.html:38
+#: .\templates\is_acountants\list-editor\audit-user-stoke.html:37
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:50
+msgid "تاریخ"
+msgstr "date"
+
+#: .\models.py:16
+msgid "توکن"
+msgstr "Token"
+
+#: .\models.py:17
+msgid "توکن ها"
+msgstr "Tokens"
+
+#: .\models.py:29
+msgid "قیمت دوره ای توکن"
+msgstr "Token period price"
+
+#: .\models.py:30
+msgid "قیمت های توکن"
+msgstr "Token prices"
+
+#: .\models.py:41 .\templates\buy_sell_tokens.html:67
+#: .\templates\is_acountants\accountant_buy_sells.html:56
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:43
+msgid "خرید"
+msgstr "Buy"
+
+#: .\models.py:41 .\templates\buy_sell_tokens.html:68
+#: .\templates\is_acountants\accountant_buy_sells.html:56
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:43
+msgid "فروش"
+msgstr "Sell"
+
+#: .\models.py:45 .\templates\is_acountants\list-editor\audit-buy-sells.html:42
+msgid "خرید یا فروش؟"
+msgstr "Buy or Sell?"
+
+#: .\models.py:50
+msgid "خرید و فروش"
+msgstr "Buy and Sell"
+
+#: .\models.py:51
+msgid "خرید و فروش ها"
+msgstr "Sales"
+
+#: .\models.py:68
+msgid "سهم کاربر"
+msgstr "Crypto user stake"
+
+#: .\models.py:69
+msgid "سهام کاربر"
+msgstr "Crypto user stakes"
+
+#: .\models.py:81 .\models.py:106
+#: .\templates\is_acountants\accountant_wallet_addr.html:26
+#: .\templates\is_acountants\accountant_walletusers.html:44
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:42
+#: .\templates\wallet.html:121 .\templates\wallet.html:151
+msgid "آدرس کیف پول"
+msgstr "Wallet address"
+
+#: .\models.py:84
+msgid "فرمت کدملی را اصلاح کنید."
+msgstr "Modify the National ID format."
+
+#: .\models.py:87 .\models.py:126
+msgid "تاریخ و زمان خرید"
+msgstr "Buy date and time"
+
+#: .\models.py:89 .\templates\wallet.html:23
+msgid "کیف پول"
+msgstr "Wallet"
+
+#: .\models.py:90
+msgid "کیف پول های کاربران"
+msgstr "Users’ wallets"
+
+#: .\models.py:101 .\templates\user_panel.html:123 .\templates\wallet.html:67
+msgid "افزایش موجودی"
+msgstr "Pay into crypto balance"
+
+#: .\models.py:101 .\templates\user_panel.html:123 .\templates\wallet.html:67
+msgid "برداشت از موجودی"
+msgstr "Withdraw from crypto balance"
+
+#: .\models.py:104 .\templates\is_acountants\accountant_walletusers.html:42
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:34
+msgid "مبلغ"
+msgstr "Amount"
+
+#: .\models.py:105 .\templates\buy_sell_tokens.html:65
+#: .\templates\is_acountants\accountant_walletusers.html:43
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:38
+msgid "نوع درخواست"
+msgstr "Order type"
+
+#: .\models.py:111
+msgid "عملیات کیف پول"
+msgstr "Wallet operation"
+
+#: .\models.py:112
+msgid "عملیات های کیف پول"
+msgstr "Wallet operations"
+
+#: .\models.py:123 .\templates\is_acountants\accountant_bots.html:41
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:29
+#: .\templates\user_panel.html:155
+msgid "کد ربات"
+msgstr "Bot ID"
+
+#: .\models.py:128
+msgid "فعال / غیرفعال"
+msgstr "Active/Inactive"
+
+#: .\models.py:134
+msgid "اشتراک ربات ها"
+msgstr "Bots subscription"
+
+#: .\models.py:150 .\templates\is_supporter\support_all_ticket.html:55
+#: .\templates\is_supporter\support_response.html:33
+#: .\templates\is_supporter\support_response.html:57
+#: .\templates\is_supporter\supporter_panel.html:56
+#: .\templates\ticket_navbar_partial.html:16
+msgid "پرداختی / برداشتی"
+msgstr "Deposit/Withdrawal"
+
+#: .\models.py:150 .\templates\is_supporter\support_all_ticket.html:56
+#: .\templates\is_supporter\support_response.html:34
+#: .\templates\is_supporter\supporter_panel.html:57
+msgid "خرید ارز"
+msgstr "Buy cryptocurrency"
+
+#: .\models.py:150 .\templates\is_supporter\support_all_ticket.html:57
+#: .\templates\is_supporter\support_response.html:35
+#: .\templates\is_supporter\supporter_panel.html:58
+msgid "فروش ارز"
+msgstr "Sell cryptocurrency"
+
+#: .\models.py:152
+msgid "آیا این پیام از طرف پشتیبان ارسال شود؟"
+msgstr "Would you like this message to be sent on support’s behalf?"
+
+#: .\models.py:155 .\templates\is_supporter\support_response.html:64
+#: .\templates\ticket_add.html:32
+msgid "موضوع پیام"
+msgstr "Subject"
+
+#: .\models.py:156 .\templates\is_supporter\support_response.html:69
+msgid "متن پیام"
+msgstr "Text"
+
+#: .\models.py:158
+msgid "دیده شده توسط پشتیبان:"
+msgstr "Seen by support"
+
+#: .\models.py:159
+msgid "دیده شده توسط کاربر:"
+msgstr "Seen by user"
+
+#: .\models.py:162
+msgid "تیکت"
+msgstr "Ticket"
+
+#: .\models.py:163
+msgid "تیکت ها"
+msgstr "Ticket"
+
+#: .\supp_acco_views.py:60
+msgid "مشکلی رخ داده است."
+msgstr "A problem has occurred."
+
+#: .\supp_acco_views.py:70
+msgid "اطلاعات کاربر با موفقیت ذخیره شد."
+msgstr "User information Saved Successfully."
+
+#: .\supp_acco_views.py:98
+msgid "پیام شما با موفقیت ارسال شد."
+msgstr "Your Message has been Sent Successfully."
+
+#: .\supp_acco_views.py:127
+msgid "پیام با موفقیت ارسال شد."
+msgstr "Your Message has been Sent Successfully."
+
+#: .\supp_acco_views.py:155
+msgid "با موفقیت اضافه شد."
+msgstr "Added Successfully."
+
+#: .\supp_acco_views.py:189
+msgid "اشتراک ربات کاربر ذخیره شد."
+msgstr "User robot subscription saved."
+
+#: .\supp_acco_views.py:206
+msgid "عملیات کیف پول اضافه شد."
+msgstr "Wallet Operation added."
+
+#: .\supp_acco_views.py:223
+msgid "خرید و فروش توکن کاربر ذخیره شد."
+msgstr "Buy and sell user tokens saved."
+
+#: .\supp_acco_views.py:247 .\supp_acco_views.py:253
+msgid "توکن کاربر ذخیره شد."
+msgstr "User information Saved Successfully."
+
+#: .\supp_acco_views.py:267 .\supp_acco_views.py:279 .\supp_acco_views.py:291
+#: .\supp_acco_views.py:304 .\supp_acco_views.py:316
+msgid "تغییرات اعمال شد."
+msgstr "Changes were applied."
+
+#: .\templates\bot_subscription.html:5
+msgid "استارک، پنل کاربری استارک، ارز دیجیتال، اشتراک ربات"
+msgstr "Stark, Stark Account, digital currency, bot subscription"
+
+#: .\templates\bot_subscription.html:6 .\templates\buy_sell_tokens.html:6
+#: .\templates\change_password.html:6
+#: .\templates\is_acountants\accountant_bots.html:6
+#: .\templates\is_acountants\accountant_buy_sells.html:6
+#: .\templates\is_acountants\accountant_panel.html:6
+#: .\templates\is_acountants\accountant_user_stokes.html:7
+#: .\templates\is_acountants\accountant_wallet_addr.html:6
+#: .\templates\is_acountants\accountant_walletusers.html:6
+#: .\templates\is_acountants\acountant_chart_token_price.html:6
+#: .\templates\is_acountants\acountants_user.html:6
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:7
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:7
+#: .\templates\is_acountants\list-editor\audit-token-price.html:7
+#: .\templates\is_acountants\list-editor\audit-user-stoke.html:7
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:7
+#: .\templates\is_supporter\support_all_ticket.html:6
+#: .\templates\is_supporter\support_response.html:6
+#: .\templates\is_supporter\support_sendticket_a_user.html:6
+#: .\templates\is_supporter\support_set_user_acc.html:6
+#: .\templates\is_supporter\supporter_panel.html:6
+#: .\templates\ticket_add.html:6 .\templates\ticket_all.html:6
+#: .\templates\ticket_detail.html:6 .\templates\update_user.html:6
+#: .\templates\user_panel.html:6 .\templates\view_charts.html:6
+#: .\templates\wallet.html:6
+msgid "پنل کاربری استارک"
+msgstr "Stark Account"
+
+#: .\templates\bot_subscription.html:9
+msgid "استارک | اشتراک ربات"
+msgstr "STARK | Bot subscription"
+
+#: .\templates\bot_subscription.html:20
+msgid "اشتراک روبات"
+msgstr "Bot subscription"
+
+#: .\templates\bot_subscription.html:22
+msgid "تعرفه ها"
+msgstr "Tariffs"
+
+#: .\templates\bot_subscription.html:27 .\templates\bot_subscription.html:72
+msgid "روزه"
+msgstr "days"
+
+#: .\templates\bot_subscription.html:31 .\templates\bot_subscription.html:72
+msgid "روز هدیه"
+msgstr "day bonus"
+
+#: .\templates\bot_subscription.html:38
+msgid "رایگان"
+msgstr "Free"
+
+#: .\templates\bot_subscription.html:45
+msgid "هنوز تعرفه ای ایجاد نشده است."
+msgstr "No Tariff has been set yet."
+
+#: .\templates\bot_subscription.html:49
+msgid "ویدئو راهنمای اشتراک ربات"
+msgstr "“How to subscribe to a bot” video "
+
+#: .\templates\bot_subscription.html:61
+msgid "ارسال درخواست خرید"
+msgstr "Place a purchase order"
+
+#: .\templates\bot_subscription.html:65
+msgid "موجودی نقدی حساب(USDT)"
+msgstr "Cash account balance (USDT)"
+
+#: .\templates\bot_subscription.html:67
+msgid "نوع اشتراک"
+msgstr "Subscription type "
+
+#: .\templates\bot_subscription.html:72
+msgid "تتر"
+msgstr "USDT"
+
+#: .\templates\bot_subscription.html:80
+msgid "آیا مطمئن هستید؟"
+msgstr "Are you sure?"
+
+#: .\templates\bot_subscription.html:83 .\templates\buy_sell_tokens.html:82
+msgid "ارسال درخواست"
+msgstr "Place order"
+
+#: .\templates\buy_sell_tokens.html:5 .\templates\user_panel.html:5
+msgid "استارک، پنل کاربری استارک، ارز دیجیتال، خرید و فروش ارز دیجیتال"
+msgstr "Stark, Stark panel, Cryptocurrency trade"
+
+#: .\templates\buy_sell_tokens.html:9
+msgid " استارک | خرید فروش"
+msgstr "STARK | Cryptocurrency trade"
+
+#: .\templates\buy_sell_tokens.html:19
+msgid "خرید و فروش ارز دیجیتال"
+msgstr "Cryptocurrency trade (buy and sell) "
+
+#: .\templates\buy_sell_tokens.html:26
+msgid "موجودی توکن‌های شما:"
+msgstr "Inventory of your Tokens:"
+
+#: .\templates\buy_sell_tokens.html:73
+msgid "حجم درخواستی (بر حسب تتر)"
+msgstr "Ordered volume (in USDT)"
+
+#: .\templates\buy_sell_tokens.html:78
+msgid "مبلغ سفارش (برحسب توکن)"
+msgstr "Price (in Token)"
+
+#: .\templates\buy_sell_tokens.html:81
+msgid "حجم درخواستی شما بر حسب قیمت آخرین توکن موجود محاسبه میشود."
+msgstr ""
+"The price for the volume you ordered is calculated based on the latest token "
+"rates."
+
+#: .\templates\buy_sell_tokens.html:102
+msgid "نمودار توکن"
+msgstr "Token Chart"
+
+#: .\templates\buy_sell_tokens.html:103
+msgid "قیمت امروز (بر حسب تتر)"
+msgstr "Today's price (in terms of USDT)"
+
+#: .\templates\buy_sell_tokens.html:114
+msgid "نمایش نمودار‌ها:"
+msgstr "Show Charts:"
+
+#: .\templates\buy_sell_tokens.html:124 .\templates\buy_sell_tokens.html:126
+#: .\templates\buy_sell_tokens.html:128 .\templates\buy_sell_tokens.html:130
+#: .\templates\user_panel.html:52 .\templates\user_panel.html:60
+#: .\templates\user_panel.html:64 .\templates\user_panel.html:72
+#: .\templates\view_charts.html:19
+msgid "نمایش نمودار"
+msgstr "Show Chart"
+
+#: .\templates\buy_sell_tokens.html:188 .\templates\view_charts.html:81
+msgid "نمودار قیمت توکن"
+msgstr "Token price chart "
+
+#: .\templates\change_password.html:5
+msgid "پنل کاربری استارک، ارز دیجیتال، رمز ارز، تغییر رمز عبور"
+msgstr "Stark, Stark panel, change password"
+
+#: .\templates\change_password.html:9
+msgid " استارک | تغییر رمز"
+msgstr "STARK | change password "
+
+#: .\templates\change_password.html:19
+msgid "تغییر رمز عبور"
+msgstr "Change password"
+
+#: .\templates\change_password.html:25
+msgid "گذرواژه ی قبلی"
+msgstr "Current password"
+
+#: .\templates\change_password.html:33
+msgid "گذرواژه جدید"
+msgstr "New password"
+
+#: .\templates\change_password.html:41
+msgid "تایید گذرواژه جدید"
+msgstr "Verify new password"
+
+#: .\templates\change_password.html:51
+#: .\templates\is_acountants\accountant_bots.html:28
+#: .\templates\is_acountants\accountant_buy_sells.html:28
+#: .\templates\is_acountants\accountant_user_stokes.html:29
+#: .\templates\is_acountants\accountant_walletusers.html:28
+msgid "اعمال"
+msgstr "Operations"
+
+#: .\templates\is_acountants\accountant_bots.html:5
+#: .\templates\is_acountants\accountant_buy_sells.html:5
+#: .\templates\is_acountants\accountant_panel.html:5
+#: .\templates\is_acountants\accountant_user_stokes.html:6
+#: .\templates\is_acountants\accountant_wallet_addr.html:5
+#: .\templates\is_acountants\accountant_walletusers.html:5
+#: .\templates\is_acountants\acountant_chart_token_price.html:5
+#: .\templates\is_acountants\acountants_user.html:5
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:6
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:6
+#: .\templates\is_acountants\list-editor\audit-token-price.html:6
+#: .\templates\is_acountants\list-editor\audit-user-stoke.html:6
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:6
+msgid "استارک، پنل کاربری استارک، ارز دیجیتال، رمز ارز، حسابدار"
+msgstr "Stark, Stark account, cryptocurrency, accountant"
+
+#: .\templates\is_acountants\accountant_bots.html:9
+#: .\templates\is_acountants\accountant_buy_sells.html:9
+#: .\templates\is_acountants\accountant_wallet_addr.html:9
+#: .\templates\is_acountants\acountant_chart_token_price.html:9
+#: .\templates\is_acountants\acountants_user.html:9
+msgid "استارک | نمای جدول"
+msgstr "STARK | chart pattern"
+
+#: .\templates\is_acountants\accountant_bots.html:20
+#: .\templates\is_acountants\accountant_bots.html:21
+#: .\templates\is_acountants\accountant_buy_sells.html:20
+#: .\templates\is_acountants\accountant_buy_sells.html:21
+#: .\templates\is_acountants\accountant_user_stokes.html:21
+#: .\templates\is_acountants\accountant_user_stokes.html:22
+#: .\templates\is_acountants\accountant_walletusers.html:20
+#: .\templates\is_acountants\accountant_walletusers.html:21
+msgid "برای اضافه کردن کلیک کنید"
+msgstr "Click to add"
+
+#: .\templates\is_acountants\accountant_bots.html:34
+#: .\templates\is_acountants\accountant_panel.html:62
+msgid "لیست اشتراک ربات ها"
+msgstr "Bot subscription list"
+
+#: .\templates\is_acountants\accountant_bots.html:40
+#: .\templates\is_acountants\accountant_buy_sells.html:41
+#: .\templates\is_acountants\accountant_user_stokes.html:41
+#: .\templates\is_acountants\accountant_wallet_addr.html:25
+#: .\templates\is_acountants\accountant_walletusers.html:41
+#: .\templates\is_acountants\acountants_user.html:25
+#: .\templates\is_supporter\support_set_user_acc.html:52
+msgid "کد کاربری"
+msgstr "User ID"
+
+#: .\templates\is_acountants\accountant_bots.html:42
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:37
+msgid "تعرفه"
+msgstr "Tariffs"
+
+#: .\templates\is_acountants\accountant_bots.html:45
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:45
+#: .\templates\user_panel.html:174
+msgid "فعال"
+msgstr "Active"
+
+#: .\templates\is_acountants\accountant_bots.html:46
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:53
+#: .\templates\user_panel.html:181
+msgid "تاریخ انقضا"
+msgstr "Expiry date"
+
+#: .\templates\is_acountants\accountant_bots.html:47
+#: .\templates\is_acountants\accountant_buy_sells.html:47
+#: .\templates\is_acountants\accountant_user_stokes.html:45
+#: .\templates\is_acountants\accountant_walletusers.html:47
+#: .\templates\is_acountants\acountant_chart_token_price.html:28
+#: .\templates\is_supporter\support_set_user_acc.html:57
+msgid "تغییرات"
+msgstr "Changes"
+
+#: .\templates\is_acountants\accountant_bots.html:60
+#: .\templates\is_acountants\accountant_buy_sells.html:59
+#: .\templates\is_acountants\accountant_user_stokes.html:55
+#: .\templates\is_acountants\accountant_walletusers.html:59
+#: .\templates\is_acountants\acountant_chart_token_price.html:37
+#: .\templates\update_user.html:88
+msgid "ویرایش"
+msgstr "Edit"
+
+#: .\templates\is_acountants\accountant_bots.html:63
+#: .\templates\is_acountants\accountant_buy_sells.html:62
+#: .\templates\is_acountants\accountant_user_stokes.html:58
+#: .\templates\is_acountants\accountant_wallet_addr.html:38
+#: .\templates\is_acountants\accountant_walletusers.html:62
+#: .\templates\is_acountants\acountant_chart_token_price.html:40
+#: .\templates\is_acountants\acountants_user.html:36
+msgid "جدول خالی میباشد."
+msgstr "The chart is blank."
+
+#: .\templates\is_acountants\accountant_buy_sells.html:34
+#: .\templates\is_acountants\accountant_panel.html:67
+msgid "لیست خرید و فروش ها"
+msgstr "Trade list"
+
+#: .\templates\is_acountants\accountant_buy_sells.html:35
+msgid ""
+"هشدار: بعد از اضافه کردن و یا تغییر هرکدام از آیتم های جدول، در صورتی که "
+"آیکون پرداخت شده مثبت باشد، بلافاصله در توکن کاربر درج خواهد شد."
+msgstr ""
+"Warning: After adding or changing any of the table items, if the paid icon "
+"is positive, it will be inserted in the user token immediately."
+
+#: .\templates\is_acountants\accountant_buy_sells.html:44
+msgid "خرید یا فروش"
+msgstr "Buy/Sell"
+
+#: .\templates\is_acountants\accountant_panel.html:9
+msgid " استارک | حسابدار"
+msgstr "STARK | accountant "
+
+#: .\templates\is_acountants\accountant_panel.html:19
+msgid "پنل حسابدار"
+msgstr "Accounting account"
+
+#: .\templates\is_acountants\accountant_panel.html:26
+msgid "اضافه کردن قیمت جدید"
+msgstr "Add a new price"
+
+#: .\templates\is_acountants\accountant_panel.html:31
+msgid "ثبت"
+msgstr "Register"
+
+#: .\templates\is_acountants\accountant_panel.html:36
+msgid "برای ویرایش قیمت توکن ها کلیک کنید:"
+msgstr "Click to edit the price of the tokens:"
+
+#: .\templates\is_acountants\accountant_panel.html:36
+#: .\templates\is_acountants\accountant_panel.html:43
+#: .\templates\is_acountants\accountant_panel.html:48
+#: .\templates\is_acountants\accountant_panel.html:53
+#: .\templates\is_acountants\accountant_panel.html:58
+#: .\templates\is_acountants\accountant_panel.html:63
+#: .\templates\is_acountants\accountant_panel.html:68
+msgid "کلیک"
+msgstr "Click"
+
+#: .\templates\is_acountants\accountant_panel.html:42
+#: .\templates\is_acountants\acountants_user.html:19
+msgid "لیست کاربران"
+msgstr "Users list "
+
+#: .\templates\is_acountants\accountant_panel.html:43
+#: .\templates\is_acountants\accountant_panel.html:48
+#: .\templates\is_acountants\accountant_panel.html:53
+#: .\templates\is_acountants\accountant_panel.html:58
+#: .\templates\is_acountants\accountant_panel.html:63
+#: .\templates\is_acountants\accountant_panel.html:68
+msgid "برای نمایش جزئیات جدول"
+msgstr "Click for the chart details:"
+
+#: .\templates\is_acountants\accountant_panel.html:43
+#: .\templates\is_acountants\accountant_panel.html:48
+#: .\templates\is_acountants\accountant_panel.html:53
+#: .\templates\is_acountants\accountant_panel.html:58
+#: .\templates\is_acountants\accountant_panel.html:63
+#: .\templates\is_acountants\accountant_panel.html:68
+msgid "کنید."
+msgstr " "
+
+#: .\templates\is_acountants\accountant_panel.html:47
+#: .\templates\is_acountants\accountant_wallet_addr.html:19
+msgid "لیست کیف پول ها"
+msgstr "List of Wallets"
+
+#: .\templates\is_acountants\accountant_panel.html:52
+msgid "لیست عملیات کیف پول"
+msgstr "List of Wallet Operations"
+
+#: .\templates\is_acountants\accountant_panel.html:57
+#: .\templates\is_acountants\accountant_user_stokes.html:35
+msgid "لیست توکن کاربران"
+msgstr "User token List"
+
+#: .\templates\is_acountants\accountant_user_stokes.html:10
+#: .\templates\is_acountants\accountant_walletusers.html:9
+msgid " استارک | نمای جدول"
+msgstr "STARK | chart pattern"
+
+#: .\templates\is_acountants\accountant_walletusers.html:34
+msgid "لیست عملیات کیف پول کاربران"
+msgstr "User wallet operation list"
+
+#: .\templates\is_acountants\accountant_walletusers.html:35
+msgid ""
+"هشدار: بعد از اضافه کردن و یا تغییر هرکدام از آیتم های جدول، در صورتی که "
+"آیکون پرداخت شده مثبت باشد، بلافاصله میزان پرداختی کل و یا برداشتی کل کاربر "
+"تغییر خواهد کرد."
+msgstr ""
+"Warning: After adding or changing any of the items in the table, if the paid "
+"icon is positive, the total payment or the total withdrawal of the user will "
+"change immediately."
+
+#: .\templates\is_acountants\accountant_walletusers.html:55
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:39
+msgid "افزایش"
+msgstr "Increase"
+
+#: .\templates\is_acountants\accountant_walletusers.html:55
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:39
+msgid "کاهش"
+msgstr "Decrease"
+
+#: .\templates\is_acountants\acountant_chart_token_price.html:19
+msgid "لیست قیمت توکن ها"
+msgstr "Token price List"
+
+#: .\templates\is_acountants\acountant_chart_token_price.html:25
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:34
+#: .\templates\is_acountants\list-editor\audit-token-price.html:30
+#: .\templates\is_acountants\list-editor\audit-user-stoke.html:31
+msgid "نام توکن"
+msgstr "Token Name"
+
+#: .\templates\is_acountants\acountant_chart_token_price.html:26
+msgid "قیمت توکن"
+msgstr "Token price"
+
+#: .\templates\is_acountants\acountants_user.html:26
+msgid "دارایی"
+msgstr "Assets"
+
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:10
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:10
+#: .\templates\is_acountants\list-editor\audit-token-price.html:10
+#: .\templates\is_acountants\list-editor\audit-user-stoke.html:10
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:10
+msgid " استارک | ویرایش"
+msgstr "STARK | Edit"
+
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:22
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:22
+#: .\templates\is_acountants\list-editor\audit-token-price.html:22
+#: .\templates\is_acountants\list-editor\audit-user-stoke.html:22
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:22
+msgid "ویرایش لیست"
+msgstr "List of Edit"
+
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:23
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:23
+#: .\templates\is_acountants\list-editor\audit-token-price.html:23
+#: .\templates\is_acountants\list-editor\audit-user-stoke.html:23
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:23
+msgid "بازگشت به حسابداری"
+msgstr "Return to Accounting"
+
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:33
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:30
+#: .\templates\is_acountants\list-editor\audit-user-stoke.html:28
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:30
+msgid "کاربر"
+msgstr "User"
+
+#: .\templates\is_acountants\list-editor\audit-bot-subs.html:63
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:60
+#: .\templates\is_acountants\list-editor\audit-token-price.html:48
+#: .\templates\is_acountants\list-editor\audit-user-stoke.html:47
+#: .\templates\is_acountants\list-editor\audit-user-wallets.html:60
+msgid "ذخیره ی تغییرات"
+msgstr "Save changes"
+
+#: .\templates\is_acountants\list-editor\audit-buy-sells.html:38
+#: .\templates\is_acountants\list-editor\audit-user-stoke.html:34
+msgid "تعداد توکن"
+msgstr "Number of tokens"
+
+#: .\templates\is_supporter\support_all_ticket.html:5
+#: .\templates\is_supporter\support_response.html:5
+#: .\templates\is_supporter\support_sendticket_a_user.html:5
+#: .\templates\is_supporter\support_set_user_acc.html:5
+#: .\templates\is_supporter\supporter_panel.html:5
+msgid "استارک، پنل کاربری استارک، ارز دیجیتال، رمز ارز، پشتیبان"
+msgstr "Stark, Stark account, cryptocurrency, support (specialist)"
+
+#: .\templates\is_supporter\support_all_ticket.html:9
+msgid "استارک | همه ی تیکت ها"
+msgstr "STARK | Tickets"
+
+#: .\templates\is_supporter\support_all_ticket.html:24
+#: .\templates\is_supporter\support_sendticket_a_user.html:24
+#: .\templates\is_supporter\support_set_user_acc.html:24
+msgid "بازگشت به صفحه ی اصلی"
+msgstr "Return to the Main page"
+
+#: .\templates\is_supporter\support_all_ticket.html:31
+#: .\templates\is_supporter\support_sendticket_a_user.html:46
+#: .\templates\is_supporter\support_set_user_acc.html:38
+#: .\templates\is_supporter\supporter_panel.html:32
+msgid "ارسال تیکت به کاربر"
+msgstr "Send a Ticket to the User"
+
+#: .\templates\is_supporter\support_all_ticket.html:38
+#: .\templates\is_supporter\support_sendticket_a_user.html:38
+#: .\templates\is_supporter\supporter_panel.html:39
+msgid "تنظیمات حساب"
+msgstr "Account Settings"
+
+#: .\templates\is_supporter\support_all_ticket.html:46
+msgid "تمامی تیکت ها"
+msgstr "All tickets"
+
+#: .\templates\is_supporter\support_all_ticket.html:70
+msgid "هیچ تیکتی موجود نیست."
+msgstr "There is no ticket."
+
+#: .\templates\is_supporter\support_response.html:9
+#: .\templates\is_supporter\supporter_panel.html:9
+msgid "استارک | ارسال پاسخ "
+msgstr "STARK | reply"
+
+#: .\templates\is_supporter\support_response.html:19
+msgid "ارسال پاسخ به"
+msgstr "Reply to "
+
+#: .\templates\is_supporter\support_response.html:54
+msgid "دپارتمان"
+msgstr "Department"
+
+#: .\templates\is_supporter\support_response.html:58
+#: .\templates\user_panel.html:90
+msgid "خرید توکن"
+msgstr "Buy token"
+
+#: .\templates\is_supporter\support_response.html:59
+#: .\templates\user_panel.html:90
+msgid "فروش توکن"
+msgstr "Sell token"
+
+#: .\templates\is_supporter\support_response.html:74
+#: .\templates\is_supporter\supporter_panel.html:62
+msgid "ارسال پاسخ"
+msgstr "Reply"
+
+#: .\templates\is_supporter\support_sendticket_a_user.html:9
+msgid "استارک | ارسال تیکت"
+msgstr "STARK | Send a ticket"
+
+#: .\templates\is_supporter\support_sendticket_a_user.html:31
+#: .\templates\is_supporter\support_set_user_acc.html:31
+#: .\templates\is_supporter\supporter_panel.html:25
+msgid "مشاهده ی تمامی تیکت ها"
+msgstr "View all tickets"
+
+#: .\templates\is_supporter\support_set_user_acc.html:9
+msgid "استارک | حساب کاربران"
+msgstr "STARK | Users Account "
+
+#: .\templates\is_supporter\support_set_user_acc.html:46
+msgid "تنظیمات حساب کاربران "
+msgstr "Users Account Setting"
+
+#: .\templates\is_supporter\support_set_user_acc.html:53
+msgid "موجودی نقد"
+msgstr "Cash Balance"
+
+#: .\templates\is_supporter\support_set_user_acc.html:54
+msgid "مبلغ پرداختی کل"
+msgstr "Total Payment"
+
+#: .\templates\is_supporter\support_set_user_acc.html:55
+msgid "مبلغ برداشتی کل"
+msgstr "Total withdrawal"
+
+#: .\templates\is_supporter\support_set_user_acc.html:79
+msgid "ذخیره"
+msgstr "Save"
+
+#: .\templates\is_supporter\supporter_panel.html:47
+msgid "تیکت های جدید"
+msgstr "New Tickets "
+
+#: .\templates\is_supporter\supporter_panel.html:72
+msgid " هنوز تیکتی از طرف کاربران ارسال نشده است."
+msgstr "Not ticket has been sent by users."
+
+#: .\templates\ticket_add.html:5
+msgid "پنل کاربری استارک، ارز دیجیتال، اضافه کردن تیکت، ارسال تیکت"
+msgstr "Stark account, cryptocurrency, add a ticket, send a ticket"
+
+#: .\templates\ticket_add.html:9
+msgid " استارک | ارسال تیکت"
+msgstr "STARK | Send a ticket"
+
+#: .\templates\ticket_add.html:22
+msgid "درخواست تیکت جدید"
+msgstr "Apply for a new ticket"
+
+#: .\templates\ticket_add.html:37
+msgid "عنوان پیام"
+msgstr "Subject"
+
+#: .\templates\ticket_add.html:47
+msgid "ارسال تیکت"
+msgstr "Send ticket "
+
+#: .\templates\ticket_all.html:5
+msgid "پنل کاربری استارک، ارز دیجیتال، همه ی تیکت ها، تیکت ها"
+msgstr "Stark account, cryptocurrency, all tickets "
+
+#: .\templates\ticket_all.html:9
+msgid " استارک | تیکت ها"
+msgstr "STARK | Tickets"
+
+#: .\templates\ticket_all.html:22 .\templates\ticket_detail.html:22
+msgid "تیکت های شما"
+msgstr "Your tickets "
+
+#: .\templates\ticket_all.html:29
+msgid "تیکت های خوانده نشده"
+msgstr "Unread tickets"
+
+#: .\templates\ticket_all.html:39 .\templates\ticket_all.html:41
+#: .\templates\ticket_all.html:43 .\templates\ticket_all.html:71
+#: .\templates\ticket_all.html:73 .\templates\ticket_all.html:75
+msgid "مشاهده"
+msgstr "View"
+
+#: .\templates\ticket_all.html:52
+msgid "صندوق دریافتی تیکت شما خالی است."
+msgstr "Your ticket inbox is empty. "
+
+#: .\templates\ticket_all.html:58
+msgid "همه ی تیکت ها"
+msgstr "All tickets"
+
+#: .\templates\ticket_all.html:64 .\templates\ticket_all.html:66
+msgid "ارسال شده توسط"
+msgstr "Sent by"
+
+#: .\templates\ticket_all.html:64
+msgid "پشتیبان"
+msgstr "Support"
+
+#: .\templates\ticket_all.html:66
+msgid "شما"
+msgstr "You"
+
+#: .\templates\ticket_all.html:68
+msgid "عنوان"
+msgstr "Subject"
+
+#: .\templates\ticket_all.html:84
+msgid "شما هیچ پیامی ارسال و یا دریافت نکرده اید."
+msgstr "You have neither sent nor received a message."
+
+#: .\templates\ticket_detail.html:5
+msgid " پنل کاربری استارک، ارز دیجیتال، تیکت، جزئیات تیکت"
+msgstr "stark account, cryptocurrency, ticket, ticket details "
+
+#: .\templates\ticket_detail.html:9
+msgid " استارک | تیکت"
+msgstr "STARK | Tickets"
+
+#: .\templates\ticket_detail.html:32 .\templates\ticket_navbar_partial.html:20
+msgid "تیکت های خرید و فروش"
+msgstr "Buy and sell tickets"
+
+#: .\templates\ticket_detail.html:34
+msgid "تیکت های پرداختی و برداشتی"
+msgstr "Payment and withdrawal tickets "
+
+#: .\templates\ticket_detail.html:36 .\templates\ticket_navbar_partial.html:12
+msgid "تیکت های اشتراک ربات"
+msgstr "Subscription tickets "
+
+#: .\templates\ticket_detail.html:79
+msgid "تیکتی با این عنوان موجود نیست."
+msgstr "There is no ticket with this title."
+
+#: .\templates\ticket_navbar_partial.html:4
+msgid "ثبت تیکت جدید"
+msgstr "Place a new ticket."
+
+#: .\templates\ticket_navbar_partial.html:8
+msgid "همه تیکت ها"
+msgstr "All tickets "
+
+#: .\templates\update_user.html:5
+msgid "پنل کاربری استارک، ارز دیجیتال، ویرایش کاربر"
+msgstr "Stark account, cryptocurrency, User edit  "
+
+#: .\templates\update_user.html:9
+msgid "استارک | ویرایش اطلاعات "
+msgstr "STARK | Edit"
+
+#: .\templates\update_user.html:19
+msgid "ویرایش اطلاعات"
+msgstr "Edit details"
+
+#: .\templates\update_user.html:59
+msgid "لطفا عکس کارت ملی خود را آپلود نمایید"
+msgstr "Please upload the image of your national ID card."
+
+#: .\templates\update_user.html:61
+msgid "مشاهده ی تصویر فعلی"
+msgstr "View the current image"
+
+#: .\templates\user_panel.html:9
+msgid "استارک | داشبورد"
+msgstr "STARK | Dashboard"
+
+#: .\templates\user_panel.html:22
+msgid "داشبورد"
+msgstr "Dashboard"
+
+#: .\templates\user_panel.html:28
+msgid "موجودی نقد حساب بر حسب تتر"
+msgstr "Cash balance in USDT"
+
+#: .\templates\user_panel.html:33
+msgid "دارایی کل بر حسب تتر"
+msgstr "Total asset in USDT "
+
+#: .\templates\user_panel.html:38
+msgid "میزان پرداختی کل"
+msgstr "Total payments"
+
+#: .\templates\user_panel.html:39
+msgid "میزان دریافتی کل"
+msgstr "Total earnings"
+
+#: .\templates\user_panel.html:43
+msgid "سود خالص"
+msgstr "Net profit"
+
+#: .\templates\user_panel.html:44
+msgid "درصد سود خالص"
+msgstr "Net profit percentage"
+
+#: .\templates\user_panel.html:53 .\templates\user_panel.html:239
+msgid "نمودار قیمت توکن ST3"
+msgstr "ST3 token price chart"
+
+#: .\templates\user_panel.html:55
+msgid "میزان موجودی توکن ST3"
+msgstr "St3 token balance"
+
+#: .\templates\user_panel.html:65 .\templates\user_panel.html:294
+msgid "نمودار قیمت توکن ST4"
+msgstr "ST4 token price chart"
+
+#: .\templates\user_panel.html:67
+msgid "میزان موجودی توکن ST4"
+msgstr "St4 token balance"
+
+#: .\templates\user_panel.html:80
+msgid "آخرین خرید و فروش ها"
+msgstr "Latest trades"
+
+#: .\templates\user_panel.html:103 .\templates\user_panel.html:137
+#: .\templates\user_panel.html:167 .\templates\wallet.html:81
+msgid "خرید موفق"
+msgstr "Successfully"
+
+#: .\templates\user_panel.html:105 .\templates\user_panel.html:139
+#: .\templates\user_panel.html:169 .\templates\user_panel.html:176
+#: .\templates\wallet.html:83
+msgid "در انتظار پشتیبان"
+msgstr "Waiting"
+
+#: .\templates\user_panel.html:110 .\templates\user_panel.html:144
+#: .\templates\user_panel.html:185 .\templates\wallet.html:88
+msgid "شما هیچ گونه فعالیتی انجام نداده اید."
+msgstr "You have not had any recent actions."
+
+#: .\templates\user_panel.html:113
+msgid "آخرین تراکنش های کیف پول"
+msgstr "Latest wallet transactions"
+
+#: .\templates\user_panel.html:147
+msgid "آخرین فعالیت های ربات"
+msgstr "Latest bot actions "
+
+#: .\templates\user_panel.html:160
+msgid "تاریخ ثبت"
+msgstr "Date of Registration"
+
+#: .\templates\user_panel.html:163
+msgid "تعرفه (روز):"
+msgstr "Tariff (day):"
+
+#: .\templates\view_charts.html:5
+msgid "پنل کاربری استارک، ارز دیجیتال، رمز ارز"
+msgstr "Stark account, cryptocurrency, Stark"
+
+#: .\templates\view_charts.html:9
+msgid " استارک | نمایش نمودار"
+msgstr "STARK | Show Chart"
+
+#: .\templates\view_charts.html:20
+msgid "قیمت امروز"
+msgstr "Today’s token price"
+
+#: .\templates\view_charts.html:21
+msgid "موجودی توکن شما"
+msgstr "Your token inventory"
+
+#: .\templates\view_charts.html:23
+msgid "بازگشت"
+msgstr "Coming Back"
+
+#: .\templates\wallet.html:5
+msgid "پنل کاربری استارک، ارز دیجیتال، رمز ارز، کیف پول"
+msgstr "Stark account, cryptocurrency, wallet"
+
+#: .\templates\wallet.html:9
+msgid "استارک | کیف پول"
+msgstr "STARK | Wallet"
+
+#: .\templates\wallet.html:24
+msgid "شما نمیتوانید بیشتر از"
+msgstr "You cannot have more than "
+
+#: .\templates\wallet.html:24
+msgid "کیف پول داشته باشید."
+msgstr "wallets"
+
+#: .\templates\wallet.html:46
+msgid "افزودن کیف پول جدید"
+msgstr "Add a new wallet"
+
+#: .\templates\wallet.html:51
+msgid "رفتن به عملیات پرداخت / برداشت"
+msgstr "Go to payment / withdrawal operation"
+
+#: .\templates\wallet.html:57
+msgid "آخرین فعالیت ها"
+msgstr "Recent actions"
+
+#: .\templates\wallet.html:111
+msgid "مبلغ بر حسب تتر "
+msgstr "Amount in USDT"
+
+#: .\templates\wallet.html:116
+msgid "انتخاب عملیات"
+msgstr "Select operation."
+
+#: .\templates\wallet.html:130
+msgid "ثبت عملیات"
+msgstr "Send Request"
+
+#: .\templates\wallet.html:132
+msgid "ابتدا کیف پول اضافه کنید."
+msgstr "First add a wallet."
+
+#: .\templates\wallet.html:144
+msgid "افزودن کیف پول"
+msgstr "Add a wallet"
+
+#: .\templates\wallet.html:156
+msgid "شما نمیتوانید بیشتر از 6 کیف پول برای خود انتخاب کنید."
+msgstr "You cannot select more than 6 wallets. "
+
+#: .\templates\wallet.html:158
+msgid "تعداد کاراکترهای لازم برای هر آدرس کیف پول"
+msgstr "The required number of characters for a wallet address is"
+
+#: .\templates\wallet.html:158
+msgid "تا میباشد."
+msgstr " "
+
+#: .\templates\wallet.html:160
+msgid "آدرس هر کیف پول باید با سایر آدرس ها متفاوت باشد."
+msgstr "Each wallet must have a unique address. "
+
+#: .\templates\wallet.html:164
+msgid "اضافه کردن"
+msgstr "Add"
+
+#: .\templates\wallet.html:178
+msgid "حذف کیف پول"
+msgstr "Remove Wallet"
+
+#: .\templates\wallet.html:189
+msgid "آیا از حذف این کیف پول مطمئن هستید؟"
+msgstr "Are you sure you want to delete this wallet?"
+
+#: .\templates\wallet.html:192
+msgid "حذف"
+msgstr "Delete"
+
+#: .\views.py:119 .\views.py:470
+msgid "میزان درخواستی را کنترل کنید."
+msgstr "Control the amount requested."
+
+#: .\views.py:164 .\views.py:237 .\views.py:466
+msgid "درخواست شما ارسال شد. نتیجه‌ی عملیات از طریق تیکت ارسال میشود."
+msgstr ""
+"Your request has been sent. The result of the operation is sent via ticket."
+
+#: .\views.py:181
+msgid "آدرس کیف پول شما با موفقیت اضافه شد."
+msgstr "Your Wallet Address added Successfully."
+
+#: .\views.py:184
+msgid "حداکثر تعداد کیف پول 6 عدد میباشد."
+msgstr "The maximum number of wallets is 6."
+
+#: .\views.py:188
+msgid "خطایی در ثبت کیف پول به وجود آمد."
+msgstr "There was an Error Registering the Wallet."
+
+#: .\views.py:195
+msgid "کیف پول با موفقیت حذف شد."
+msgstr "Wallet removed Successfully."
+
+#: .\views.py:198
+msgid "از حذف کیف پول خود مطمئن شوید."
+msgstr "Be sure to Delete your Wallet."
+
+#: .\views.py:220
+msgid "شما یک بار از تعرفه‌ی رایگان ما استفاده کرده‌اید."
+msgstr "You have used our free tariff once."
+
+#: .\views.py:241
+msgid "شما درحال حاظر یک ربات فعال دارید."
+msgstr "You Already have an active Robot."
+
+#: .\views.py:244
+msgid "باید یک تعرفه انتخاب کنید."
+msgstr "You must select a tariff."
+
+#: .\views.py:247
+msgid "برای نهایی کردن خرید باید از خرید خود مطمئن باشید."
+msgstr "To Finalize the Purchase, you must be Sure of your Purchase."
+
+#: .\views.py:277
+msgid "تیکت شما با موفقیت ارسال شد."
+msgstr "Your Ticket was sent Successfully."
+
+#: .\views.py:314
+msgid "اطلاعات شما با موفقیت ذخیره شد."
+msgstr "Your Information has been Saved Successfully."
+
+#: .\views.py:334
+msgid "رمزعبور باید شامل حروف انگلیسی، اعداد و علامت‌ها باشد."
+msgstr "Password must include English letters, numbers and symbols."
+
+#: .\views.py:342
+msgid "پسورد شما با موفقیت تغییر کرد."
+msgstr "Your Password was Changed Successfully."
+
+#: .\views.py:343
+msgid "برای ورود اطلاعات خود را وارد کنید."
+msgstr "Enter your Information to Enter."
+
+#: .\views.py:345
+msgid "پسورد شما اشتباه می‌باشد."
+msgstr "Your password is incorrect."
+
+#~ msgid "ابتدا از موجودی حساب و داشتن کیف پول مطمئن شوید."
+#~ msgstr "Please check your balance and make sure to have a wallet. "
+
+#~ msgid "میزان موجودی توکن St4 شما"
+#~ msgstr "Your St4 token balance"
+
+#~ msgid "نمودار توکن St4"
+#~ msgstr "St4 token chart"
+
+#~ msgid "رفتن به پرداخت"
+#~ msgstr "Move to the payments"
+
+#~ msgid "پرداخت"
+#~ msgstr "Pay"
+
+#~ msgid "درخواست شما ارسال شد. پشتیبان با شما تماس خواهد گرفت."
+#~ msgstr "Your request has been sent. Our Support will contact you."
+
+#~ msgid "خرید شما انجام شد. پشتیبان ما با شما تماس خواهد گرفت."
+#~ msgstr "Your purchase is done. Our Support will Contact you."
+
+#~ msgid "درحال حاظر شما یک ربات تلگرامی فعال دارید."
+#~ msgstr "You have an active Telegram Robot Currently."
+
+#~ msgid "تیکت های کاربران"
+#~ msgstr "Users Tickets"
+
+#~ msgid "نمودار قیمت توکن St1"
+#~ msgstr "St1 token price chart"
+
+#~ msgid "نمودار قیمت توکن St4"
+#~ msgstr "St4 token price chart"
+
+#~ msgid "مشاهده ی کیف پول"
+#~ msgstr "View a wallet."
+
+#~ msgid "آدرس کیف پول:"
+#~ msgstr "Wallet address "
+
+#~ msgid "زمان ثبت کیف پول:"
+#~ msgstr "Wallet registration date and time:"
+
+#~ msgid "بستن"
+#~ msgstr "Close"
+
+#~ msgid "پنل پشتیبان"
+#~ msgstr "Support account"
+
+#~ msgid "از ارسال تیکت مطمئن شوید"
+#~ msgstr "Be Sure to Send a Ticket"

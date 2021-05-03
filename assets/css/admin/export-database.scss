@@ -1,0 +1,45 @@
+@import '../variables';
+
+// start change user data
+
+.body-page {
+    background-color: $bgc-card;
+    padding: 1.5rem;
+    border-radius: 15px;
+    min-height: calc(100vh - 14%);
+    overflow-y: auto;
+    min-width: 300px !important;
+}
+
+
+div#office-main-content {
+    .each-table {
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: $box-shdow;
+        h5 {
+            color: $c-gold;
+        }
+        div.table-get-export-div {
+            margin-top: 0.5rem;
+            line-height: 2rem;
+            font-size: 13pt;
+            padding-bottom: 1rem;
+            border-bottom: 3px dotted $bgc-all;
+            a{
+                background-color: $c-gold;
+                padding: 0.25rem 1.5rem;
+                border-radius: 5px;
+                color: $bgc-card;
+                margin: 0 0.75rem;
+            }
+            &:last-child {
+                border: none !important;
+            }
+        }
+    }
+}
+
+// end change user data

@@ -1,0 +1,32 @@
+{% comment %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!-- start searchbar Suggestion -->
+<section id="search-suggests" style="display: none;">
+    {% verbatim %}
+    <div class="overlay-sugg">
+        <div class="boxes-sugg">
+            <!-- searchbar -->
+            <div class="input-search-bar">
+                <input v-model="searchText" type="text" class="search-bar" {% endverbatim %} placeholder="{% if LANGUAGE_CODE == 'en' %}Search ...{% elif LANGUAGE_CODE == 'fa' %}جست و جو کنید...{% elif LANGUAGE_CODE == 'ar' %}بحث ...{% endif %}"{% verbatim %}>
+                {% endverbatim %}<img src="{% static 'img/navbar/loading.gif' %}" style="opacity: 0;" id="img-load-sug" alt="loading gif">{% verbatim %}
+                <i class="fa fa-times icon-times cur-poi" onclick="close_SearchSuggest()"></i>
+                <i v-if="searchText" class="fa fa-trash icon-trash cur-poi" @click="searchText=''"></i>
+            </div>
+            
+            <div v-for="suggest in suggests" class="box-sugg">
+                <a :href="suggest.anchor">
+                    <h4>{{ suggest.heading }}</h4>
+                    <p class="c-gold font-very-small mt-1-2">{{ suggest.words }}</p>
+                </a>
+            </div>
+            <div v-if="!searchText" class="box-sugg">
+                <a class="cur-poi"><p>{% endverbatim %}{% if LANGUAGE_CODE == 'en' %}Enter the phrase you want to search.{% elif LANGUAGE_CODE == 'fa' %}برای جستجو عبارت مورد نظر خود را وارد کنید.{% elif LANGUAGE_CODE == 'ar' %}أدخل العبارة التي تريد البحث.{% endif %}{% verbatim %}</p></a>
+            </div>
+        </div>
+    </div>
+    {% endverbatim %}
+</section>
+<!-- end searchbar -->
+{% endcomment %}

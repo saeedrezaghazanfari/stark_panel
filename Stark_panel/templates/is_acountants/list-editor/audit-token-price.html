@@ -1,0 +1,58 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static i18n widget_tweaks %}
+
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'استارک، پنل کاربری استارک، ارز دیجیتال، رمز ارز، حسابدار' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate ' استارک | ویرایش' %} {% endblock %}
+
+{% block linkStatic %}
+    <link rel="stylesheet" href="{% static 'css/auditor.css' %}">    
+{% endblock %}
+
+{% block content %}
+
+<!-- start BODY -->
+<article class="body-page edit-body-page m-1">
+    
+    <div class="d-inline-elements">
+        <h4>{% translate 'ویرایش لیست' %}</h4>
+        <a class="cur-poi" onclick="javascript:window.history.back()">{% translate 'بازگشت به حسابداری' %}</a>
+    </div>
+
+    <br>
+    <div class="two-box-elemens">
+        <div class="text-center font-small">
+
+            <p class="c-gold">{% translate 'نام توکن' %}</p>
+            <p>{{object.token}}</p>
+            <br>
+
+            <p class="c-gold">{% translate 'قیمت به دلار' %}</p>
+            <p>{{object.price_dollar}}</p>
+            <br>
+
+            <p class="c-gold">{% translate 'تاریخ' %}</p>
+            <p>{% if '/fa/' in request.path %}{{ object.j_date }}{% else %}{{ object.date }}{% endif %}</p>
+            <br>
+    
+        </div>
+        <form method="POST" class="form-update-auditor">
+            {% csrf_token %}
+            {{form}}
+            
+            <div class="container-btn">
+                <button type="submit">{% translate 'ذخیره ی تغییرات' %}</button>
+            </div>
+        </form>
+    </div>
+
+</article>
+<!-- end BODY -->
+
+{% endblock %}
+
+{% block scriptStatic %}{% endblock %}

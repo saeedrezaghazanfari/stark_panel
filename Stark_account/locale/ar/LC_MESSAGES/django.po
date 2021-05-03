@@ -1,0 +1,282 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-03 22:32+0430\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\admin.py:15
+msgid "پنل مدیریت استارک"
+msgstr "لوحة مشرف استارك"
+
+#: .\apps.py:8
+msgid "ماژول کاربر"
+msgstr "وحدة المستخدم"
+
+#: .\forms.py:11
+msgid "نام کاربری و یا ایمیل خود را وارد کنید:"
+msgstr "أدخل اسم المستخدم أو البريد الإلكتروني الخاص بك:"
+
+#: .\forms.py:11 .\templates\signin.html:40
+msgid "نام کاربری / ایمیل:"
+msgstr "اسم المستخدم / البريد الإلكتروني:"
+
+#: .\forms.py:12
+msgid "رمز عبور خود را وارد کنید:"
+msgstr "ادخل رقمك السري:"
+
+#: .\forms.py:12 .\templates\signin.html:49
+msgid "رمز عبور:"
+msgstr "كلمه السر:"
+
+#: .\forms.py:23
+msgid "نام کاربری خود را وارد کنید."
+msgstr "أدخل اسم المستخدم الخاص بك."
+
+#: .\forms.py:27 .\forms.py:31
+msgid "نام کاربری / ایمیل وارد شده فاقد اعتبار است."
+msgstr "اسم المستخدم / البريد الإلكتروني الذي تم إدخاله غير صالح."
+
+#: .\forms.py:37
+msgid "لطفا رمز عبور خود را وارد کنید."
+msgstr "من فضلك أدخل رقمك السري."
+
+#: .\forms.py:45
+msgid "نام نباید بیشتر از 30 کاراکتر باشد."
+msgstr "يجب ألا يتجاوز الاسم 30 حرفًا."
+
+#: .\forms.py:46
+msgid "نام نباید کمتر از 2 کاراکتر باشد"
+msgstr "يجب ألا يقل الاسم عن 2 أحرف"
+
+#: .\forms.py:48 .\templates\signup.html:41
+msgid "نام"
+msgstr "اسم"
+
+#: .\forms.py:53
+msgid "نام خانوادگی نباید بیشتر از 30 کاراکتر باشد"
+msgstr "يجب ألا يتجاوز الاسم الأخير 30 حرفًا"
+
+#: .\forms.py:54
+msgid "نام خانوادگی نباید کمتر از 3 کاراکتر باشد."
+msgstr "يجب ألا يقل الاسم الأخير عن 3 أحرف."
+
+#: .\forms.py:56 .\templates\signup.html:45
+msgid "نام خانوادگی"
+msgstr "اسم العائلة"
+
+#: .\forms.py:68
+msgid "نام کاربری دیگری انتخاب کنید."
+msgstr "اختار اسما اخر."
+
+#: .\forms.py:70
+msgid "نام کاربری نمیتواند شامل @ باشد."
+msgstr "اسم المستخدم لا يمكن أن يحتوي على @."
+
+#: .\forms.py:73
+msgid "نام کاربری باید تنها شامل حروف انگلیسی باشد."
+msgstr "يجب أن يحتوي اسم المستخدم على أحرف إنجليزية فقط."
+
+#: .\forms.py:82
+msgid "ایمیل دیگری انتخاب کنید."
+msgstr "حدد بريدًا إلكترونيًا آخر."
+
+#: .\forms.py:89
+msgid "شماره همراه دیگری انتخاب کنید"
+msgstr "اختر رقم هاتف محمول آخر"
+
+#: .\forms.py:96
+msgid "کد ملی دیگری انتخاب کنید."
+msgstr "اختر رمزًا وطنيًا آخر."
+
+#: .\forms.py:103
+msgid "رمزعبور باید شامل حروف انگلیسی، اعداد و علامت‌ها باشد."
+msgstr "يجب أن تتضمن كلمة المرور أحرفًا وأرقامًا ورموزًا باللغة الإنجليزية."
+
+#: .\models.py:20
+msgid "کدکاربری"
+msgstr "الرقم السري للمستخدم"
+
+#: .\models.py:21
+msgid "موجودی نقدی"
+msgstr "الرصيد النقدي"
+
+#: .\models.py:22
+msgid "پرداختی کل کاربر"
+msgstr "إجمالي مدفوعات المستخدم"
+
+#: .\models.py:23
+msgid "برداشتی کل کاربر"
+msgstr "انطباعات المستخدم بالكامل"
+
+#: .\models.py:24
+msgid "اشتراک ربات"
+msgstr "اشتراك الروبوت"
+
+#: .\models.py:25
+msgid "تصویر"
+msgstr "الصورة الرمزية"
+
+#: .\models.py:26
+msgid "تصویر کدملی"
+msgstr "صورة الرمز الوطني"
+
+#: .\models.py:27 .\templates\signup.html:66
+msgid "کدملی"
+msgstr "الرمز الوطني"
+
+#: .\models.py:28
+msgid "شماره همراه"
+msgstr "التليفون المحمول"
+
+#: .\models.py:31
+msgid "فرمت شماره تلفن را اصلاح کنید."
+msgstr "تعديل تنسيق رقم الهاتف."
+
+#: .\models.py:34
+msgid "وضعیت حسابداری"
+msgstr "الوضع المحاسبي"
+
+#: .\models.py:34
+msgid ""
+"نشان میدهد که آیا این کاربر میتواند عملیات مربوط به حسابداری را انجام دهد یا "
+"نه."
+msgstr "يشير إلى ما إذا كان هذا المستخدم يمكنه إجراء عمليات محاسبية أم لا."
+
+#: .\models.py:35
+msgid "وضعیت پشتیبانی"
+msgstr "حالة الدعم"
+
+#: .\models.py:35
+msgid ""
+"نشان میدهد که آیا این کاربر میتواند عملیات های پشتیبانی را انجام دهد یا خیر."
+msgstr "يشير إلى ما إذا كان هذا المستخدم يمكنه إجراء عمليات الدعم."
+
+#: .\models.py:38
+msgid "کاربر"
+msgstr "المستعمل"
+
+#: .\models.py:39
+msgid "کاربران"
+msgstr "المستخدمين"
+
+#: .\models.py:46
+msgid "تصویر کاربر "
+msgstr "صورة المستخدم"
+
+#: .\templates\signin.html:5
+msgid "استارک، پنل کاربری استارک، ارز دیجیتال، ورود"
+msgstr "لوحة مستخدم استارک، استارک، تسجيل الدخول"
+
+#: .\templates\signin.html:6 .\templates\signup.html:6
+msgid "پنل کاربری استارک"
+msgstr "لوحة مستخدم استارک"
+
+#: .\templates\signin.html:9
+msgid "استارک | ورود"
+msgstr "استارک | تسجيل الدخول"
+
+#: .\templates\signin.html:33
+msgid "ورود به استارک"
+msgstr "أدخل استارک"
+
+#: .\templates\signin.html:58
+msgid "کدامنیتی"
+msgstr "رمز الحماية"
+
+#: .\templates\signin.html:71
+msgid "ورود"
+msgstr "تسجيل الدخول"
+
+#: .\templates\signin.html:74
+msgid "حسابی ندارید؟ "
+msgstr "لا تملك حساب؟"
+
+#: .\templates\signin.html:75
+msgid "ثبت نام کنید"
+msgstr "تسجيل"
+
+#: .\templates\signup.html:5
+msgid "پنل کاربری استارک، ارز دیجیتال، ثبت نام"
+msgstr "لوحة مستخدم استارک، استارک، يسجل"
+
+#: .\templates\signup.html:9
+msgid "استارک | ثبت نام"
+msgstr "استارک | يسجل"
+
+#: .\templates\signup.html:34
+msgid "ثبت نام در استارک"
+msgstr "سجل في ستارك"
+
+#: .\templates\signup.html:51
+msgid "ایمیل"
+msgstr "البريد الإلكتروني"
+
+#: .\templates\signup.html:56
+msgid "نام کاربری"
+msgstr "اسم االمستخدم"
+
+#: .\templates\signup.html:62
+msgid "تلفن همراه"
+msgstr "التليفون المحمول"
+
+#: .\templates\signup.html:73
+msgid "رمزعبور"
+msgstr "كلمه السر"
+
+#: .\templates\signup.html:77
+msgid "تایید رمزعبور"
+msgstr "التحقق من كلمة المرور"
+
+#: .\templates\signup.html:114
+msgid "ثبت نام"
+msgstr "تسجيل"
+
+#: .\templates\signup.html:117
+msgid "حساب کاربری دارید؟ "
+msgstr "هل لديك حساب؟"
+
+#: .\templates\signup.html:118
+msgid "ورود به سایت"
+msgstr "تسجيل الدخول إلى الموقع"
+
+#: .\views.py:38 .\views.py:44
+msgid "رمز عبور اشتباه است."
+msgstr "كلمة مرور خاطئة."
+
+#: .\views.py:47
+msgid "ایمیل / نام کاربری شما فاقد اعتبار است."
+msgstr "بريدك الإلكتروني / اسم المستخدم غير صالح."
+
+#: .\views.py:53
+msgid "شما با موفقیت وارد شدید."
+msgstr "سجلت الدخول بنجاح."
+
+#: .\views.py:54
+msgid "به پنل کاربری استارک خوش آمدید."
+msgstr "مرحبًا بك في لوحة مستخدم استارک."
+
+#: .\views.py:91
+msgid "ساخت اکانت شما موفقیت آمیز بود"
+msgstr "لقد ثم انشاء حسابك بنجاح"
+
+#: .\views.py:92
+msgid "برای ورود اطلاعات خود را وارد کنید"
+msgstr "أدخل المعلومات الخاصة بك للدخول"
+
+#~ msgid "دارایی برحسب usdt"
+#~ msgstr "الأصول في USDT"

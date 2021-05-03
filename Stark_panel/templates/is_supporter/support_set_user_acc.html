@@ -1,0 +1,91 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static i18n humanize  %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'استارک، پنل کاربری استارک، ارز دیجیتال، رمز ارز، پشتیبان' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate 'استارک | حساب کاربران' %} {% endblock %}
+
+{% block linkStatic %}
+    <link rel="stylesheet" href="{% static 'css/suppurt.css' %}">    
+{% endblock %}
+
+{% block content %}
+
+<!-- start BODY -->
+<article class="body-page m-1">
+
+    <div class="three-boxes-top-supp">
+
+        <div class="box-top-supp bg-box-gold">
+            <a href="{% url 'pannel:su_home' %}">
+                <span class="c-dark">{% translate 'بازگشت به صفحه ی اصلی' %} </span>
+            </a>
+        </div>
+
+        <div class="box-top-supp">
+            <a href="{% url 'pannel:su_all_tickets' %}">
+                <img src="{% static 'img/tickets/all-ticket.png' %}" alt="">
+                <span>{% translate 'مشاهده ی تمامی تیکت ها' %} </span>
+            </a>
+        </div>
+
+        <div class="box-top-supp">
+            <a href="{% url 'pannel:su_sendticket_auser' %}">
+                <img src="{% static 'img/tickets/all-ticket.png' %}" alt="">
+                <span>{% translate 'ارسال تیکت به کاربر' %} </span>
+            </a>
+        </div>
+        
+    </div>
+
+    <br><br>
+
+    <h4 class="mb-1">{% translate 'تنظیمات حساب کاربران ' %}</h4>
+    <div class="all-tickets">
+        
+        <table id="set-user-account">
+            <tr>
+                <th>#</th>
+                <th>{% translate 'کد کاربری' %}</th>
+                <th>{% translate 'موجودی نقد' %}</th>
+                <th>{% translate 'مبلغ پرداختی کل' %}</th>
+                <th>{% translate 'مبلغ برداشتی کل' %}</th>
+                <th>{% translate 'اشتراک ربات' %}</th>
+                <th>{% translate 'تغییرات' %}</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ user.user_code }}</td>
+                <form method="POST">
+                    {% csrf_token %} 
+                    <td>
+                        <input type="hidden" name="user-code" value="{{ user.user_code }}" class="d-none">
+                        <input type="number" name="account-total" value="{{ user.stoke }}">
+                    </td>
+                    <td>
+                        <input type="number" name="payment-total" value="{{ user.payment_total }}">
+                    </td>
+                    <td>
+                        <input type="number" name="impre-total" value="{{ user.impression_total }}">
+                    </td>
+                    <td>
+                        <input type="number" name="robot-sub-total" value="{{ user.robot_sub_total }}">
+                    </td>
+                    <td>
+                        <button type="submit">{% translate 'ذخیره' %}</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</article>
+<!-- end BODY -->
+
+{% endblock %}
+
+{% block scriptStatic %}{% endblock %}

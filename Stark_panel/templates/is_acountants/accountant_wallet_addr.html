@@ -1,0 +1,49 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static i18n %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'استارک، پنل کاربری استارک، ارز دیجیتال، رمز ارز، حسابدار' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate 'استارک | نمای جدول' %} {% endblock %}
+
+{% block linkStatic %}
+    <link rel="stylesheet" href="{% static 'css/auditor.css' %}">    
+{% endblock %}
+
+{% block content %}
+
+<!-- start BODY -->
+<article class="body-page m-1">
+    <h4 class="mb-1">{% translate 'لیست کیف پول ها' %}</h4>
+
+    <div id="list-chart">
+        <table>
+            <tr>
+                <th>#</th>
+                <th>{% translate 'کد کاربری' %}</th>
+                <th>{% translate 'آدرس کیف پول' %}</th>
+                <th>{% translate 'تاریخ' %}</th>
+            </tr>
+
+            {% for obj in object_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ obj.user.user_code }}</td>
+                <td>{{ obj.address }}</td>
+                <td>{% if '/fa/' in request.path %}{{ obj.j_date }}{% else %}{{ obj.date }}{% endif %}</td>
+            </tr>
+            {% empty %}
+                <div class="my-1 c-red font-small">{% translate 'جدول خالی میباشد.' %}</div>
+            {% endfor %}
+
+        </table>
+
+    </div>
+</article>
+<!-- end BODY -->
+
+{% endblock %}
+
+{% block scriptStatic %}{% endblock %}

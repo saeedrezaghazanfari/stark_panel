@@ -1,0 +1,308 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static i18n navbarTag l10n %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'استارک، پنل کاربری استارک، ارز دیجیتال، خرید و فروش ارز دیجیتال' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate 'استارک | داشبورد' %} {% endblock %}
+
+{% block linkStatic %}
+    {% if '/en/' in request.path %}
+        <link rel="stylesheet" href="{% static 'css/ltr-style/dashboard-ltr.css' %}">
+    {% else %}
+        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <article class="body-page m-1">
+        <h4 class="mb-1">{% translate 'داشبورد' %}</h4>
+
+        <!-- top Boxes -->
+        <div class="container-dashboard-boxes">
+            <div class="dashboard-box">
+                <img src="{% static 'img/dashboard/mojodinaghd-hesab.png' %}" alt="">
+                <p class="boxtitle">{% translate 'موجودی نقد حساب بر حسب تتر' %}:</p>
+                <p class="text-center">{{ request.user.stoke }}</p>
+            </div>
+            <div class="dashboard-box">
+                <img src="{% static 'img/dashboard/final-toatal.png' %}" alt="">
+                <p class="boxtitle">{% translate 'دارایی کل بر حسب تتر' %}:</p>
+                <p class="text-center">{{user_final_total}}</p>
+            </div>
+            <div class="dashboard-box">
+                <img src="{% static 'img/dashboard/mizan-pardakhti-kol.png' %}" alt="">
+                <p class="boxtitle">{% translate 'میزان پرداختی کل' %}: <span class="span-text-float">{{ request.user.payment_total }}</span></p>
+                <p class="boxtitle">{% translate 'میزان دریافتی کل' %}: <span class="span-text-float">{{ request.user.impression_total }}</span></p>
+            </div>
+            <div class="dashboard-box">
+                <img src="{% static 'img/dashboard/sood-khales.png' %}" alt="">
+                <p class="boxtitle">{% translate 'سود خالص' %}: <span class="span-text-float">{{ profit }}</span></p>
+                <p class="boxtitle">{% translate 'درصد سود خالص' %}: <span class="span-text-float">{{ profit_percent }} %</span></p>
+            </div>
+        </div>
+
+        <!-- charts -->
+        <div class="container-charts">
+
+            <div class="chart-div">
+                <a href="{% url 'pannel:show_charts' 'st3' %}" class="show-chart-top-left"><i class="fa fa-eye c-dark"></i>  {% translate 'نمایش نمودار' %}</a>
+                <p class="mb-1-2 pr-1">{% translate 'نمودار قیمت توکن ST3' %}</p>
+                <div class="font-small pr-1">
+                    <span class="{% if '/en/' in request.path %}float-left{% else %}float-right{% endif %} c-gold">{% translate 'میزان موجودی توکن ST3' %}: </span>
+                    <span class="{% if '/en/' in request.path %}float-left{% else %}float-right{% endif %} c-gold">&nbsp;{% if user_stoke_st3.count %}{{user_stoke_st3.count}}{% else %}0.0{% endif %}</span>
+                </div>
+                <br>
+                <canvas id="st3-chart" class="remove-in-sm"></canvas>
+                <a href="{% url 'pannel:show_charts' 'st3' %}" class="link-to-show-chart"><i class="fa fa-eye"></i> {% translate 'نمایش نمودار' %}</a>
+            </div>
+
+            <div class="chart-div">
+                <a href="{% url 'pannel:show_charts' 'st4' %}" class="show-chart-top-left"><i class="fa fa-eye c-dark"></i>  {% translate 'نمایش نمودار' %}</a>
+                <p class="mb-1-2 pr-1">{% translate 'نمودار قیمت توکن ST4' %}</p>
+                <div class="font-small pr-1">
+                    <span class="{% if '/en/' in request.path %}float-left{% else %}float-right{% endif %} c-gold">{% translate 'میزان موجودی توکن ST4' %}: </span>
+                    <span class="{% if '/en/' in request.path %}float-left{% else %}float-right{% endif %} c-gold">&nbsp;{% if user_stoke_st4.count %}{{user_stoke_st4.count}}{% else %}0.0{% endif %}</span>
+                </div>
+                <br>
+                <canvas id="st4-chart" class="remove-in-sm"></canvas>
+                <a href="{% url 'pannel:show_charts' 'st4' %}" class="link-to-show-chart"><i class="fa fa-eye"></i> {% translate 'نمایش نمودار' %}</a>
+            </div>
+
+        </div>
+
+        <!-- last Activities -->
+        <div class="last-activities">
+            <ul>
+                <h5 class="pt-2 font-bold"><a href="{% url 'pannel:buySellToken' 'st1' %}">{% translate 'آخرین خرید و فروش ها' %}</a></h5>
+                <br>
+                {% for buy_sell in buy_sells_LAs %}
+                    <li>
+                        <div class="div-flex-lastactivities">
+                            {% if buy_sell.buy_sell == 'buy' %}
+                                <img src="{% static 'img/dashboard/arrow-down.png' %}" alt="" class="mx-1">
+                            {% else %}
+                                <img src="{% static 'img/dashboard/arrow-up.png' %}" alt="" class="mx-1">
+                            {% endif %}
+                            <span>{% if buy_sell.buy_sell == 'buy' %}{% translate 'خرید توکن' %}{% else %}{% translate 'فروش توکن' %}{% endif %}</span>
+                        </div>
+                        <div>
+                            {% if '/fa/' in request.path %}{{ buy_sell.j_date }}{% else %}{{ buy_sell.date }}{% endif %}
+                        </div>
+                        <div>
+                            {{ buy_sell.token }}
+                        </div>
+                        <div>
+                            {{ buy_sell.count }}
+                        </div>
+                        <div class="text-center">
+                            {% if buy_sell.is_paid == True %}
+                                <span class="c-green">{% translate 'خرید موفق' %}</span>
+                            {% else %}
+                                <span class="c-red">{% translate 'در انتظار پشتیبان' %}</span>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% empty %}
+                    <p class="c-light font-small">{% translate 'شما هیچ گونه فعالیتی انجام نداده اید.' %}</p>
+                {% endfor %}
+
+                <h5 class="pt-3 "><a href="{% url 'pannel:userWallet' %}">{% translate 'آخرین تراکنش های کیف پول' %}</a></h5>
+                <br>
+                {% for wallet_act in wallet_LAs %}
+                    <li>
+                        <div class="div-flex-lastactivities">
+                            {% if wallet_act.type_order == 'dec' %}
+                                <img src="{% static 'img/dashboard/arrow-up.png' %}" alt="" class="mx-1">
+                            {% else %}
+                                <img src="{% static 'img/dashboard/arrow-down.png' %}" alt="" class="mx-1">
+                            {% endif %}
+                            <span>{% if wallet_act.type_order == 'inc' %}{% translate 'افزایش موجودی' %}{% else %}{% translate 'برداشت از موجودی' %}{% endif %}</span>
+                        </div>
+                        <div class="mt-1-2">
+                            {{ wallet_act.price }}
+                        </div>
+                        <div class="mt-1-2">
+                            {% get_last_string wallet_act.wallet_address as last_wall_addr %}
+                            {{ wallet_act.wallet_address|slice:5 }}...{{ last_wall_addr }}
+                        </div>
+                        <div class="mt-1-2">
+                            {% if '/fa/' in request.path %}{{ wallet_act.j_date }}{% else %}{{ wallet_act.date }}{% endif %}
+                        </div>
+                        <div class="text-center mt-1-2">
+                            {% if wallet_act.is_paid == True %}
+                                <span class="c-green">{% translate 'خرید موفق' %}</span>
+                            {% else %}
+                                <span class="c-red">{% translate 'در انتظار پشتیبان' %}</span>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% empty %}
+                    <p class="c-light font-small">{% translate 'شما هیچ گونه فعالیتی انجام نداده اید.' %}</p>
+                {% endfor %}
+
+                <h5 class="pt-3 "><a href="{% url 'pannel:robot' %}">{% translate 'آخرین فعالیت های ربات' %}</a></h5>
+                <br>
+                {% for bot_act in bot_LAs %}
+                    <li>
+                        <div>
+                            {% if bot_act.is_active %}
+                                {{ bot_act.bot_code }}
+                            {% else %}
+                                {% translate 'کد ربات' %}: -
+                            {% endif %}
+                        </div>
+                        <div class="pk-title pk-title-top">
+                            {% if '/fa/' in request.path %}{{ bot_act.j_date }}{% else %}{{ bot_act.date }}{% endif %}
+                            <span class="pk-title-text pk-title-text-top">{% translate 'تاریخ ثبت' %}</span>
+                        </div>
+                        <div>
+                            {% translate 'تعرفه (روز):' %} {{ bot_act.time_subscription }}
+                        </div>
+                        <div class="text-center">
+                            {% if bot_act.is_paid == True %}
+                                <span>{% translate 'خرید موفق' %}</span>
+                            {% else %}
+                                <span class="c-red">{% translate 'در انتظار پشتیبان' %}</span>
+                            {% endif %}
+                        </div>
+                        <div class="text-center">
+                            {% if bot_act.is_active == True %}
+                                <span class="c-green">{% translate 'فعال' %}</span>
+                            {% else %}
+                                <span class="c-red">{% translate 'در انتظار پشتیبان' %}</span>
+                            {% endif %}
+                        </div>
+                        <div class="pk-title pk-title-top">
+                            {% if '/fa/' in request.path %}{{ bot_act.j_last_date }}{% else %}{{ bot_act.last_date }}{% endif %}
+                            <span class="pk-title-text pk-title-text-top">{% translate 'تاریخ انقضا' %}</span>
+                        </div>
+                    </li>
+                {% empty %}
+                    <p class="c-light font-small">{% translate 'شما هیچ گونه فعالیتی انجام نداده اید.' %}</p>
+                {% endfor %}
+
+            </ul>
+        </div>
+        
+    </article>
+
+{% endblock %}
+
+{% block scriptStatic %}
+    <script type="text/javascript" src="{% static 'frameworks/chart.js' %}"></script>
+    <!-- charts -->
+    <script type="text/javascript">
+        var ctx = document.getElementById('st3-chart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [
+                    {% for date in dates_st3 %}
+                        '{{ date }}',
+                    {% endfor %}
+                ],
+                datasets: [{
+
+                    label: '',
+
+                    data: [
+                        {% localize off %}
+                            {% for price in prices_dollar_st3 %}
+                                {{ price }},
+                            {% endfor %}
+                        {% endlocalize %}
+                    ], 
+
+                    backgroundColor: [
+                        'transparent',
+                    ],
+                    
+                    pointBackgroundColor: '#eeb00e',
+                    pointBorderColor: '#eeb00e',
+                    pointBorderWidth: '1',
+                    borderColor: [
+                        'rgba(255, 255, 255, 0.5)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: {
+                    display: true,
+                },
+                title: {
+                    display: true,
+                    text: '{% translate "نمودار قیمت توکن ST3" %}',
+                    position: 'right',
+                    fontFamily: 'IRANSanse'
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0
+                        }
+                    }]
+                },
+            }
+        });
+
+
+        var ctx = document.getElementById('st4-chart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [
+                    {% for date in dates_st4 %}
+                        '{{ date }}',
+                    {% endfor %}
+                ],
+                datasets: [{
+
+                    label: '',
+
+                    data: [
+                        {% localize off %}
+                            {% for price in prices_dollar_st4 %}
+                                {{ price }},
+                            {% endfor %}
+                        {% endlocalize %}
+                    ], 
+
+                    backgroundColor: [
+                        'transparent',
+                    ],
+                    
+                    pointBackgroundColor: '#eeb00e',
+                    pointBorderColor: '#eeb00e',
+                    pointBorderWidth: '1',
+                    borderColor: [
+                        'rgba(255, 255, 255, 0.5)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: {
+                    display: true,
+                },
+                title: {
+                    display: true,
+                    text: '{% translate "نمودار قیمت توکن ST4" %}',
+                    position: 'right',
+                    fontFamily: 'IRANSanse'
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0
+                        }
+                    }]
+                },
+            }
+        });
+    </script>
+{% endblock %}

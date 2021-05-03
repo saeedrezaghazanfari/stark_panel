@@ -1,0 +1,208 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static widget_tweaks %}
+
+{% block keywordContent %}{% endblock %}
+
+{% block titlePage %}
+    {% if '/en/' in request.path %}
+        STARK | DataBase Export
+    {% elif '/fa/' in request.path %}
+        استارک | دریافت خروجی   
+    {% elif '/ar/ in request.path' %}
+        استارک | تلقي الإخراج
+    {% endif %}
+{% endblock %}
+
+{% block linkStatic %}
+    <link rel="stylesheet" href="{% static 'css/admin/export-database.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <!-- start BODY -->
+    <article class="body-page m-1">
+        <h4 class="mb-1">
+            {% if '/en/' in request.path %}
+                Get output from the database
+            {% elif '/fa/' in request.path %}
+                دریافت خروجی از پایگاه داده 
+            {% elif '/ar/ in request.path' %}
+                الحصول على الإخراج من قاعدة البيانات    
+            {% endif %}
+        </h4>
+
+        <!-- list of all tables -->
+        <div id="office-main-content">
+            <!-- each table -->
+            <div class="each-table">
+                
+                <h5>
+                    {% if '/en/' in request.path %}
+                        User table
+                    {% elif '/fa/' in request.path %}
+                        جدول کاربران
+                    {% elif '/ar/' in request.path %}
+                        جدول المستخدم
+                    {% endif %}
+                </h5>
+                <div class="table-get-export-div">
+                    <div>
+                        <h6>
+                            {% if '/en/' in request.path %}
+                                Click to get the output of the data in this table: <a href="{% url 'pannel:user_csv' %}" >Export</a>
+                            {% elif '/fa/' in request.path %}
+                                برای گرفتن خروجی از داده های این جدول کلیک کنید: <a href="{% url 'pannel:user_csv' %}" >خروجی</a>
+                            {% elif '/ar/' in request.path %}
+                                انقر للحصول على إخراج البيانات في هذا الجدول: <a href="{% url 'pannel:user_csv' %}" >يصدر</a>
+                            {% endif %}
+                        </h6>
+                    </div>
+                </div><br>
+
+                <h5>
+                    {% if '/en/' in request.path %}
+                        Robot subscription table
+                    {% elif '/fa/' in request.path %}
+                        جدول اشتراک ربات
+                    {% elif '/ar/' in request.path %}
+                        جدول اشتراك الروبوت
+                    {% endif %}
+                </h5>
+                <div class="table-get-export-div">
+                    <div>
+                        <h6>
+                            {% if '/en/' in request.path %}
+                                Click to get the output of the data in this table: <a href="{% url 'pannel:bot_csv' %}" >Export</a>
+                            {% elif '/fa/' in request.path %}
+                                برای گرفتن خروجی از داده های این جدول کلیک کنید: <a href="{% url 'pannel:bot_csv' %}" >خروجی</a>
+                            {% elif '/ar/' in request.path %}
+                                انقر للحصول على إخراج البيانات في هذا الجدول: <a href="{% url 'pannel:bot_csv' %}" >يصدر</a>
+                            {% endif %}
+                        </h6>
+                    </div>
+                </div><br>
+
+                <h5>
+                    {% if '/en/' in request.path %}
+                        Token table
+                    {% elif '/fa/' in request.path %}
+                        جدول توکن
+                    {% elif '/ar/' in request.path %}
+                        جدول الرموز
+                    {% endif %}
+                </h5>
+                <div class="table-get-export-div">
+                    <div>
+                        <h6>
+                            {% if '/en/' in request.path %}
+                                Click to get the output of the data in this table: <a href="{% url 'pannel:token_csv' %}" >Export</a>
+                            {% elif '/fa/' in request.path %}
+                                برای گرفتن خروجی از داده های این جدول کلیک کنید: <a href="{% url 'pannel:token_csv' %}" >خروجی</a>
+                            {% elif '/ar/' in request.path %}
+                                انقر للحصول على إخراج البيانات في هذا الجدول: <a href="{% url 'pannel:token_csv' %}" >يصدر</a>
+                            {% endif %}
+                        </h6>
+                    </div>
+                </div><br>
+
+                <h5>
+                    {% if '/en/' in request.path %}
+                        Ticket table
+                    {% elif '/fa/' in request.path %}
+                        جدول تیکت ها
+                    {% elif '/ar/' in request.path %}
+                        طاولة التذاكر
+                    {% endif %}
+                </h5>
+                <div class="table-get-export-div">
+                    <div>
+                        <h6>
+                            {% if '/en/' in request.path %}
+                                Click to get the output of the data in this table: <a href="{% url 'pannel:ticket_csv' %}" >Export</a>
+                            {% elif '/fa/' in request.path %}
+                                برای گرفتن خروجی از داده های این جدول کلیک کنید: <a href="{% url 'pannel:ticket_csv' %}" >خروجی</a>
+                            {% elif '/ar/' in request.path %}
+                                انقر للحصول على إخراج البيانات في هذا الجدول: <a href="{% url 'pannel:ticket_csv' %}" >يصدر</a>
+                            {% endif %}
+                        </h6>
+                    </div>
+                </div><br>
+
+                <h5>
+                    {% if '/en/' in request.path %}
+                        Sales table                    
+                    {% elif '/fa/' in request.path %}
+                        جدول خرید و فروش ها
+                    {% elif '/ar/' in request.path %}
+                        جدول المبيعات
+                    {% endif %}
+                </h5>
+                <div class="table-get-export-div">
+                    <div>
+                        <h6>
+                            {% if '/en/' in request.path %}
+                                Click to get the output of the data in this table: <a href="{% url 'pannel:buy_sell_csv' %}" >Export</a>
+                            {% elif '/fa/' in request.path %}
+                                برای گرفتن خروجی از داده های این جدول کلیک کنید: <a href="{% url 'pannel:buy_sell_csv' %}" >خروجی</a>
+                            {% elif '/ar/' in request.path %}
+                                انقر للحصول على إخراج البيانات في هذا الجدول: <a href="{% url 'pannel:buy_sell_csv' %}" >يصدر</a>
+                            {% endif %}
+                        </h6>
+                    </div>
+                </div><br>
+
+                <h5>
+                    {% if '/en/' in request.path %}
+                        User stock table
+                    {% elif '/fa/' in request.path %}
+                        جدول سهام کاربران
+                    {% elif '/ar/' in request.path %}
+                        جدول مخزون المستخدم
+                    {% endif %}
+                </h5>
+                <div class="table-get-export-div">
+                    <div>
+                        <h6>
+                            {% if '/en/' in request.path %}
+                                Click to get the output of the data in this table: <a href="{% url 'pannel:user_stokes_csv' %}" >Export</a>
+                            {% elif '/fa/' in request.path %}
+                                برای گرفتن خروجی از داده های این جدول کلیک کنید: <a href="{% url 'pannel:user_stokes_csv' %}" >خروجی</a>
+                            {% elif '/ar/' in request.path %}
+                                انقر للحصول على إخراج البيانات في هذا الجدول: <a href="{% url 'pannel:user_stokes_csv' %}" >يصدر</a>
+                            {% endif %}
+                        </h6>
+                    </div>
+                </div><br>
+
+                <h5>
+                    {% if '/en/' in request.path %}
+                        Token periodic table
+                    {% elif '/fa/' in request.path %}
+                        جدول قسمت های دوره ای توکن
+                    {% elif '/ar/' in request.path %}
+                        الجدول الدوري رمزي
+                    {% endif %}
+                </h5>
+                <div class="table-get-export-div">
+                    <div>
+                        <h6>
+                            {% if '/en/' in request.path %}
+                                Click to get the output of the data in this table: <a href="{% url 'pannel:chart_token_price_csv' %}" >Export</a>
+                            {% elif '/fa/' in request.path %}
+                                برای گرفتن خروجی از داده های این جدول کلیک کنید: <a href="{% url 'pannel:chart_token_price_csv' %}" >خروجی</a>
+                            {% elif '/ar/' in request.path %}
+                                انقر للحصول على إخراج البيانات في هذا الجدول: <a href="{% url 'pannel:chart_token_price_csv' %}" >يصدر</a>
+                            {% endif %}
+                        </h6>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </article>
+    <!-- end BODY -->
+
+{% endblock %}
+
+{% block scriptStatic %}{% endblock %}

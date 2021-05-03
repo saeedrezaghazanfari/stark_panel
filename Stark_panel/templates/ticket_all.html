@@ -1,0 +1,95 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static i18n humanize %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'پنل کاربری استارک، ارز دیجیتال، همه ی تیکت ها، تیکت ها' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %} {% translate ' استارک | تیکت ها' %} {% endblock %}
+
+{% block linkStatic %}
+    {% if '/en/' in request.path %}
+        <link rel="stylesheet" href="{% static 'css/ltr-style/tickets-ltr.css' %}">
+    {% else %}
+        <link rel="stylesheet" href="{% static 'css/tickets.css' %}">
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- start BODY -->
+<article class="body-page m-1">
+    <h4 class="mb-1">{% translate 'تیکت های شما' %}</h4>
+
+    <div class="top-boxes-option">
+        {% include 'ticket_navbar_partial.html' %}
+    </div>
+
+    <div class="all-tickets">
+        <h5 class="mb-2 pr-1">{% translate 'تیکت های خوانده نشده' %}:</h5>
+        
+        {% for unreaduser_ticket in unreaduser_tickets %}
+        <div class="ticket-of-tickets">
+            <div class="detail-ticket">
+                <div>
+                    <h5 class="mb-1-2">{{ unreaduser_ticket.subject }}</h5>
+                    <p>{{ unreaduser_ticket.message }}</p>
+                </div>
+                {% if unreaduser_ticket.title == 'crashPay' %}
+                    <div class="counter"><a href="{% url 'pannel:detailTicket' 'bot-sub' %}" class="btn-gold-detail d-block">{% translate 'مشاهده' %}</a></div>
+                {% elif unreaduser_ticket.title == 'InOut' %}
+                    <div class="counter"><a href="{% url 'pannel:detailTicket' 'in-out' %}" class="btn-gold-detail d-block">{% translate 'مشاهده' %}</a></div>
+                {% else %}
+                    <div class="counter"><a href="{% url 'pannel:detailTicket' 'buy-sell' %}" class="btn-gold-detail d-block">{% translate 'مشاهده' %}</a></div>
+                {% endif %}
+            </div>
+            <div class="time-ticket">
+                <img src="{% static 'img/tickets/watch.svg' %}" class="px-1" alt="watch">
+                <span class="digit">{% if '/fa/' in request.path %}{{ unreaduser_ticket.j_date }}{% else %}{{ unreaduser_ticket.date }}{% endif %}</span>
+            </div>
+        </div>
+        {% empty %}
+            <p class="c-light font-small mx-3">{% translate 'صندوق دریافتی تیکت شما خالی است.' %}</p>
+        {% endfor %}
+
+    </div>
+    <br>
+    <div class="all-tickets">
+        <h5 class="mb-2 pr-1">{% translate 'همه ی تیکت ها' %}:</h5>
+        {% for ticket in tickets %}
+        <div class="ticket-of-tickets">
+            <div class="detail-ticket">
+                <div>
+                    {% if ticket.is_suppurt %}
+                        <h5 class="mb-1-2 c-gold">{% translate 'ارسال شده توسط' %} <span class="font-bold">{% translate 'پشتیبان' %}</span>:</h5>
+                    {% else %}
+                        <h5 class="mb-1-2 c-gold">{% translate 'ارسال شده توسط' %} <span class="font-bold">{% translate 'شما' %}</span>:</h5>
+                    {% endif %}
+                    <p>{% translate 'عنوان' %}: {{ ticket.subject }}</p>
+                </div>
+                {% if ticket.title == 'crashPay' %}
+                    <div class="counter"><a href="{% url 'pannel:detailTicket' 'bot-sub' %}" class="c-dark d-block">{% translate 'مشاهده' %}</a></div>
+                {% elif ticket.title == 'InOut' %}
+                    <div class="counter"><a href="{% url 'pannel:detailTicket' 'in-out' %}" class="c-dark d-block">{% translate 'مشاهده' %}</a></div>
+                {% else %}
+                    <div class="counter"><a href="{% url 'pannel:detailTicket' 'buy-sell' %}" class="c-dark d-block">{% translate 'مشاهده' %}</a></div>
+                {% endif %}
+            </div>
+            <div class="time-ticket">
+                <img src="{% static 'img/tickets/watch.svg' %}" class="mx-1-2" alt="watch">
+                <span class="digit">{% if '/fa/' in request.path %}{{ ticket.j_date }}{% else %}{{ ticket.date|naturaltime }}{% endif %}</span>
+            </div>
+        </div>
+        {% empty %}
+            <p class="c-light font-small mx-3">{% translate 'شما هیچ پیامی ارسال و یا دریافت نکرده اید.' %}</p>
+        {% endfor %}
+
+    </div>
+
+</article>
+<!-- end BODY -->
+{% endblock %}
+
+{% block scriptStatic %}
+    {% if '/fa/' in request.path %}<script src="{% static 'js/persianumber.min.js' %}"></script>{% endif %}
+{% endblock %}

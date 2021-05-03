@@ -1,0 +1,127 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static widget_tweaks i18n %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'پنل کاربری استارک، ارز دیجیتال، ثبت نام' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate 'استارک | ثبت نام' %} {% endblock %}
+
+{% block linkStatic %}
+    {% if '/en/' in request.path %}
+        <link rel="stylesheet" href="{% static 'css/ltr-style/auth-ltr.css' %}">
+    {% else %}
+        <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    {% endif %}
+{% endblock %}
+
+{% block AuthContent %}
+    <section class="register-page"> 
+
+        <div class="bg-img"></div>
+
+        <div class="register-form">
+
+            <div class="top-change-lang">
+                <a href="{% url 'pannel:ch_lang' %}?lang=en&next=/fa/{{ request.path|slice:'4:' }}" {% if '/fa/' in request.path %}class="c-gold"{% endif %}>fa</a> | 
+                <a href="{% url 'pannel:ch_lang' %}?lang=en&next=/en/{{ request.path|slice:'4:' }}" {% if '/en/' in request.path %}class="c-gold"{% endif %}>en</a> | 
+                <a href="{% url 'pannel:ch_lang' %}?lang=en&next=/ar/{{ request.path|slice:'4:' }}" {% if '/ar/' in request.path %}class="c-gold"{% endif %}>ar</a>
+            </div>
+
+            <div class="top-logo">
+                <img src="{%static 'img/logo.svg' %}" alt="stark logo">
+                <p>{% translate 'ثبت نام در استارک' %}</p>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group-two">
+                    <div>
+                        <label for="{{ form.first_name.id_for_label }}">{% translate 'نام' %}:</label>
+                        {% render_field form.first_name autofocus="" %}
+                    </div>
+                    <div>
+                        <label for="{{ form.last_name.id_for_label }}">{% translate 'نام خانوادگی' %}:</label>
+                        {% render_field form.last_name %}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">{% translate 'ایمیل' %}:</label>
+                    {% render_field form.email %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">{% translate 'نام کاربری' %}:</label>
+                    {% render_field form.username %}
+                </div>
+
+                <div class="form-group-two">
+                    <div>
+                        <label for="{{ form.phone.id_for_label }}">{% translate 'تلفن همراه' %}:</label>
+                        {% render_field form.phone %}   
+                    </div>
+                    <div>
+                        <label for="{{ form.national_code.id_for_label }}">{% translate 'کدملی' %}:</label>
+                        {% render_field form.national_code %}   
+                    </div>
+                </div>
+
+                <div class="form-group-two">
+                    <div>
+                        <label for="{{ form.password1.id_for_label }}">{% translate 'رمزعبور' %}:</label>
+                        {% render_field form.password1 %}   
+                    </div>
+                    <div>
+                        <label for="{{ form.password2.id_for_label }}">{% translate 'تایید رمزعبور' %}:</label>
+                        {% render_field form.password2 %}   
+                    </div>
+                </div>
+                <br>
+                {% for err in form.first_name.errors %}
+                    <span class="c-red font-small">{{ err }}</span><br>
+                {% endfor %}
+
+                {% for err in form.last_name.errors %}
+                    <span class="c-red font-small">{{ err }}</span><br>
+                {% endfor %}
+
+                {% for err in form.email.errors %}
+                    <span class="c-red font-small">{{ err }}</span><br>
+                {% endfor %}
+
+                {% for err in form.username.errors %}
+                    <span class="c-red font-small">{{ err }}</span><br>
+                {% endfor %}
+
+                {% for err in form.phone.errors %}
+                    <span class="c-red font-small">{{ err }}</span><br>
+                {% endfor %}
+
+                {% for err in form.national_code.errors %}
+                    <span class="c-red font-small">{{ err }}</span><br>
+                {% endfor %}
+
+                {% for err in form.password1.errors %}
+                    <span class="c-red font-small">{{ err }}</span><br>
+                {% endfor %}
+
+                {% for err in form.password2.errors %}
+                    <span class="c-red font-small">{{ err }}</span><br>
+                {% endfor %}
+
+                <button type="submit" class="btn">{% translate 'ثبت نام' %}</button>
+
+                <p class="c-muted text-center mt-1 font-small">
+                    {% translate 'حساب کاربری دارید؟ ' %}
+                    <a href="{% url 'account:signin' %}" class="c-gold">{% translate 'ورود به سایت' %}</a>
+                </p>
+            </form>
+        </div>
+
+    </section>
+
+{% endblock %}
+
+{% block scriptStatic %}{% endblock %}

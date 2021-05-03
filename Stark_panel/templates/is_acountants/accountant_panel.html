@@ -1,0 +1,79 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static i18n %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'استارک، پنل کاربری استارک، ارز دیجیتال، رمز ارز، حسابدار' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate ' استارک | حسابدار' %} {% endblock %}
+
+{% block linkStatic %}
+    <link rel="stylesheet" href="{% static 'css/auditor.css' %}">    
+{% endblock %}
+
+{% block content %}
+
+<!-- start BODY -->
+<article class="body-page m-1">
+    <h4 class="mb-1">{% translate 'پنل حسابدار' %}</h4>
+
+    <div class="chart-tables">
+        <div class="add-chart">
+            <form method="POST" class="add-form">
+                {% csrf_token %}
+
+                <h4 class="mb-1">{% translate 'اضافه کردن قیمت جدید' %}:</h4>
+
+                {{ addtocharrt_form }}
+
+                <div class="container-btn">
+                    <button type="submit" class="btn">{% translate 'ثبت' %}</button>
+                </div>
+
+            </form>
+            <div class="update-chart-form">
+                <p> <i class="fa fa-edit"></i> {% translate 'برای ویرایش قیمت توکن ها کلیک کنید:' %} <a href="{% url 'pannel:ac_token_chartprice' %}">{% translate 'کلیک' %}</a></p>
+            </div>
+        </div>
+        <div class="view-table">
+
+            <div class="table-tables">
+                <h4>{% translate 'لیست کاربران' %} (<span class="digit c-gold">{{ user_counter }}</span>)</h4>
+                <p>{% translate 'برای نمایش جزئیات جدول' %} <a href="{% url 'pannel:ac_users' %}">{% translate 'کلیک' %}</a> {% translate 'کنید.' %}</p>
+            </div>
+
+            <div class="table-tables">
+                <h4>{% translate 'لیست کیف پول ها' %} (<span class="digit c-gold">{{ walletaddr_counter }}</span>)</h4>
+                <p>{% translate 'برای نمایش جزئیات جدول' %} <a href="{% url 'pannel:ac_walletaddress' %}">{% translate 'کلیک' %}</a> {% translate 'کنید.' %}</p>
+            </div>
+
+            <div class="table-tables">
+                <h4>{% translate 'لیست عملیات کیف پول' %} (<span class="digit c-gold">{{ walletorder_counter }}</span>)</h4>
+                <p>{% translate 'برای نمایش جزئیات جدول' %} <a href="{% url 'pannel:ac_walletorders' %}">{% translate 'کلیک' %}</a> {% translate 'کنید.' %}</p>
+            </div>
+
+            <div class="table-tables">
+                <h4>{% translate 'لیست توکن کاربران' %} (<span class="digit c-gold">{{ user_stoke_counter }}</span>)</h4>
+                <p>{% translate 'برای نمایش جزئیات جدول' %} <a href="{% url 'pannel:ac_userStoke' %}">{% translate 'کلیک' %}</a> {% translate 'کنید.' %}</p>
+            </div>
+
+            <div class="table-tables">
+                <h4>{% translate 'لیست اشتراک ربات ها' %} (<span class="digit c-gold">{{ bots_counter }}</span>)</h4>
+                <p>{% translate 'برای نمایش جزئیات جدول' %} <a href="{% url 'pannel:ac_bots' %}">{% translate 'کلیک' %}</a> {% translate 'کنید.' %}</p>
+            </div>
+
+            <div class="table-tables">
+                <h4>{% translate 'لیست خرید و فروش ها' %} (<span class="digit c-gold">{{ buysells_counter }}</span>)</h4>
+                <p>{% translate 'برای نمایش جزئیات جدول' %} <a href="{% url 'pannel:ac_buysells' %}">{% translate 'کلیک' %}</a> {% translate 'کنید.' %}</p>
+            </div>
+
+        </div>
+    </div>
+
+</article>
+<!-- end BODY -->
+
+{% endblock %}
+
+{% block scriptStatic %}{% endblock %}

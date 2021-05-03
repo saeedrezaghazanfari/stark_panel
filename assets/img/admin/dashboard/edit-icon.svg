@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" viewBox="0 0 90 90">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.072" y1="0.092" x2="0.846" y2="0.897" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f9b80e"/>
+      <stop offset="1" stop-color="#f96114"/>
+    </linearGradient>
+  </defs>
+  <g id="edit_icon" data-name="edit icon" transform="translate(-989 -412)">
+    <g id="Component_12_2" data-name="Component 12 – 2" transform="translate(1022 445)">
+      <rect id="Rectangle_29" data-name="Rectangle 29" width="12" height="12" rx="6" transform="translate(6 6)" fill="#feb95a"/>
+      <rect id="Rectangle_28" data-name="Rectangle 28" width="23" height="23" rx="8" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="Group_254" data-name="Group 254" transform="translate(1026 449.121)">
+      <path id="Path_75" data-name="Path 75" d="M7.329,3H4.082A1.082,1.082,0,0,0,3,4.082v7.577a1.082,1.082,0,0,0,1.082,1.082h7.577a1.082,1.082,0,0,0,1.082-1.082V8.412" transform="translate(0 -0.056)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Path_76" data-name="Path 76" d="M8.812,7.544l4.329-4.329a1.148,1.148,0,1,1,1.624,1.624L10.435,9.168,8,9.98Z" transform="translate(-2.294 0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

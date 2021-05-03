@@ -1,0 +1,96 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static widget_tweaks i18n l10n %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'پنل کاربری استارک، ارز دیجیتال، رمز ارز' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate ' استارک | نمایش نمودار' %} {% endblock %}
+
+{% block linkStatic %}
+    <link rel="stylesheet" href="{% static 'css/show-charts.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <!-- start BODY -->
+    <article class="body-page m-1">
+        <h4 class="mb-1">{% translate 'نمایش نمودار' %} <span class="c-gold">{{ tokenTitle }}</span></h4>
+        <p class="mx-1 font-small c-gold">{% translate 'قیمت امروز' %}: <span class="c-white">{{ last_price_chart }}</span></p>
+        <p class="mx-1 font-small c-gold">{% translate 'موجودی توکن شما' %}: <span class="c-white">{% if user_token_stock.count %}{{ user_token_stock.count }}{% else %}0.0{% endif %}</span></p>
+        <br>
+        <a class="parg-link cur-poi" onclick="window.history.back()">{% translate 'بازگشت' %}</a>
+        <br>
+        <br>
+        <section id="showchart-sec">
+            <canvas id="stark-chart"></canvas>
+        </section>
+
+    </article>
+    <!-- end BODY -->
+
+{% endblock %}
+
+{% block scriptStatic %}
+<script type="text/javascript" src="{% static 'frameworks/chart.js' %}"></script>
+
+<!-- charts -->
+<script type="text/javascript">
+    var ctx = document.getElementById('stark-chart').getContext('2d');
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [
+                {% for date in dates %}
+                    '{{ date }}',
+                {% endfor %}
+            ],
+            datasets: [{
+
+                label: '',
+
+                data: [
+                    {% localize off %}
+                        {% for price in prices_dollar %}
+                            {{ price }},
+                        {% endfor %}
+                    {% endlocalize %}
+                ], 
+
+                backgroundColor: [
+                    'transparent',
+                ],
+                
+                pointBackgroundColor: '#eeb00e',
+                pointBorderColor: '#eeb00e',
+                pointBorderWidth: '5',
+                borderColor: [
+                    'rgba(255, 255, 255, 0.5)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            legend: {
+                display: true,
+            },
+            title: {
+                display: true,
+                text: '{% translate "نمودار قیمت توکن" %} {{ tokenTitle }}',
+                position: 'right',
+                fontFamily: 'IRANSanse'
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        min: 0
+                    }
+                }]
+            },
+        }
+    });
+
+</script>
+{% endblock %}

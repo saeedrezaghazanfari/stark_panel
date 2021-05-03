@@ -1,0 +1,208 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static widget_tweaks i18n humanize navbarTag %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'پنل کاربری استارک، ارز دیجیتال، رمز ارز، کیف پول' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate 'استارک | کیف پول' %} {% endblock %}
+
+{% block linkStatic %}
+    {% if '/en/' in request.path %}
+        <link rel="stylesheet" href="{% static 'css/ltr-style/wallet-ltr.css' %}">    
+    {% else %}
+        <link rel="stylesheet" href="{% static 'css/wallet.css' %}">    
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<!-- start BODY -->
+<article class="body-page m-1" id="manageWallets">
+    <h4 class="mb-1">{% translate 'کیف پول' %}</h4>
+    <p class="text-muted font-small mb-1 pr-1" id="msg-top-gt" style="display: none;">{% translate 'شما نمیتوانید بیشتر از' %} <span class="digit c-muted font-small">6</span> {% translate 'کیف پول داشته باشید.' %}</p>
+    <div id="wallet-user">
+
+        <div class="card-last-transcates">
+            <div class="cards-category">
+                
+                {% for wallet in wallets %}    
+                <div class="card-data">
+                    <div class="card-number">
+                        <div id="walletaddr{{ wallet.id }}">{{wallet.address}}</div>
+                    </div>
+                    <p class="mt-2">
+                        <span class="span-carddata-time c-muted">{% if '/fa/' in request.path %}{{wallet.j_date}}{% else %}{{wallet.date|naturalday}}{% endif %}</span>
+                        <a class="mx-1" onclick="openModal( {{wallet.id}} )"><i class="fa fa-trash"></i></a>
+                        <a class="mx-1-2" onclick="copy_text( '{{wallet.address}}', 'walletaddr{{ wallet.id }}' )"><i class="fa fa-copy"></i></a>
+                    </p>
+                </div>
+                {% endfor %}
+                {% if not counter_wallets == 6 %}
+                <div class="add-card" id="add-card">
+                    
+                    <img src="{% static 'img/wallet/add-cart.png' %}" alt="wallet icon" onclick="openModal('modalCreate')">
+                    <a class="mt-1 cur-poi" onclick="openModal('modalCreate')">{% translate 'افزودن کیف پول جدید' %} <i class="fa fa-plus"></i></a>
+
+                </div>    
+                {% endif %}
+
+                <a href="#Payment-Part" class="btn btn-go-to-paymentt">{% translate 'رفتن به عملیات پرداخت / برداشت' %}</a>
+            </div>
+
+            <!-- last Activities -->
+            <div class="last-activities last-trancate">
+                <ul>
+                    <h5 class="pt-2 ">{% translate 'آخرین فعالیت ها' %}</h5>
+                    <br>
+                    {% for wallet_act in wallet_LAs %}
+                    <li>
+                        <div class="div-flex-lastactivities text-center font-small">
+                            {% if wallet_act.type_order == 'dec' %}
+                                <img src="{% static 'img/dashboard/arrow-up.png' %}" alt="">
+                            {% else %}
+                                <img src="{% static 'img/dashboard/arrow-down.png' %}" alt="">
+                            {% endif %}
+                            <span>{% if wallet_act.type_order == 'inc' %}{% translate 'افزایش موجودی' %}{% else %}{% translate 'برداشت از موجودی' %}{% endif %}</span>
+                        </div>
+                        <div class="text-center font-small mt-1-2">
+                            {{ wallet_act.price }}
+                        </div>
+                        <div class="text-center font-small mt-1-2">
+                            {% get_last_string wallet_act.wallet_address as last_wall_addr %}
+                            {{ wallet_act.wallet_address|slice:5 }}...{{ last_wall_addr }}
+                        </div>
+                        <div class="text-center font-small mt-1-2">
+                            {% if '/fa/' in request.path %}{{ wallet_act.j_date }}{% else %}{{ wallet_act.date|naturaltime }}{% endif %}
+                        </div>
+                        <div class="text-center font-small mt-1-2">
+                            {% if wallet_act.is_paid == True %}
+                                <span class="c-green">{% translate 'خرید موفق' %}</span>
+                            {% else %}
+                                <span class="c-red">{% translate 'در انتظار پشتیبان' %}</span>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% empty %}
+                    <p class="c-light font-small">{% translate 'شما هیچ گونه فعالیتی انجام نداده اید.' %}</p>
+                {% endfor %}
+
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div class="card-to-payment" id="Payment-Part">
+            <div>
+                <p><img src="{% static 'img/wallet/wallet-icon.png' %}" alt="wallet icon"></p>
+                <p>{{ request.user.stoke }} &dollar;</p>
+            </div>
+            {% comment %} <div class="two-btn-payment mt-1">
+                <a href="">افزایش موجودی</a>
+                <a href="">برداشت از موجودی</a>
+            </div> {% endcomment %}
+            <form method="POST">
+                {% csrf_token %}
+                <br>
+                <div class="form-group-wallet">
+                    <label for="{{ orderwallet_form.price.id_for_label }}">{% translate 'مبلغ بر حسب تتر ' %}(USDT):</label>
+                    {% render_field orderwallet_form.price %}
+                </div><br>
+
+                <div class="form-group-wallet">
+                    <label for="{{ orderwallet_form.type_order.id_for_label }}">{% translate 'انتخاب عملیات' %}:</label>
+                    {% render_field orderwallet_form.type_order %}
+                </div><br>
+                
+                <div class="form-group-wallet">
+                    <label for="cardnumber">{% translate 'آدرس کیف پول' %}:</label>
+                    <select id="cardnumber" name="userwalletaddress">
+                        {% for wallet in wallets %}
+                            <option value="{{ wallet.address }}">{{ wallet.address }}</option>
+                        {% endfor %}
+                    </select>
+                </div><br>
+
+                {% if wallets %}
+                    <button class="btn cur-poi" type="submit">{% translate 'ثبت عملیات' %}</button>
+                {% else %}
+                    <button class="btn btn-disabled" type="submit" disabled>{% translate 'ابتدا کیف پول اضافه کنید.' %}</button>
+                {% endif %}
+            </form>
+        </div>
+
+    </div>
+
+    <!-- modal: set a new WalletUser -->
+    <div class="modal" id="modalCreate">
+        <div class="bg-img-wrapper">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="mt-1-2 c-black">{% translate 'افزودن کیف پول' %}</h4>
+                    <button class="modal-close" onclick="closeModal('modalCreate')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form class="c-black" action="{% url 'pannel:manageUserWallet' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group-modal">
+                            <label for="addressWallet" class="font-bold {% if '/en/' in request.path %}float-left{% endif %}">{% translate 'آدرس کیف پول' %}:</label>
+                            <input class="text-center" name="address" type="text" id="addressWallet" >
+                        </div>
+                        <p class="font-small c-black mt-1 pr-1 digit">
+                            
+                            <i class="fa fa-check c-gold"></i> {% translate 'شما نمیتوانید بیشتر از 6 کیف پول برای خود انتخاب کنید.' %}
+                            <br>
+                            <i class="fa fa-check c-gold"></i> {% translate 'تعداد کاراکترهای لازم برای هر آدرس کیف پول' %} <span class="digit c-black">42</span> {% translate 'تا میباشد.' %}
+                            <br>
+                            <i class="fa fa-check c-gold"></i> {% translate 'آدرس هر کیف پول باید با سایر آدرس ها متفاوت باشد.' %}
+                            
+                        </p>
+                        <div class="btn-center">
+                            <button class="btn cur-poi" type="submit">{% translate 'اضافه کردن' %} <i class="fa fa-plus c-black"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal: zoom WalletUser -->
+    {% for wallet in wallets %}
+    <div class="modal" id="{{ wallet.id }}">
+        <div class="bg-img-wrapper">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="mt-1-2 c-black">{% translate 'حذف کیف پول' %}</h4>
+                    <button class="modal-close" onclick="closeModal( {{wallet.id}} )">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="c-black">
+                        <div class="go-del-wallet">
+                            <form action="{% url 'pannel:manageUserWallet' %}" method="POST">
+                                {% csrf_token %}
+                                <div>
+                                    <input type="text" value="{{ wallet.id }}" class="d-none" name="walletid">
+                                    <input type="checkbox" id="check-msg-del" name="sure-del-wallet" class="mx-1-2">
+                                    <label for="check-msg-del" class="c-black font-small">{% translate 'آیا از حذف این کیف پول مطمئن هستید؟' %}</label>
+                                </div>
+                                <br> 
+                                <button type="submit" id="delBtn-modal">{% translate 'حذف' %} <i class="fa fa-trash"></i></button>    
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    {% endfor %}
+    
+</article>
+<!-- end BODY -->
+
+{% endblock %}
+
+{% block scriptStatic %}
+    {% if '/fa/' in request.path %}<script src="{% static 'js/persianumber.min.js' %}"></script>{% endif %}
+{% endblock %}
