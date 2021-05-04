@@ -16,7 +16,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['https://panel.st4w.net', 'https://www.panel.st4w.net', 'panel.st4w.net']
-##############################ssl
+# SECURE_SSL_REDIRECT = True
 
 # Application definition
 INSTALLED_APPS = [
@@ -144,6 +144,8 @@ MEDIA_ROOT = Path("static_cdn", "media_root")
 AUTH_USER_MODEL = 'Stark_account.User'
 
 # custom capcha
-CAPTCHA_FONT_SIZE = 32
+CAPTCHA_FONT_SIZE = 80
 CAPTCHA_BACKGROUND_COLOR = '#000'
 CAPTCHA_FOREGROUND_COLOR = '#eeb00e'
+CAPTCHA_LENGTH = 3
+CAPTCHA_IMAGE_SIZE = (200, 100) 
