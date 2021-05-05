@@ -387,9 +387,9 @@ div#loadinggif-part {
     top: 20px;
     right: 45px;
     border-bottom: 8px solid transparent;
-    border-left: 8px solid #ddb44e;
-    border-top: 8px solid #cfa027;
-    border-right: 8px solid #eeb00e;
+    border-left: 8px solid $c-gold;
+    border-top: 8px solid $c-gold;
+    border-right: 8px solid $c-gold;
     padding: 0.75rem;
     border-radius: 50%;
     transition: all 0.3s ease !important;
