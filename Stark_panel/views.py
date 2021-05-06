@@ -177,7 +177,15 @@ class UserWallet_GetCreate(LoginRequiredMixin, View):
 			if checkForm.is_valid():
 				counter = UserWallet.objects.filter(user=request.user).count()
 				if counter < 6:
-					newWallet = UserWallet.objects.create(user=request.user, address=walletAddr, date=datetime.now())
+					max_id = UserWallet.objects.values('id').order_by('-id').first()
+					
+					if max_id:
+						get_max_id = dict(max_id)['id']
+						newWallet = UserWallet.objects.create(id=int(get_max_id) + 1, user=request.user, address=walletAddr, date=datetime.now())
+					
+					else:
+						newWallet = UserWallet.objects.create(id=1, user=request.user, address=walletAddr, date=datetime.now())
+						
 					messages.info(request, _('آدرس کیف پول شما با موفقیت اضافه شد.'))
 					return redirect('pannel:userWallet')
 				else:
