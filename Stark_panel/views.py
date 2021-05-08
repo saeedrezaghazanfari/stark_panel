@@ -47,6 +47,9 @@ def home_page_pannel(request):
 		'user_final_total': get_final_total(request.user),
 		'profit': get_profit(request.user, 'profit'),
 		'profit_percent': get_profit(request.user, 'percent'),
+		# colors profit
+		'profit_color': get_profit_color(get_profit(request.user, 'profit')),
+		'profit_percent_color': get_profit_color(get_profit(request.user, 'percent')),
 
 		# chart st3
 		'prices_dollar_st3': get_chart(tokenName='ST3', typeOut='price', fa_lang_code=fa_langcode),

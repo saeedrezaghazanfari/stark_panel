@@ -46,6 +46,15 @@ def get_profit(thisUser, typeOut):
 			# format(, '.6f')
 		return format( (((final_total + user.impression_total) / (user.payment_total - user.robot_sub_total)) - 1) * 100, '.2f')
 
+def get_profit_color(profit_number):
+	profit_number = float(profit_number)
+	if profit_number > 0:
+		return 'green'
+	elif profit_number < 0:
+		return 'red'
+	elif profit_number == 0:
+		return 'white'
+
 # get chart: price-date
 def get_chart(tokenName, typeOut, fa_lang_code, num_last=15):
 	if typeOut == 'date':

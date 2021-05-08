@@ -78,10 +78,10 @@ class UserStoke(models.Model):
 
 class UserWallet(models.Model):
 	user = models.ForeignKey( User, on_delete=models.CASCADE, related_name='wallets')
-	address = models.CharField( _('آدرس کیف پول'), max_length=42, unique=True, validators=[
+	address = models.CharField( _('آدرس کیف پول'), max_length=45, unique=True, validators=[
 		RegexValidator(
-			r'\d?\w{42}$',
-			message=_('فرمت کدملی را اصلاح کنید.')
+			r'\d?\w{10,45}$',
+			message=_('فرمت کیف پول را اصلاح کنید.')
 		),
 	])
 	date = models.DateTimeField( _('تاریخ و زمان خرید'), default=datetime.now())

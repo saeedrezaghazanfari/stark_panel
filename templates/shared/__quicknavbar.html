@@ -28,6 +28,14 @@
             
             <li><a href="{% url 'pannel:allTicket' %}" class="pr-1 {% if 'ticket/' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-ticket.svg' %}" class="fonticon-quicknavbar" alt="tickets"> {% if LANGUAGE_CODE == 'en' %}Ticket{% elif LANGUAGE_CODE == 'fa' %}تیکت{% elif LANGUAGE_CODE == 'ar' %}تذكرة{% endif %}</a></li>
             
+            {% if '/en/' in request.path %}
+                <li><a href="https://st4w.net/panel-guide/" target="_blank" class="pr-1"><i class="fa fa-file c-gold mx-1-2" alt="tickets"></i> {% if LANGUAGE_CODE == 'en' %}User Panel Guide{% elif LANGUAGE_CODE == 'fa' %}راهنمای پنل کاربری{% elif LANGUAGE_CODE == 'ar' %}دليل لوحة المستخدم{% endif %}</a></li>
+            {% elif '/fa/' in request.path %}
+                <li><a href="https://st4w.net/fa/panel-guide/" target="_blank" class="pr-1"><i class="fa fa-file c-gold mx-1-2" alt="tickets"></i> {% if LANGUAGE_CODE == 'en' %}User Panel Guide{% elif LANGUAGE_CODE == 'fa' %}راهنمای پنل کاربری{% elif LANGUAGE_CODE == 'ar' %}دليل لوحة المستخدم{% endif %}</a></li>
+            {% elif '/ar/' in request.path %}
+                <li><a href="https://st4w.net/ar/panel-guide/" target="_blank" class="pr-1"><i class="fa fa-file c-gold mx-1-2" alt="tickets"></i> {% if LANGUAGE_CODE == 'en' %}User Panel Guide{% elif LANGUAGE_CODE == 'fa' %}راهنمای پنل کاربری{% elif LANGUAGE_CODE == 'ar' %}دليل لوحة المستخدم{% endif %}</a></li>
+            {% endif %}
+
             <li class="mb-2"><a class="pr-1 cur-poi" onclick="close_sidebar()"><i class="fa fa-times c-gold"></i>&nbsp; {% if LANGUAGE_CODE == 'en' %}Close{% elif LANGUAGE_CODE == 'fa' %}بستن{% elif LANGUAGE_CODE == 'ar' %}لإغلاق{% endif %}</a></li>
         </ul>
     </div>

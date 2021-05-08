@@ -40,8 +40,8 @@
             </div>
             <div class="dashboard-box">
                 <img src="{% static 'img/dashboard/sood-khales.png' %}" alt="">
-                <p class="boxtitle">{% translate 'سود خالص' %}: <span class="span-text-float">{{ profit }}</span></p>
-                <p class="boxtitle">{% translate 'درصد سود خالص' %}: <span class="span-text-float">{{ profit_percent }} %</span></p>
+                <p class="boxtitle">{% translate 'سود خالص' %}: <span class="span-text-float c-{{ profit_color }}">{{ profit }}</span></p>
+                <p class="boxtitle">{% translate 'درصد سود خالص' %}: <span class="span-text-float c-{{ profit_percent_color }}">{{ profit_percent }} % </span></p>
             </div>
         </div>
 

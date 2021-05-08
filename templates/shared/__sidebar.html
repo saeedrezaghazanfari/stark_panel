@@ -139,6 +139,24 @@
         </li>      
 
         <li>
+            {% if '/en/' in request.path %}
+                <a href="https://st4w.net/panel-guide/" target="_blank"><i class="fa fa-file fonticon-sidebar" alt=""></i></a>
+            {% elif '/fa/' in request.path %}
+                <a href="https://st4w.net/fa/panel-guide/" target="_blank"><i class="fa fa-file fonticon-sidebar" alt=""></i></a>
+            {% elif '/ar/' in request.path %}
+                <a href="https://st4w.net/ar/panel-guide/" target="_blank"><i class="fa fa-file fonticon-sidebar" alt=""></i></a>
+            {% endif %}
+            
+            {% if '/en/' in request.path %}
+                <a href="https://st4w.net/panel-guide/" target="_blank" class="pr-1">{% if LANGUAGE_CODE == 'en' %}User Panel Guide{% elif LANGUAGE_CODE == 'fa' %}راهنمای پنل کاربری{% elif LANGUAGE_CODE == 'ar' %}دليل لوحة المستخدم{% endif %}</a>
+            {% elif '/fa/' in request.path %}
+                <a href="https://st4w.net/fa/panel-guide/" target="_blank" class="pr-1">{% if LANGUAGE_CODE == 'en' %}User Panel Guide{% elif LANGUAGE_CODE == 'fa' %}راهنمای پنل کاربری{% elif LANGUAGE_CODE == 'ar' %}دليل لوحة المستخدم{% endif %}</a>
+            {% elif '/ar/' in request.path %}
+                <a href="https://st4w.net/ar/panel-guide/" target="_blank" class="pr-1">{% if LANGUAGE_CODE == 'en' %}User Panel Guide{% elif LANGUAGE_CODE == 'fa' %}راهنمای پنل کاربری{% elif LANGUAGE_CODE == 'ar' %}دليل لوحة المستخدم{% endif %}</a>
+            {% endif %}
+        </li>
+
+        <li>
             <a href="{% url 'account:signout' %}">
                 <img src="{% static 'img/sidebar/white-exit.svg' %}" class="fonticon-sidebar" alt="">
             </a>
