@@ -17,7 +17,6 @@ urlpatterns = [
 	# buy sell token
 	path('buy-sells/<str:tokenNamekw>', views.buy_sell_tokens, name='buySellToken'),
 	path('buy-sells/send-ticket/', views.buy_sell_sendticket, name='buySellTicketsend'),
-	path('buy-sells/get-order/', views.BuySellTokenClassView.as_view(), name='BuySellTokenreq'),
 
 	# user wallet
 	path('user/wallet/', views.user_wallet, name='userWallet'),

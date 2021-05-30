@@ -1,4 +1,5 @@
-{% load static i18n %}
+{% load static i18n navbarTag %}
+{% get_counter_suppurt as counter_suppurt %}
 {% get_current_language as LANGUAGE_CODE %}
 
 <!-- start sidebar -->
@@ -68,16 +69,18 @@
                     <img src="{% static 'img/sidebar/yellow-users.svg' %}" class="fonticon-sidebar" alt="pannel home">
                 {% endif %}
             </a>
-            <a href="{% url 'pannel:su_home' %}" class="pr-1">{% if LANGUAGE_CODE == 'en' %}Support{% elif LANGUAGE_CODE == 'fa' %}پشتیبان{% elif LANGUAGE_CODE == 'ar' %}الدعم{% endif %}</a>
+            <a href="{% url 'pannel:su_home' %}" class="pr-1">
+                {% if LANGUAGE_CODE == 'en' %}Support{% elif LANGUAGE_CODE == 'fa' %}پشتیبان{% elif LANGUAGE_CODE == 'ar' %}الدعم{% endif %} {% if counter_suppurt %}<span id="counter-unreads-suppurt" class="digit">{{counter_suppurt}}</span>{% endif %}
+            </a>
         </li>
         {% endif %}
 
         <li  class="{% if 'user/wallet/' in request.path %}active-sidebar{% endif %}">
             <a href="{% url 'pannel:userWallet' %}">
                 {% if not 'user/wallet/' in request.path %}
-                    <img src="{% static 'img/sidebar/white-wallet.svg' %}" class="fonticon-sidebar" alt="">
+                    <img src="{% static 'img/sidebar/white-wallet.svg' %}" class="fonticon-sidebar" alt="the sidebar image">
                 {% else %}
-                    <img src="{% static 'img/sidebar/yellow-wallet.svg' %}" class="fonticon-sidebar" alt="">
+                    <img src="{% static 'img/sidebar/yellow-wallet.svg' %}" class="fonticon-sidebar" alt="the sidebar image">
                 {% endif %}
             </a>
             <a href="{% url 'pannel:userWallet' %}" class="pr-1">{% if LANGUAGE_CODE == 'en' %}Wallet{% elif LANGUAGE_CODE == 'fa' %}کیف پول{% elif LANGUAGE_CODE == 'ar' %}محفظة جيب{% endif %}</a>
@@ -86,9 +89,9 @@
         <li class="{% if 'buy-sells/' in request.path %}active-sidebar{% endif %}">
             <a href="{% url 'pannel:buySellToken' 'st1' %}">
                 {% if not 'buy-sells' in request.path %}
-                    <img src="{% static 'img/sidebar/sell-buy-white.svg' %}" class="fonticon-sidebar" alt="">
+                    <img src="{% static 'img/sidebar/sell-buy-white.svg' %}" class="fonticon-sidebar" alt="the sidebar image">
                 {% else %}
-                    <img src="{% static 'img/sidebar/yellow-sell-buy.svg' %}" class="fonticon-sidebar" alt="">
+                    <img src="{% static 'img/sidebar/yellow-sell-buy.svg' %}" class="fonticon-sidebar" alt="the sidebar image">
                 {% endif %}
             </a>
             <a href="{% url 'pannel:buySellToken' 'st1' %}" class="pr-1">{% if LANGUAGE_CODE == 'en' %}Buy & Sell digital Currency{% elif LANGUAGE_CODE == 'fa' %}خرید و فروش ارز دیجیتال{% elif LANGUAGE_CODE == 'ar' %}بيع وشراء العملات الرقمية{% endif %}</a>
@@ -97,9 +100,9 @@
         <li class="{% if '/robot-subscription' in request.path %}active-sidebar{% endif %}">
             <a href="{% url 'pannel:robot' %}">
                 {% if not '/robot-subscription' in request.path  %}
-                    <img src="{% static 'img/sidebar/white-share.svg' %}" class="fonticon-sidebar" alt="">
+                    <img src="{% static 'img/sidebar/white-share.svg' %}" class="fonticon-sidebar" alt="the sidebar image">
                 {% else %}
-                    <img src="{% static 'img/sidebar/yellow-share-robot.svg' %}" class="fonticon-sidebar" alt="">
+                    <img src="{% static 'img/sidebar/yellow-share-robot.svg' %}" class="fonticon-sidebar" alt="the sidebar image">
                 {% endif %}
             </a>
             <a href="{% url 'pannel:robot' %}" class="pr-1">{% if LANGUAGE_CODE == 'en' %}Robot Subscription{% elif LANGUAGE_CODE == 'fa' %}اشتراک ربات{% elif LANGUAGE_CODE == 'ar' %}اشتراك الروبوت{% endif %}</a>
@@ -119,9 +122,9 @@
         <li class="{% if '/user/change/password' in request.path %}active-sidebar{% endif %}">
             <a href="{% url 'pannel:changePw' %}">
                 {% if '/user/change/password' in request.path %}
-                    <img src="{% static 'img/sidebar/yellow-lock.svg' %}" class="fonticon-sidebar" alt="">
+                    <img src="{% static 'img/sidebar/yellow-lock.svg' %}" class="fonticon-sidebar" alt="the sidebar image">
                 {% else %}
-                    <img src="{% static 'img/sidebar/white-lock.svg' %}" class="fonticon-sidebar" alt="">
+                    <img src="{% static 'img/sidebar/white-lock.svg' %}" class="fonticon-sidebar" alt="the sidebar image">
                 {% endif %}
             </a>
             <a href="{% url 'pannel:changePw' %}" class="pr-1">{% if LANGUAGE_CODE == 'en' %}Change Password{% elif LANGUAGE_CODE == 'fa' %}تغییر رمزعبور{% elif LANGUAGE_CODE == 'ar' %}تغيير كلمة المرور{% endif %}</a>
@@ -130,21 +133,21 @@
         <li class="{% if 'ticket/' in request.path %}active-sidebar{% endif %}">
             <a href="{% url 'pannel:allTicket' %}">
                 {% if not 'ticket/' in request.path %}
-                    <img src="{% static 'img/sidebar/white-ticket.svg' %}" class="fonticon-sidebar" alt="">
+                    <img src="{% static 'img/sidebar/white-ticket.svg' %}" class="fonticon-sidebar" alt="the sidebar image">
                 {% else %}
-                    <img src="{% static 'img/sidebar/yellow-ticket.svg' %}" class="fonticon-sidebar" alt="">
+                    <img src="{% static 'img/sidebar/yellow-ticket.svg' %}" class="fonticon-sidebar" alt="the sidebar image">
                 {% endif %}
             </a>
             <a href="{% url 'pannel:allTicket' %}" class="pr-1">{% if LANGUAGE_CODE == 'en' %}Ticket{% elif LANGUAGE_CODE == 'fa' %}تیکت{% elif LANGUAGE_CODE == 'ar' %}تذكرة{% endif %}</a>
         </li>      
 
-        <li>
+        <li class="mb-1-3-li">
             {% if '/en/' in request.path %}
-                <a href="https://st4w.net/panel-guide/" target="_blank"><i class="fa fa-file fonticon-sidebar" alt=""></i></a>
+                <a href="https://st4w.net/panel-guide/" target="_blank"><i class="fa fa-info fonticon-sidebar-fw" alt="the sidebar image"></i></a>
             {% elif '/fa/' in request.path %}
-                <a href="https://st4w.net/fa/panel-guide/" target="_blank"><i class="fa fa-file fonticon-sidebar" alt=""></i></a>
+                <a href="https://st4w.net/fa/panel-guide/" target="_blank"><i class="fa fa-info fonticon-sidebar-fw" alt="the sidebar image"></i></a>
             {% elif '/ar/' in request.path %}
-                <a href="https://st4w.net/ar/panel-guide/" target="_blank"><i class="fa fa-file fonticon-sidebar" alt=""></i></a>
+                <a href="https://st4w.net/ar/panel-guide/" target="_blank"><i class="fa fa-info fonticon-sidebar-fw" alt="the sidebar image"></i></a>
             {% endif %}
             
             {% if '/en/' in request.path %}
@@ -158,7 +161,7 @@
 
         <li>
             <a href="{% url 'account:signout' %}">
-                <img src="{% static 'img/sidebar/white-exit.svg' %}" class="fonticon-sidebar" alt="">
+                <img src="{% static 'img/sidebar/white-exit.svg' %}" class="fonticon-sidebar" alt="the sidebar image">
             </a>
             <a href="{% url 'account:signout' %}" class="pr-1">{% if LANGUAGE_CODE == 'en' %}Exit{% elif LANGUAGE_CODE == 'fa' %}خروج{% elif LANGUAGE_CODE == 'ar' %}مخرج{% endif %}</a>
         </li>

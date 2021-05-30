@@ -2,9 +2,198 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 <section class="quick-navbar d-none">
-    <div>
-        <!-- <a class="close-quick-navbar cur-poi" onclick="close_sidebar()">&times;</a> -->
-        <ul>
+    <div class="wrapper-smsize-quick">
+
+        <div class="user-info-divi px-1">
+
+            {% if request.user.avatar %}
+                <a href="{% url 'pannel:editUser' request.user.id %}"><div style="background: url('{{ request.user.avatar.url }}') no-repeat center center/ cover;" class="img-avatar-div-quick" ></div></a>
+            {% else %}
+                <a href="{% url 'pannel:editUser' request.user.id %}"><img src="{% static 'img/logo.svg' %}" class="img-avatar-quick mt-1" ></a>
+            {% endif %}
+
+            <br><br>
+
+            <div class="mt-1 pars-data-user">
+                <nav id="ray-lists-nav">
+                    <ul id="ray-lists-ul">
+                        <li class="active-li-light" id="mojodinaghd-pars">
+                            <img src="{% static 'img/sidebar/yellow-edit.svg' %}" class="img-quick-data" alt="the image in sidebar">
+                        </li>
+                        <li id="final-toatal-pars">
+                            <img src="{% static 'img/sidebar/yellow-sell-buy.svg' %}" class="img-quick-data" alt="the image in sidebar">
+                        </li>
+                        <li id="sood-khales-pars">
+                            <img src="{% static 'img/sidebar/yellow-wallet.svg' %}" class="img-quick-data" alt="the image in sidebar">
+                        </li>
+                    </ul>
+                    <div class="tubelight">
+                        <div class="light-ray"></div>
+                    </div>
+                </nav>
+
+                <div class="user-div-under mt-1" id="user-stoke-div-under" style="display: none;">
+                    <div>
+                        <span>
+                            {% if '/fa/' in request.path %}
+                            نام و نام خانوادگی:
+                            {% elif '/en/' in request.path %}
+                            FullName:
+                            {% elif '/ar/' in request.path %}
+                            الاسم الأول واسم العائلة:
+                            {% endif %}
+                        </span>
+                        <span class="font-small ">{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}-{% endif %}</span>
+                    </div>
+                    <div>
+                        <span>
+                            {% if '/fa/' in request.path %}
+                            نام کاربری:
+                            {% elif '/en/' in request.path %}
+                            UserName:
+                            {% elif '/ar/' in request.path %}
+                            اسم االمستخدم:
+                            {% endif %}
+                        </span>
+                        <span class="font-small ">{{ request.user.username }}</span>
+                    </div>
+                    <div>
+                        <span>
+                            {% if '/fa/' in request.path %}
+                            کدکاربری:
+                            {% elif '/en/' in request.path %}
+                            UserCode
+                            {% elif '/ar/' in request.path %}
+                            الرقم السري للمستخدم:
+                            {% endif %}
+                        </span>
+                        <span class="font-small ">{{ request.user.user_code }}</span>
+                    </div>
+                    <div>
+                        <span>
+                            {% if '/fa/' in request.path %}
+                            ایمیل:
+                            {% elif '/en/' in request.path %}
+                            E-mail:
+                            {% elif '/ar/' in request.path %}
+                            البريد الإلكتروني:
+                            {% endif %}
+                        </span>
+                        <span class="font-small ">{{ request.user.email }}</span>
+                    </div>
+                </div>
+
+                <div class="user-div-under mt-1" id="user-finaltotal-div-under" style="display: none;">
+                    <div>
+                        <span>
+                            {% if '/fa/' in request.path %}
+                            موجودی ST1:
+                            {% elif '/en/' in request.path %}
+                            Inventory ST1:
+                            {% elif '/ar/' in request.path %}
+                            المخزون ST1:
+                            {% endif %}
+                        </span>
+                        <span class="font-small ">{{ request.user.get_st1_userStoke }}</span>
+                    </div>
+                    <div>
+                        <span>
+                            {% if '/fa/' in request.path %}
+                            موجودی ST2:
+                            {% elif '/en/' in request.path %}
+                            Inventory ST2:
+                            {% elif '/ar/' in request.path %}
+                            المخزون ST2:
+                            {% endif %}
+                        </span>
+                        <span class="font-small ">{{ request.user.get_st2_userStoke }}</span>
+                    </div>
+                    <div>
+                        <span>
+                            {% if '/fa/' in request.path %}
+                            موجودی ST3:
+                            {% elif '/en/' in request.path %}
+                            Inventory ST3:
+                            {% elif '/ar/' in request.path %}
+                            المخزون ST3:
+                            {% endif %}
+                        </span>
+                        <span class="font-small ">{{ request.user.get_st3_userStoke }}</span>
+                    </div>
+                    <div>
+                        <span>
+                            {% if '/fa/' in request.path %}
+                            موجودی ST4:
+                            {% elif '/en/' in request.path %}
+                            Inventory ST4:
+                            {% elif '/ar/' in request.path %}
+                            المخزون ST4:
+                            {% endif %}
+                        </span>
+                        <span class="font-small ">{{ request.user.get_st4_userStoke }}</span>
+                    </div>
+                </div>
+
+                <div class="user-div-under mt-1" id="user-profit-div-under">
+                    <div>
+                        <span>
+                            {% if '/fa/' in request.path %}
+                            موجودی نقد حساب:
+                            {% elif '/en/' in request.path %}
+                            Cash Balance:
+                            {% elif '/ar/' in request.path %}
+                            رصيد الحساب النقدي:
+                            {% endif %}
+                        </span>
+                        <span class="font-small ">{{ request.user.stoke }}</span>
+                    </div>
+                    <div>
+                        <span>
+                            {% if '/fa/' in request.path %}
+                            دارایی کل:
+                            {% elif '/en/' in request.path %}
+                            Total Asset:
+                            {% elif '/ar/' in request.path %}
+                            إجمالي الأصول:
+                            {% endif %}
+                        </span>
+                        <span class="font-small ">{{ request.user.final_total }}</span>
+                    </div>
+                    <div>
+                        <span>
+                            {% if '/fa/' in request.path %}
+                            سود خالص:
+                            {% elif '/en/' in request.path %}
+                            Net profit percentage:
+                            {% elif '/ar/' in request.path %}
+                            نسبة صافي الربح:
+                            {% endif %}
+                        </span>
+                        <span class="font-small c-{% if request.user.profit_user > 0 %}green{% elif request.user.profit_user < 0 %}red{% else %}{% endif %}">
+                            {{ request.user.profit_user }} $
+                        </span>    
+                    </div>
+                    <div>
+                        <span>
+                            {% if '/fa/' in request.path %}
+                            درصد سود خالص:
+                            {% elif '/en/' in request.path %}
+                            Net profit percentage:
+                            {% elif '/ar/' in request.path %}
+                            نسبة صافي الربح:
+                            {% endif %}
+                        </span>
+                        <span class="font-small c-{% if request.user.profit_percent_user > 0 %}green{% elif request.user.profit_percent_user < 0 %}red{% else %}{% endif %}">
+                            {{ request.user.profit_percent_user }} % 
+                        </span>    
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <ul class="px-1-2">
             <br>
             <li><a href="{% url 'pannel:home' %}" class="pr-1 {% if request.path == '/fa/' or request.path == '/en/' or request.path == '/ar/' %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-home.png' %}" class="fonticon-quicknavbar" alt="dashboard"> {% if LANGUAGE_CODE == 'en' %}Dashboard{% elif LANGUAGE_CODE == 'fa' %}داشبورد{% elif LANGUAGE_CODE == 'ar' %}لوحة القيادة{% endif %}</a></li>
             
@@ -18,7 +207,7 @@
 
             <li><a href="{% url 'pannel:userWallet' %}" class="pr-1 {% if 'wallet' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-wallet.svg' %}" class="fonticon-quicknavbar" alt="wallet"> {% if LANGUAGE_CODE == 'en' %}Wallet{% elif LANGUAGE_CODE == 'fa' %}کیف پول{% elif LANGUAGE_CODE == 'ar' %}محفظة جيب{% endif %}</a></li>
             
-            <li><a href="{% url 'pannel:buySellToken' 'st1' %}" class="pr-1 {% if 'buy' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-sell-buy.svg' %}" class="fonticon-quicknavbar" alt="buy and sell"> {% if LANGUAGE_CODE == 'en' %}Buy & Sell digital Currency{% elif LANGUAGE_CODE == 'fa' %}خرید و فروش ارز دیجیتال{% elif LANGUAGE_CODE == 'ar' %}بيع وشراء العملات الرقمية{% endif %}</a></li>
+            <li><a href="{% url 'pannel:buySellToken' 'st1' %}" class="pr-1 {% if 'buy' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-sell-buy.svg' %}" class="fonticon-quicknavbar" alt="buy and sell"> {% if LANGUAGE_CODE == 'en' %}Buy & Sell{% elif LANGUAGE_CODE == 'fa' %}خرید و فروش ارز{% elif LANGUAGE_CODE == 'ar' %}بيع وشراء{% endif %}</a></li>
             
             <li><a href="{% url 'pannel:robot' %}" class="pr-1 {% if 'bot' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-share-robot.svg' %}" class="fonticon-quicknavbar" alt="robot subscription"> {% if LANGUAGE_CODE == 'en' %}Robot Subscription{% elif LANGUAGE_CODE == 'fa' %}اشتراک ربات{% elif LANGUAGE_CODE == 'ar' %}اشتراك الروبوت{% endif %}</a></li>
             
@@ -29,14 +218,15 @@
             <li><a href="{% url 'pannel:allTicket' %}" class="pr-1 {% if 'ticket/' in request.path %} active-qn{% endif %}"><img src="{% static 'img/sidebar/yellow-ticket.svg' %}" class="fonticon-quicknavbar" alt="tickets"> {% if LANGUAGE_CODE == 'en' %}Ticket{% elif LANGUAGE_CODE == 'fa' %}تیکت{% elif LANGUAGE_CODE == 'ar' %}تذكرة{% endif %}</a></li>
             
             {% if '/en/' in request.path %}
-                <li><a href="https://st4w.net/panel-guide/" target="_blank" class="pr-1"><i class="fa fa-file c-gold mx-1-2" alt="tickets"></i> {% if LANGUAGE_CODE == 'en' %}User Panel Guide{% elif LANGUAGE_CODE == 'fa' %}راهنمای پنل کاربری{% elif LANGUAGE_CODE == 'ar' %}دليل لوحة المستخدم{% endif %}</a></li>
+                <li><a href="https://st4w.net/panel-guide/" target="_blank" class="pr-1"><i class="fa fa-info c-gold mx-1-2" alt="tickets"></i> {% if LANGUAGE_CODE == 'en' %}Panel Guide{% elif LANGUAGE_CODE == 'fa' %}راهنمای پنل{% elif LANGUAGE_CODE == 'ar' %}لوحة الدليل{% endif %}</a></li>
             {% elif '/fa/' in request.path %}
-                <li><a href="https://st4w.net/fa/panel-guide/" target="_blank" class="pr-1"><i class="fa fa-file c-gold mx-1-2" alt="tickets"></i> {% if LANGUAGE_CODE == 'en' %}User Panel Guide{% elif LANGUAGE_CODE == 'fa' %}راهنمای پنل کاربری{% elif LANGUAGE_CODE == 'ar' %}دليل لوحة المستخدم{% endif %}</a></li>
+                <li><a href="https://st4w.net/fa/panel-guide/" target="_blank" class="pr-1"><i class="fa fa-info c-gold mx-1-2" alt="tickets"></i> {% if LANGUAGE_CODE == 'en' %}Panel Guide{% elif LANGUAGE_CODE == 'fa' %}راهنمای پنل{% elif LANGUAGE_CODE == 'ar' %}لوحة الدليل{% endif %}</a></li>
             {% elif '/ar/' in request.path %}
-                <li><a href="https://st4w.net/ar/panel-guide/" target="_blank" class="pr-1"><i class="fa fa-file c-gold mx-1-2" alt="tickets"></i> {% if LANGUAGE_CODE == 'en' %}User Panel Guide{% elif LANGUAGE_CODE == 'fa' %}راهنمای پنل کاربری{% elif LANGUAGE_CODE == 'ar' %}دليل لوحة المستخدم{% endif %}</a></li>
+                <li><a href="https://st4w.net/ar/panel-guide/" target="_blank" class="pr-1"><i class="fa fa-info c-gold mx-1-2" alt="tickets"></i> {% if LANGUAGE_CODE == 'en' %}Panel Guide{% elif LANGUAGE_CODE == 'fa' %}راهنمای پنل{% elif LANGUAGE_CODE == 'ar' %}لوحة الدليل{% endif %}</a></li>
             {% endif %}
 
             <li class="mb-2"><a class="pr-1 cur-poi" onclick="close_sidebar()"><i class="fa fa-times c-gold"></i>&nbsp; {% if LANGUAGE_CODE == 'en' %}Close{% elif LANGUAGE_CODE == 'fa' %}بستن{% elif LANGUAGE_CODE == 'ar' %}لإغلاق{% endif %}</a></li>
         </ul>
+
     </div>
 </section>

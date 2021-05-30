@@ -1,0 +1,26 @@
+{% load i18n static %}
+<div class="three-boxes-top-supp">
+    <div class="box-top-supp bg-box-gold">
+        <a href="{% url 'pannel:su_home' %}">
+            <span class="c-dark zoom">{% translate 'صفحه ی اصلی' %} </span>
+        </a>
+    </div>
+    <div class="box-top-supp">
+        <a href="{% url 'pannel:su_all_tickets' %}">
+            <img src="{% static 'img/tickets/all-ticket.png' %}" alt="the image for navbar">
+            <span class="zoom {% if '/support/user/all-tickets/' in request.path %}c-gold{% else %}c-white{% endif %}">{% translate 'مشاهده ی تمامی تیکت ها' %} </span>
+        </a>
+    </div>
+    <div class="box-top-supp">
+        <a href="{% url 'pannel:su_sendticket_auser' %}">
+            <img src="{% static 'img/tickets/all-ticket.png' %}" alt="the image for navbar">
+            <span class="zoom {% if '/support/user/response/user/' in request.path %}c-gold{% else %}c-white{% endif %}">{% translate 'ارسال تیکت به کاربر' %} </span>
+        </a>
+    </div>
+    <div class="box-top-supp">
+        <a href="{% url 'pannel:su_useraccount' %}">
+            <img src="{% static 'img/tickets/all-ticket.png' %}" alt="the image for navbar">
+            <span class="zoom {% if '/support/user/accounts/' in request.path %}c-gold{% else %}c-white{% endif %}">{% translate 'تنظیمات حساب' %} </span>
+        </a>
+    </div>
+</div>

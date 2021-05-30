@@ -1,5 +1,6 @@
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,10 +10,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '57h8@&he$6qij88^15t4j#=b&nchx0&ka4!t#i&9h*zl6k-8h$'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['https://panel.st4w.net', 'https://www.panel.st4w.net', 'panel.st4w.net']
@@ -83,12 +84,12 @@ DATABASES = {
 ###################### PostGre
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'panelstw_database_pg',
-#         'USER': 'panelstw_user_pg',
-#         'PASSWORD': 'Gzhr~v$aex@T',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
+#         'ENGINE': config('ENGINE_DB')
+#         'NAME': config('NAME_DB')
+#         'USER': config('USER_DB')
+#         'PASSWORD': config('PASSWORD_DB')
+#         'HOST': config('HOST_DB')
+#         'PORT': config('PORT_DB')
 #     }
 # }
 
@@ -149,3 +150,14 @@ CAPTCHA_BACKGROUND_COLOR = '#000'
 CAPTCHA_FOREGROUND_COLOR = '#eeb00e'
 CAPTCHA_LENGTH = 3
 CAPTCHA_IMAGE_SIZE = (200, 100) 
+
+# Email config
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST=config('EMAIL_HOST')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_PORT=config('EMAIL_PORT')
+EMAIL_HOST_USER=config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
+
+# session time change
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30 # it's seconds    // Default is 1209600 seconds thats mean: 2 weak

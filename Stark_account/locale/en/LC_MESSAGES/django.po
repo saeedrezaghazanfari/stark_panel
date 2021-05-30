@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-03 22:32+0430\n"
+"POT-Creation-Date: 2021-05-30 09:41+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,121 +22,137 @@ msgstr ""
 msgid "پنل مدیریت استارک"
 msgstr "STARK Admin Panel"
 
-#: .\apps.py:8
+#: .\apps.py:7
 msgid "ماژول کاربر"
 msgstr "User Module"
 
-#: .\forms.py:11
+#: .\forms.py:12
 msgid "نام کاربری و یا ایمیل خود را وارد کنید:"
 msgstr "Enter your E-mail or UserName"
 
-#: .\forms.py:11 .\templates\signin.html:40
+#: .\forms.py:12 .\templates\signin.html:40
 msgid "نام کاربری / ایمیل:"
 msgstr "UserName / E-mail:"
 
-#: .\forms.py:12
+#: .\forms.py:13
 msgid "رمز عبور خود را وارد کنید:"
 msgstr "Enter your Password:"
 
-#: .\forms.py:12 .\templates\signin.html:49
+#: .\forms.py:13 .\templates\signin.html:49
 msgid "رمز عبور:"
 msgstr "Password:"
 
-#: .\forms.py:23
+#: .\forms.py:24
 msgid "نام کاربری خود را وارد کنید."
 msgstr "Enter your UserName."
 
-#: .\forms.py:27 .\forms.py:31
+#: .\forms.py:28 .\forms.py:32
 msgid "نام کاربری / ایمیل وارد شده فاقد اعتبار است."
 msgstr "Your email / username is invalid."
 
-#: .\forms.py:37
+#: .\forms.py:38
 msgid "لطفا رمز عبور خود را وارد کنید."
 msgstr "Enter your Password."
 
-#: .\forms.py:45
+#: .\forms.py:46
 msgid "نام نباید بیشتر از 30 کاراکتر باشد."
 msgstr "The FirstName should not Exceed 30 Characters."
 
-#: .\forms.py:46
+#: .\forms.py:47
 msgid "نام نباید کمتر از 2 کاراکتر باشد"
 msgstr "The FirstName should not be Less than 2 Characters."
 
-#: .\forms.py:48 .\templates\signup.html:41
+#: .\forms.py:49 .\templates\signup.html:41
 msgid "نام"
 msgstr "FirstName"
 
-#: .\forms.py:53
+#: .\forms.py:54
 msgid "نام خانوادگی نباید بیشتر از 30 کاراکتر باشد"
 msgstr "The LastName should not Exceed 30 Characters."
 
-#: .\forms.py:54
+#: .\forms.py:55
 msgid "نام خانوادگی نباید کمتر از 3 کاراکتر باشد."
 msgstr "The LastName should not be Less than 3 Characters."
 
-#: .\forms.py:56 .\templates\signup.html:45
+#: .\forms.py:57 .\templates\signup.html:45
 msgid "نام خانوادگی"
 msgstr "LastName"
 
-#: .\forms.py:68
+#: .\forms.py:69
 msgid "نام کاربری دیگری انتخاب کنید."
 msgstr "Enter another Username."
 
-#: .\forms.py:70
+#: .\forms.py:71
 msgid "نام کاربری نمیتواند شامل @ باشد."
 msgstr "Username cannot contain @."
 
-#: .\forms.py:73
+#: .\forms.py:74
 msgid "نام کاربری باید تنها شامل حروف انگلیسی باشد."
 msgstr "Username must contain only English letters."
 
-#: .\forms.py:82
+#: .\forms.py:80
+msgid "ایمیل و ایمیل پشتیبانی نمیتوانند یکسان باشند."
+msgstr "Email and support email cannot be the same."
+
+#: .\forms.py:89
 msgid "ایمیل دیگری انتخاب کنید."
 msgstr "Enter another Email."
 
-#: .\forms.py:89
+#: .\forms.py:96
 msgid "شماره همراه دیگری انتخاب کنید"
 msgstr "Enter another PhoneNumber."
 
-#: .\forms.py:96
-msgid "کد ملی دیگری انتخاب کنید."
-msgstr "Enter another NationalID."
-
-#: .\forms.py:103
+#: .\forms.py:103 .\views.py:193
 msgid "رمزعبور باید شامل حروف انگلیسی، اعداد و علامت‌ها باشد."
 msgstr "Password must include English letters, numbers and symbols."
 
-#: .\models.py:20
+#: .\forms.py:107
+msgid "ایمیل خود را وارد کنید:"
+msgstr "Enter your Email:"
+
+#: .\forms.py:107 .\templates\forget_password_page.html:36
+msgid "ایمیل:"
+msgstr "Email"
+
+#: .\forms.py:113
+msgid "ایمیل شما در سیستم موجود نیست."
+msgstr "Your email is not available in the System."
+
+#: .\forms.py:121
+msgid "Your old password was entered incorrectly. Please enter it again."
+msgstr "Your old password was entered incorrectly. Please enter it again."
+
+#: .\models.py:20 .\templates\signup.html:52
+msgid "ایمیل"
+msgstr "E-mail"
+
+#: .\models.py:21
 msgid "کدکاربری"
 msgstr "User ID"
 
-#: .\models.py:21
+#: .\models.py:22
 msgid "موجودی نقدی"
 msgstr "Cash Balance"
 
-#: .\models.py:22
+#: .\models.py:23
 msgid "پرداختی کل کاربر"
 msgstr "Total user Payment"
 
-#: .\models.py:23
+#: .\models.py:24
 msgid "برداشتی کل کاربر"
 msgstr "Total user Impressions"
 
-#: .\models.py:24
+#: .\models.py:25
 msgid "اشتراک ربات"
 msgstr "Robot Subscription"
 
-#: .\models.py:25
+#: .\models.py:26
 msgid "تصویر"
 msgstr "Avatar"
 
-#: .\models.py:26
-msgid "تصویر کدملی"
-msgstr "National ID Image"
-
-#: .\models.py:27 .\templates\signup.html:66
-msgid "کدملی"
-msgstr "National ID"
+#: .\models.py:27 .\templates\signup.html:67
+msgid "ایمیل پشتیبان"
+msgstr "Backup Email"
 
 #: .\models.py:28
 msgid "شماره همراه"
@@ -177,37 +193,78 @@ msgstr "Users"
 msgid "تصویر کاربر "
 msgstr "User Avatar"
 
-#: .\templates\signin.html:5
-msgid "استارک، پنل کاربری استارک، ارز دیجیتال، ورود"
-msgstr "Stark, Stark Account, digital currency, login"
+#: .\templates\change_pw_form.html:5 .\templates\forget_password_page.html:5
+msgid "استارک، پنل کاربری استارک، ارز دیجیتال"
+msgstr "Stark, Stark Account, digital currency"
 
+#: .\templates\change_pw_form.html:6 .\templates\forget_password_page.html:6
 #: .\templates\signin.html:6 .\templates\signup.html:6
 msgid "پنل کاربری استارک"
 msgstr "STARK Account"
+
+#: .\templates\change_pw_form.html:9
+msgid "استارک | تغییر رمزعبور"
+msgstr "STARK | Change PassWord"
+
+#: .\templates\change_pw_form.html:35
+msgid "تغییر رمزعبور:"
+msgstr "Change Password"
+
+#: .\templates\change_pw_form.html:36
+msgid "رمزعبور:"
+msgstr "Password:"
+
+#: .\templates\change_pw_form.html:45
+msgid "تایید رمزعبور:"
+msgstr "Verify Password:"
+
+#: .\templates\change_pw_form.html:53
+msgid "اعمال"
+msgstr "Record"
+
+#: .\templates\forget_password_page.html:9 .\views.py:80
+msgid "استارک | فراموشی رمزعبور"
+msgstr "STARK | Forget Password"
+
+#: .\templates\forget_password_page.html:35
+msgid "فراموشی رمزعبور:"
+msgstr "Forget Password:"
+
+#: .\templates\forget_password_page.html:44
+msgid "دریافت ایمیل"
+msgstr "Receive email"
+
+#: .\templates\signin.html:5
+msgid "استارک، پنل کاربری استارک، ارز دیجیتال، ورود"
+msgstr "Stark, Stark Account, digital currency, login"
 
 #: .\templates\signin.html:9
 msgid "استارک | ورود"
 msgstr "STARK | Login"
 
-#: .\templates\signin.html:33
-msgid "ورود به استارک"
-msgstr "Login to STARK"
-
 #: .\templates\signin.html:58
 msgid "کدامنیتی"
 msgstr "Security code"
 
-#: .\templates\signin.html:71
+#: .\templates\signin.html:67
+msgid "مرا به خاطر بسپار؟"
+msgstr "Remember Me?"
+
+#: .\templates\signin.html:79
 msgid "ورود"
 msgstr "Login"
 
-#: .\templates\signin.html:74
+#: .\templates\signin.html:81
 msgid "حسابی ندارید؟ "
 msgstr "Do not have an Account?"
 
-#: .\templates\signin.html:75
+#: .\templates\signin.html:82
 msgid "ثبت نام کنید"
 msgstr "Register Now"
+
+#: .\templates\signin.html:85
+msgid "رمز عبور خود را فراموش کرده اید؟"
+msgstr "Forgot your password?"
 
 #: .\templates\signup.html:5
 msgid "پنل کاربری استارک، ارز دیجیتال، ثبت نام"
@@ -217,65 +274,101 @@ msgstr "Stark, Stark Account, digital currency, Register"
 msgid "استارک | ثبت نام"
 msgstr "STARK | Register"
 
-#: .\templates\signup.html:34
-msgid "ثبت نام در استارک"
-msgstr "Register to STARK"
-
-#: .\templates\signup.html:51
-msgid "ایمیل"
-msgstr "E-mail"
-
 #: .\templates\signup.html:56
 msgid "نام کاربری"
 msgstr "UserName"
 
-#: .\templates\signup.html:62
+#: .\templates\signup.html:63
 msgid "تلفن همراه"
 msgstr "Phone Number"
 
-#: .\templates\signup.html:73
+#: .\templates\signup.html:74
 msgid "رمزعبور"
 msgstr "Password"
 
-#: .\templates\signup.html:77
+#: .\templates\signup.html:78
 msgid "تایید رمزعبور"
 msgstr "Verify Password"
 
-#: .\templates\signup.html:114
+#: .\templates\signup.html:115
 msgid "ثبت نام"
 msgstr "Register"
 
-#: .\templates\signup.html:117
+#: .\templates\signup.html:118
 msgid "حساب کاربری دارید؟ "
 msgstr "Do you have an Account?"
 
-#: .\templates\signup.html:118
+#: .\templates\signup.html:119
 msgid "ورود به سایت"
 msgstr "Login to Stark"
 
-#: .\views.py:38 .\views.py:44
+#: .\views.py:46 .\views.py:52
 msgid "رمز عبور اشتباه است."
 msgstr "Password is Wrong."
 
-#: .\views.py:47
+#: .\views.py:55
 msgid "ایمیل / نام کاربری شما فاقد اعتبار است."
 msgstr "Your email / username is invalid."
 
-#: .\views.py:53
+#: .\views.py:61
 msgid "شما با موفقیت وارد شدید."
 msgstr "You have been Logged in Successfully."
 
-#: .\views.py:54
+#: .\views.py:62
 msgid "به پنل کاربری استارک خوش آمدید."
 msgstr "Welcome to the Stark User Panel."
 
-#: .\views.py:91
+#: .\views.py:112
+msgid "ایمیل فراموشی رمزعبور برای شما ارسال شد."
+msgstr "Password forgotten email sent to you."
+
+#: .\views.py:133
+msgid "به پنل کاربری استارک خوش آمدید"
+msgstr "Welcome to the STARK User Panel"
+
+#: .\views.py:166
 msgid "ساخت اکانت شما موفقیت آمیز بود"
 msgstr "Your Account was Created Successfully"
 
-#: .\views.py:92
-msgid "برای ورود اطلاعات خود را وارد کنید"
-msgstr "Enter your Information to Enter"
+#: .\views.py:167
+msgid "برای فعالسازی حساب به ایمیل خود مراجعه کنید."
+msgstr "See your email to activate your account."
+
+#: .\views.py:198
+msgid "رمزعبور شما بروزرسانی شد."
+msgstr "Your password has been updated."
+
+#: .\views.py:199
+msgid "برای ورود اطلاعات خود را وارد کنید."
+msgstr "Enter your information to enter."
+
+#: .\views.py:205
+msgid "لینکی که با آن وارد شده‌اید، نامعتبر است."
+msgstr "The link you entered is invalid."
+
+#: .\views.py:220
+msgid "حساب کاربری شما فعال گردید."
+msgstr "Your account has been activated."
+
+#: .\views.py:221
+msgid "برای ورود به حساب، اطلاعات خود را وارد کنید."
+msgstr "Enter your information to sign in."
+
+#: .\views.py:224
+msgid "لینک فعالسازی شما نامعتبر است."
+msgstr "Your activation link is invalid."
+
+#~ msgid "کد ملی دیگری انتخاب کنید."
+#~ msgstr "Enter another NationalID."
+
+#~ msgid "تصویر کدملی"
+#~ msgstr "National ID Image"
+
+#~ msgid "کدملی"
+#~ msgstr "National ID"
+
+#~ msgid "ثبت نام در استارک"
+#~ msgstr "Register to STARK"
 
 #~ msgid "دارایی برحسب usdt"
 #~ msgstr "assets in USDT"

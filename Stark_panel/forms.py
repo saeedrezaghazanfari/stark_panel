@@ -48,11 +48,6 @@ class BuyAndSell_Form(forms.ModelForm):
 		model = BuyAndSell
 		fields = ['user', 'token', 'count', 'buy_sell', 'is_paid']
 
-class AddBotSubForm(forms.ModelForm):
-	class Meta:
-		model = RobotSubscription
-		fields = ['user', 'time_subscription', 'is_paid', 'is_active']
-
 class WalletOrderAddForm(forms.ModelForm):
 	class Meta:
 		model = WalletOrder

@@ -51,7 +51,7 @@
     }
 
     .form-group-inline{ 
-        margin-top: 2rem;
+        margin-top: 1rem;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -75,21 +75,6 @@
         border-radius: 5px;
         width: 100%;
         margin-top: 5px;
-    }
-    .upload-file {
-        margin-top: 0.5rem;
-        border: 3px dashed #564e4b;
-        height: 150px;
-        width: 100%;
-        border-radius: 5px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        label {
-            margin-top: 1rem;
-            color: #564e4b;
-        }
     }
     button{ 
         background-color: $c-gold;

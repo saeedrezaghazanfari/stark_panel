@@ -20,23 +20,17 @@
     font-weight: bold;
 }
 
-html::-webkit-scrollbar{
-    background-color: $bgc-all;
-    width: 12px !important;
-}
-html::-webkit-scrollbar-thumb{
-    border-radius: 12px !important;
-    background-color: rgb(37, 37, 37);
-}
-div#list-chart::-webkit-scrollbar,
-article::-webkit-scrollbar{
+::-webkit-scrollbar{
     background-color: $bgc-card;
     width: 7px !important;
 }
-div#list-chart::-webkit-scrollbar-thumb,
-article::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb{
     border-radius: 12px !important;
     background-color: rgb(37, 37, 37);
+}
+section#showchart-sec::-webkit-scrollbar {
+    background-color: #686868;
+    width: 7px !important;
 }
 html{
 	scroll-behavior: smooth;
@@ -98,12 +92,15 @@ a { text-decoration: none; }
 .d-none { display: none; }
 .d-inline { display: inline; }
 .text-center { text-align: center; }
+.text-justify { text-align: justify; }
 .cur-poi { cursor: pointer; }
+.lh-2 { line-height: 2rem !important; }
 button { cursor: pointer; border: none; }
 .rtl { direction: rtl; }
 .ltr { direction: ltr; }
 .w-100 { width: 100%; }
 .btn-disabled { background-color: #4b4b4b !important; }
+.hover-white:hover { color: white !important; }
 
 // zoom
 .zoom {

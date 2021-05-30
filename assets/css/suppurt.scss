@@ -49,17 +49,68 @@ div.three-boxes-top-supp {
 }
 
 form#form-send-a-ticket {
-    max-width: 600px;
+    max-width: 700px;
     margin: 30px auto;
     box-shadow: $box-shdow;
     padding: 2rem;
     border-radius: 9px;
 
+    // start PEAKA_Editor
+    section#peaka-editor {
+        margin: 0.5rem 0;
+
+        div#pk-editor-area {
+            overflow-y: auto;
+            height: 200px;
+            background-color: #1b1a1f;
+            padding: 1rem 1.5rem;
+            margin: 3px 0;
+            border-radius: 5px;
+        }
+        div#pk-editor-options {
+            width: 100%;
+            margin: 0.5rem 0;  
+            div.pk-editor-wrapper {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+        
+                a.fontStyle {
+                    cursor: pointer;
+                    text-align: center;
+                    padding: 0.25rem 0.75rem;
+                    height:30px;
+                    border-radius: 3px;
+                    background-color: #1b1a1f;
+                    border:none;
+                    margin: 3px;
+                    i { color: #dbdbdb; }
+                    span {
+                        display: flex;
+                        justify-content: center;
+                        input { height: 20px !important; }
+                        img { display: none;}
+                    }
+                    label {
+                        cursor: pointer;
+                        font-size: 10pt;
+                        color: #dbdbdb;
+                    }
+                    select#pk-editor-fontSize {
+                        background-color: #1b1a1f;
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+    // end PEAKA_Editor
+    
     label {
         font-size: 10pt;
         color: #dbdbdb;
     }
-    select, input, textarea {
+    .input-styles-form{
         background-color: #1b1a1f !important;
         border: none;
         border-radius: 6px;
@@ -87,10 +138,12 @@ form#form-send-a-ticket {
         }
     }
 }
-
+.table-wrapper {
+    width: calc(100vw - 470px);
+    overflow: auto;
+}
 .all-tickets {
     margin-top: 2rem;
-
     .ticket-of-tickets {
         display: flex;
         flex-direction: row;
@@ -160,6 +213,7 @@ form#form-send-a-ticket {
 table#set-user-account {
     width: 100%;
     text-align: center;
+    overflow: auto;
     border-collapse: collapse; /* for one border */
 
     td, th {
@@ -211,12 +265,19 @@ table#set-user-account {
         .img-heading {
             display: flex;
             
-            div {
+            div.wrapper-header {
                 margin: 1rem 1.5rem;
                 font-size: 10pt;
             }
-            img.avatar {
-                height: 80px; border-radius: 50%; width: 80px;
+            div.img-avatar-div {
+                height: 80px;
+                width: 80px;
+                border-radius: 50%;
+            }
+            img.img-avatar { 
+                border-radius: 50%;
+                height: 80px;
+                width: 80px;
             }
         }
 
@@ -257,7 +318,57 @@ table#set-user-account {
                 font-size: 10pt;
                 color: #dbdbdb;
             }
-            select, input, textarea {
+            // start PEAKA_Editor
+            section#peaka-editor {
+                margin: 0.5rem 0;
+
+                div#pk-editor-area {
+                    overflow-y: auto;
+                    height: 200px;
+                    background-color: #1b1a1f;
+                    padding: 1rem 1.5rem;
+                    margin: 3px 0;
+                    border-radius: 5px;
+                }
+                div#pk-editor-options {
+                    width: 100%;
+                    margin: 0.5rem 0;  
+                    div.pk-editor-wrapper {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                
+                        a.fontStyle {
+                            cursor: pointer;
+                            text-align: center;
+                            padding: 0.25rem 0.75rem;
+                            height:30px;
+                            border-radius: 3px;
+                            background-color: #1b1a1f;
+                            border:none;
+                            margin: 3px;
+                            i { color: #dbdbdb; }
+                            span {
+                                display: flex;
+                                justify-content: center;
+                                input { height: 20px !important; }
+                                img { display: none;}
+                            }
+                            label {
+                                cursor: pointer;
+                                font-size: 10pt;
+                                color: #dbdbdb;
+                            }
+                            select#pk-editor-fontSize {
+                                background-color: #1b1a1f;
+                                border: none;
+                            }
+                        }
+                    }
+                }
+            }
+            // end PEAKA_Editor
+            .input-styles-form {
                 background-color: #1b1a1f !important;
                 border: none;
                 border-radius: 6px;

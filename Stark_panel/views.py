@@ -1,7 +1,7 @@
 # imports
 from django.http import JsonResponse
 from django.contrib import messages
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import activate, get_language
@@ -10,7 +10,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.views.generic import View, UpdateView
 from django.db.models import Q
 from Stark_account.models import User
-from Stark_siteSetting.models import SettingVideo, SettingCategory
+from Stark_siteSetting.models import SettingVideo, SettingCategory, Stark_Setting
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from Extentions.utils import jalali_convertor
@@ -44,12 +44,6 @@ def home_page_pannel(request):
 
 		'user_stoke_st3': request.user.userstokes.filter(token__title='ST3').first(),
 		'user_stoke_st4': request.user.userstokes.filter(token__title='ST4').first(),
-		'user_final_total': get_final_total(request.user),
-		'profit': get_profit(request.user, 'profit'),
-		'profit_percent': get_profit(request.user, 'percent'),
-		# colors profit
-		'profit_color': get_profit_color(get_profit(request.user, 'profit')),
-		'profit_percent_color': get_profit_color(get_profit(request.user, 'percent')),
 
 		# chart st3
 		'prices_dollar_st3': get_chart(tokenName='ST3', typeOut='price', fa_lang_code=fa_langcode),
@@ -58,6 +52,7 @@ def home_page_pannel(request):
 		'prices_dollar_st4': get_chart(tokenName='ST4', typeOut='price', fa_lang_code=fa_langcode),
 		'dates_st4': get_chart(tokenName='ST4', typeOut='date', fa_lang_code=fa_langcode),
 	})
+
 
 # show charts
 @active_required_decorator(login_url='/sign-in')
@@ -68,8 +63,8 @@ def show_chart_page(request, tokenTitle):
 	if tokenTitle == 'st1':
 		return render(request, 'view_charts.html', {
 			# chart st1
-			'prices_dollar': get_chart(tokenName='ST1', typeOut='price', fa_lang_code=fa_langcode, num_last=30),
-			'dates': get_chart(tokenName='ST1', typeOut='date', fa_lang_code=fa_langcode, num_last=30),
+			'prices_dollar': get_chart(tokenName='ST1', typeOut='price', fa_lang_code=fa_langcode, num_last=40),
+			'dates': get_chart(tokenName='ST1', typeOut='date', fa_lang_code=fa_langcode, num_last=40),
 			'tokenTitle': 'ST1',
 			'user_token_stock': request.user.userstokes.filter(token__title='ST1').first(),
 			'last_price_chart': get_last_price_token(tokenName='ST1'),
@@ -77,8 +72,8 @@ def show_chart_page(request, tokenTitle):
 	elif tokenTitle == 'st2':
 		return render(request, 'view_charts.html', {
 			# chart st2
-			'prices_dollar': get_chart(tokenName='ST2', typeOut='price', fa_lang_code=fa_langcode, num_last=30),
-			'dates': get_chart(tokenName='ST2', typeOut='date', fa_lang_code=fa_langcode, num_last=30),
+			'prices_dollar': get_chart(tokenName='ST2', typeOut='price', fa_lang_code=fa_langcode, num_last=40),
+			'dates': get_chart(tokenName='ST2', typeOut='date', fa_lang_code=fa_langcode, num_last=40),
 			'tokenTitle': 'ST2',
 			'user_token_stock': request.user.userstokes.filter(token__title='ST2').first(),
 			'last_price_chart': get_last_price_token(tokenName='ST2'),
@@ -86,8 +81,8 @@ def show_chart_page(request, tokenTitle):
 	elif tokenTitle == 'st3':
 		return render(request, 'view_charts.html', {
 			# chart st3
-			'prices_dollar': get_chart(tokenName='ST3', typeOut='price', fa_lang_code=fa_langcode, num_last=30),
-			'dates': get_chart(tokenName='ST3', typeOut='date', fa_lang_code=fa_langcode, num_last=30),
+			'prices_dollar': get_chart(tokenName='ST3', typeOut='price', fa_lang_code=fa_langcode, num_last=40),
+			'dates': get_chart(tokenName='ST3', typeOut='date', fa_lang_code=fa_langcode, num_last=40),
 			'tokenTitle': 'ST3',
 			'user_token_stock': request.user.userstokes.filter(token__title='ST3').first(),
 			'last_price_chart': get_last_price_token(tokenName='ST3'),
@@ -95,12 +90,13 @@ def show_chart_page(request, tokenTitle):
 	elif tokenTitle == 'st4':
 		return render(request, 'view_charts.html', {
 			# chart st4
-			'prices_dollar': get_chart(tokenName='ST4', typeOut='price', fa_lang_code=fa_langcode, num_last=30),
-			'dates': get_chart(tokenName='ST4', typeOut='date', fa_lang_code=fa_langcode, num_last=30),
+			'prices_dollar': get_chart(tokenName='ST4', typeOut='price', fa_lang_code=fa_langcode, num_last=40),
+			'dates': get_chart(tokenName='ST4', typeOut='date', fa_lang_code=fa_langcode, num_last=40),
 			'tokenTitle': 'ST4',
 			'user_token_stock': request.user.userstokes.filter(token__title='ST4').first(),
 			'last_price_chart': get_last_price_token(tokenName='ST4'),
 		})
+
 
 # user wallet
 @active_required_decorator(login_url='/sign-in')
@@ -109,12 +105,17 @@ def user_wallet(request):
 	
 	thisUser = request.user
 	orderwallet_form = OrderWalletUserForm(request.POST or None)
-	
+
+	stark_img_and_wallet = Stark_Setting.objects.filter(is_active=True).last()
+	if not stark_img_and_wallet:
+		stark_img_and_wallet = None
+
 	context = {
 		'wallet_LAs': WalletOrder.objects.filter(user__id=request.user.id).order_by('-id')[:30],
 		'wallets': UserWallet.objects.filter(user=thisUser).order_by('-id'),
 		'orderwallet_form': orderwallet_form,
 		'counter_wallets': UserWallet.objects.filter(user=thisUser).count(),
+		'stark_img_and_wallet': stark_img_and_wallet,
 	}
 	if orderwallet_form.is_valid():
 		orderWallet = orderwallet_form.save(commit=False)
@@ -209,15 +210,16 @@ class UserWallet_GetCreate(LoginRequiredMixin, View):
 				messages.info(request, _('از حذف کیف پول خود مطمئن شوید.') )
 				return redirect('pannel:userWallet')	
 
+
 # Robot subscription
 @active_required_decorator(login_url='/sign-in')
 @login_required(login_url='/sign-in')
 def robot_subscription(request):
 	thisUser = request.user
-	
+	get_lang_vid = get_language()
 	context = {
 		'bot_categories': SettingCategory.objects.order_by('id'),
-		'videos': SettingVideo.objects.all(),
+		'videos': SettingVideo.objects.filter(video_lang=get_lang_vid).all(),
 	}
 	if request.POST:
 		if request.POST.get('ensure-pay-bot'):
@@ -226,12 +228,15 @@ def robot_subscription(request):
 					
 					time_subscription = request.POST.get('type-bot-sub')
 					priceCate = SettingCategory.objects.filter(days=int(time_subscription)).first().price
+					
+					time_bot_to_expire = SettingCategory.objects.filter(days=int(time_subscription)).first()
+					days_bot_to_expire = int(time_bot_to_expire.days) + int(time_bot_to_expire.free_days)
 
 					if priceCate == 0 and RobotSubscription.objects.filter(user=thisUser, time_subscription=time_subscription).first():
 						messages.info(request, _('شما یک بار از تعرفه‌ی رایگان ما استفاده کرده‌اید.') )
 						return redirect('pannel:robot')
 					
-					bot_reserve = RobotSubscription.objects.create(user=thisUser, time_subscription=time_subscription, is_paid=True, date=datetime.now(), last_date=datetime.now() + timedelta(days=int(time_subscription)))
+					bot_reserve = RobotSubscription.objects.create(user=thisUser, time_subscription=time_subscription, is_paid=True, date=datetime.now(), last_date=datetime.now() + timedelta(days=days_bot_to_expire))
 					thisUser.stoke -= priceCate
 					thisUser.save()
 					
@@ -283,6 +288,7 @@ def add_tickets(request):
 		if ticket_form.is_valid():
 			ticketForm = ticket_form.save(commit=False)
 			ticketForm.user = request.user
+			ticketForm.date = datetime.now()
 			ticketForm.save()
 
 			messages.info(request, _('تیکت شما با موفقیت ارسال شد.') )
@@ -323,8 +329,9 @@ class UpdateUser(UpdateUserPermission, SuccessMessageMixin, LoginRequiredMixin, 
 	model = User
 	pk_url_kwarg = 'userID'
 	success_message = _('اطلاعات شما با موفقیت ذخیره شد.')
-	fields = ['first_name', 'last_name' ,'avatar', 'national_code', 'national_code_image', 'phone']
+	fields = ['first_name', 'last_name' ,'avatar', 'backup_email', 'phone']
 	template_name = 'update_user.html'
+
 
 # change user password
 @active_required_decorator(login_url='/sign-in')
@@ -357,50 +364,6 @@ def change_password(request):
 
 	return render(request, 'change_password.html', context)
 
-# send request buy sell token
-class BuySellTokenClassView(LoginRequiredMixin, View):
-	def get(self, request):
-		orderOpacity = request.GET.get('op')
-		typeToken = request.GET.get('tk')
-
-		if orderOpacity == '':
-			orderOpacity = 0
-
-		if typeToken == 'st1':
-			price = 0
-			lasttoken = ChartTokenPrice.objects.filter(token__title='ST1').last()
-			if lasttoken:
-				price = lasttoken.price_dollar
-			output = float(orderOpacity) / float(price)
-			output_formated = format(output, '.2f')
-			return JsonResponse({'total': f'{output_formated} : ST1', 'status': 200})
-
-		if typeToken == 'st2':
-			price = 0
-			lasttoken = ChartTokenPrice.objects.filter(token__title='ST2').last()
-			if lasttoken:
-				price = lasttoken.price_dollar
-			output = float(orderOpacity) / float(price)
-			output_formated = format(output, '.2f')
-			return JsonResponse({'total': f'{output_formated} : ST2', 'status': 200})
-
-		if typeToken == 'st3':
-			price = 0
-			lasttoken = ChartTokenPrice.objects.filter(token__title='ST3').last()
-			if lasttoken:
-				price = lasttoken.price_dollar
-			output = float(orderOpacity) / float(price)
-			output_formated = format(output, '.2f')
-			return JsonResponse({'total': f'{output_formated} : ST3', 'status': 200})
-
-		elif typeToken == 'st4':
-			price = 0
-			lasttoken = ChartTokenPrice.objects.filter(token__title='ST4').last()
-			if lasttoken:
-				price = lasttoken.price_dollar
-			output = float(orderOpacity) / float(price)
-			output_formated = format(output, '.2f')
-			return JsonResponse({'total': f'{output_formated} : ST4', 'status': 200})
 
 # send ticket to buy_sell
 @active_required_decorator(login_url='/sign-in')
@@ -414,6 +377,14 @@ def buy_sell_sendticket(request):
 
 		if not opacityOrder:
 			opacityOrder = 0
+		
+		if float(opacityOrder) < 0:
+			messages.info(request, _('حجم درخواستی نباید منفی باشد.') )
+			return redirect('pannel:buySellToken', typeToken)
+		
+		if float(opacityOrder) == 0:
+			messages.info(request, _('حجم درخواستی نباید صفر باشد.') )
+			return redirect('pannel:buySellToken', typeToken)
 
 		if typeToken == 'st1':
 			price = 0
@@ -439,32 +410,38 @@ def buy_sell_sendticket(request):
 			if lasttoken:
 				price = lasttoken.price_dollar
 
-		if not int(opacityOrder) == 0:
+		if not float(opacityOrder) == 0:
 			if typeOrder == 'buytoken':
 				buysell_token_order = 'buy'
 				if get_language() == 'en':
+					audited = format((float(opacityOrder) / float (price)), '.2f')
 					sub = f'Request to Buy {typeToken} Token'
-					msg =f'My UserID {thisUser.user_code}; I have a request to Buy {typeToken} tokens to {float(opacityOrder) / float (price)} for the calculated price {opacityOrder} USDT. Thanks'
+					msg =f'My UserID {thisUser.user_code}; I have a request to Buy {typeToken} tokens to {audited} for the calculated price {opacityOrder} USDT. Thanks'
 				
 				elif get_language() == 'fa':
+					audited = format((float(opacityOrder) / float (price)), '.2f')
 					sub = f'درخواست خرید توکن {typeToken}'
-					msg =f'اینجانب با کد کاربری {thisUser.user_code} درخواست خرید توکن {typeToken} را به تعداد {float(opacityOrder) / float (price)} را به قیمت محاسبه شده ی {opacityOrder} تتر دارم. باتشکر'
+					msg =f'اینجانب با کد کاربری {thisUser.user_code} درخواست خرید توکن {typeToken} را به تعداد {audited} را به قیمت محاسبه شده ی {opacityOrder} تتر دارم. باتشکر'
 				
 				elif get_language() == 'ar':
+					audited = format((float(opacityOrder) / float (price)), '.2f')
 					sub = f'طلب شراء رمز مميز {typeToken}'
-					msg =f'لدي اسم الرمز طلب {thisUser.user_code} لشراء {typeToken} کن تعداد {float(opacityOrder) / float (price)} به بالسعر المحسوب {opacityOrder} USDT. شكرا'
+					msg =f'لدي اسم الرمز طلب {thisUser.user_code} لشراء {typeToken} کن تعداد {audited} به بالسعر المحسوب {opacityOrder} USDT. شكرا'
 
 			elif typeOrder == 'selltoken':
 				buysell_token_order = 'sell'
 				if get_language() == 'en':
+					audited = format((float(opacityOrder) / float (price)), '.2f')
 					sub = f'Request to Sell {typeToken} Token'
-					msg =f'My UserID {thisUser.user_code}; I have a request to sell {typeToken} tokens to {float(opacityOrder) / float (price)} for the calculated price {opacityOrder} USDT. Thanks'
+					msg =f'My UserID {thisUser.user_code}; I have a request to sell {typeToken} tokens to {audited} for the calculated price {opacityOrder} USDT. Thanks'
 				elif get_language() == 'fa':
+					audited = format((float(opacityOrder) / float (price)), '.2f')
 					sub = f'درخواست فروش توکن {typeToken}'
-					msg =f'اینجانب با کد کاربری {thisUser.user_code} درخواست فروش توکن {typeToken} را به تعداد {float(opacityOrder) / float (price)} را به قیمت محاسبه شده ی {opacityOrder} تتر دارم. باتشکر'
+					msg =f'اینجانب با کد کاربری {thisUser.user_code} درخواست فروش توکن {typeToken} را به تعداد {audited} را به قیمت محاسبه شده ی {opacityOrder} تتر دارم. باتشکر'
 				elif get_language() == 'ar':
+					audited = format((float(opacityOrder) / float (price)), '.2f')
 					sub = f'طلب بیع رمز مميز {typeToken}'
-					msg =f'لدي اسم الرمز طلب {thisUser.user_code} لبیع {typeToken} کن تعداد {float(opacityOrder) / float (price)} به بالسعر المحسوب {opacityOrder} USDT. شكرا'
+					msg =f'لدي اسم الرمز طلب {thisUser.user_code} لبیع {typeToken} کن تعداد {audited} به بالسعر المحسوب {opacityOrder} USDT. شكرا'
 
 			Ticket.objects.create(
 				user=thisUser, 
@@ -481,38 +458,18 @@ def buy_sell_sendticket(request):
 			messages.info(request, _('میزان درخواستی را کنترل کنید.') )
 			return redirect('pannel:buySellToken', typeToken)
 
+
 # send_ticket buy sell
 @active_required_decorator(login_url='/sign-in')
 @login_required(login_url='/sign-in')
 def buy_sell_tokens(request, tokenNamekw):
-	
-	counter_st1 = 0
-	sercher_st1 = UserStoke.objects.filter(user=request.user, token__title='ST1').last()
-	if sercher_st1:
-		counter_st1 = sercher_st1.count
-
-	counter_st2 = 0
-	sercher_st2 = UserStoke.objects.filter(user=request.user, token__title='ST2').last()
-	if sercher_st2:
-		counter_st2 = sercher_st2.count
-
-	counter_st3 = 0
-	sercher_st3 = UserStoke.objects.filter(user=request.user, token__title='ST3').last()
-	if sercher_st3:
-		counter_st3 = sercher_st3.count
-
-	counter_st4 = 0
-	sercher_st4 = UserStoke.objects.filter(user=request.user, token__title='ST4').last()
-	if sercher_st4:
-		counter_st4 = sercher_st4.count
-
 	if tokenNamekw == 'st1':
 		fa_langcode = '/fa/' in request.path
 		context = {
-			'user_token_st1_count': counter_st1,
-			'user_token_st2_count': counter_st2,
-			'user_token_st3_count': counter_st3,
-			'user_token_st4_count': counter_st4,
+			'last_st1_price': get_last_price_token('ST1'),
+			'last_st2_price': get_last_price_token('ST2'),
+			'last_st3_price': get_last_price_token('ST3'),
+			'last_st4_price': get_last_price_token('ST4'),
 			# chart st1
 			'name_chart': 'ST1',
 			'prices_dollar_chart': get_chart(tokenName='ST1', typeOut='price', fa_lang_code=fa_langcode),
@@ -523,10 +480,10 @@ def buy_sell_tokens(request, tokenNamekw):
 	elif tokenNamekw == 'st2':
 		fa_langcode = '/fa/' in request.path
 		context = {
-			'user_token_st1_count': counter_st1,
-			'user_token_st2_count': counter_st2,
-			'user_token_st3_count': counter_st3,
-			'user_token_st4_count': counter_st4,
+			'last_st1_price': get_last_price_token('ST1'),
+			'last_st2_price': get_last_price_token('ST2'),
+			'last_st3_price': get_last_price_token('ST3'),
+			'last_st4_price': get_last_price_token('ST4'),
 			# chart st2
 			'name_chart': 'ST2',
 			'prices_dollar_chart': get_chart(tokenName='ST2', typeOut='price', fa_lang_code=fa_langcode),
@@ -537,10 +494,10 @@ def buy_sell_tokens(request, tokenNamekw):
 	elif tokenNamekw == 'st3':
 		fa_langcode = '/fa/' in request.path
 		context = {
-			'user_token_st1_count': counter_st1,
-			'user_token_st2_count': counter_st2,
-			'user_token_st3_count': counter_st3,
-			'user_token_st4_count': counter_st4,
+			'last_st1_price': get_last_price_token('ST1'),
+			'last_st2_price': get_last_price_token('ST2'),
+			'last_st3_price': get_last_price_token('ST3'),
+			'last_st4_price': get_last_price_token('ST4'),
 			# chart st3
 			'name_chart': 'ST3',
 			'prices_dollar_chart': get_chart(tokenName='ST3', typeOut='price', fa_lang_code=fa_langcode),
@@ -551,10 +508,10 @@ def buy_sell_tokens(request, tokenNamekw):
 	elif tokenNamekw == 'st4':
 		fa_langcode = '/fa/' in request.path
 		context = {
-			'user_token_st1_count': counter_st1,
-			'user_token_st2_count': counter_st2,
-			'user_token_st3_count': counter_st3,
-			'user_token_st4_count': counter_st4,
+			'last_st1_price': get_last_price_token('ST1'),
+			'last_st2_price': get_last_price_token('ST2'),
+			'last_st3_price': get_last_price_token('ST3'),
+			'last_st4_price': get_last_price_token('ST4'),
 			# chart st4
 			'name_chart': 'ST4',
 			'prices_dollar_chart': get_chart(tokenName='ST4', typeOut='price', fa_lang_code=fa_langcode),

@@ -17,23 +17,17 @@
 <!-- start BODY -->
 <article class="body-page m-1">
 
-    <p id="open-parg" class="mb-1 font-small cur-poi" onclick="open_form()"><i class="c-gold fa fa-plus"></i>&nbsp;{% translate 'برای اضافه کردن کلیک کنید' %}</p>
-    <p id="close-parg" class="mb-1 font-small cur-poi" style="display: none;" onclick="close_form()"><i class="c-gold fa fa-minus"></i>&nbsp;{% translate 'برای اضافه کردن کلیک کنید' %}</p>
-
-    <div id="form-div-wrapper" style="display: none;">
-        <form method="POST" id="form-add">
-            {% csrf_token %}
-            {{ add_form }}
-            <div class="container-btn">
-                <button type="submit">{% translate 'اعمال' %}</button>
-            </div>
-        </form>
+    <div class="d-inline-elements">
+        <div class="d-flex-header">
+            <h4>{% translate 'لیست اشتراک ربات ها' %}</h4>
+            <!-- load the guide div modal -->
+            {% include 'is_acountants/accountant_guide.html' %}
+        </div>
+        <a class="cur-poi" onclick="javascript:window.history.back()">{% translate 'بازگشت به حسابداری' %}</a>
     </div>
     <br>
 
-    <h4 class="mb-1">{% translate 'لیست اشتراک ربات ها' %}</h4>
-
-    <div id="list-chart">
+    <div id="list-chart" class="table-wrapper">
         <table>
             <tr>
                 <th>#</th>

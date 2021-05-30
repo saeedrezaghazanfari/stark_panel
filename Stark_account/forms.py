@@ -1,5 +1,6 @@
 from django import forms
 from captcha.fields import CaptchaField
+from django.forms import fields
 from .models import User
 from django.utils.translation import gettext_lazy as _
 from django.core import validators
@@ -58,7 +59,7 @@ class SignUpForm(UserCreationForm):
 	
 	class Meta:
 		model = User
-		fields = ('username', 'email', 'phone', 'first_name', 'last_name', 'national_code', 'password1', 'password2')
+		fields = ('username', 'email', 'phone', 'first_name', 'last_name', 'backup_email', 'password1', 'password2')
 
 	def clean_username(self):
 		username = self.cleaned_data.get('username')
@@ -73,6 +74,12 @@ class SignUpForm(UserCreationForm):
 				raise forms.ValidationError( _('نام کاربری باید تنها شامل حروف انگلیسی باشد.') )
 		return username
 	
+	def clean_backup_email(self):
+		backup_email = self.cleaned_data.get('backup_email')
+		if self.cleaned_data.get('email') == backup_email:
+			raise forms.ValidationError( _('ایمیل و ایمیل پشتیبانی نمیتوانند یکسان باشند.') )
+		return backup_email
+
 	# no empty email
 	def clean_email(self):
 		email = self.cleaned_data.get('email')
@@ -89,16 +96,28 @@ class SignUpForm(UserCreationForm):
 			raise forms.ValidationError( _('شماره همراه دیگری انتخاب کنید') )
 		return phone
 
-	def clean_national_code(self):
-		national_code = self.cleaned_data.get('national_code')
-		# check national_code in DB
-		if User.objects.filter(national_code__iexact=national_code).first():
-			raise forms.ValidationError( _('کد ملی دیگری انتخاب کنید.') )
-		return national_code
-
 	def clean_password2(self):
 		password2 = self.cleaned_data.get('password2')
 		for i in password2:
 			if ord(i) > 1000:
 				raise forms.ValidationError( _('رمزعبور باید شامل حروف انگلیسی، اعداد و علامت‌ها باشد.') )
 		return password2
+
+class getEmailToForgetPwForm(forms.Form):
+	email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': _('ایمیل خود را وارد کنید:') }), label= _("ایمیل:"), required=True)
+
+	def clean_email(self):
+		email = self.cleaned_data.get('email')
+		# check email in DB
+		if not User.objects.filter(email__iexact=email).first():
+			raise forms.ValidationError( _('ایمیل شما در سیستم موجود نیست.') )
+		return email
+
+# customizing the PasswordChangeForm module
+from django.contrib.auth.forms import SetPasswordForm
+class PasswordChangeForm(SetPasswordForm):
+    error_messages = {
+        **SetPasswordForm.error_messages,
+        'password_incorrect': _("Your old password was entered incorrectly. Please enter it again."),
+    }
+    field_order = ['new_password1', 'new_password2']

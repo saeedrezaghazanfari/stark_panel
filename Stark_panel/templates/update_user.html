@@ -20,6 +20,7 @@
 
     <form method="POST" enctype="multipart/form-data" class="change-user-data">
         {% csrf_token %}
+        
         <div class="avatar-upload">
             <div>
                 {% if request.user.avatar %}
@@ -28,11 +29,23 @@
                     <img src="{% static 'img/logo.svg' %}" alt="{{ request.user }}">
                 {% endif %}
                 <div class="overlay-avatar cur-poi">
-                    <label for="{{ form.avatar.id_for_label }}"><i class="fa fa-camera c-dark"></i></label>
+                    <label for="{{ form.avatar.id_for_label }}"><i class="fa fa-camera c-dark cur-poi"></i></label>
                     <div class="d-none">{{ form.avatar }}</div>
                 </div>
             </div>
         </div>
+        <br>
+        <div class="form-group-inline">
+            <div>
+                <label for="user-email">{% translate 'ایمیل:' %}</label>
+                <input type="email" id="user-eamil" class="c-gold text-center" value="{{ request.user.email }}" disabled>
+            </div>
+            <div>
+                <label for="user-text">{% translate 'نام‌کاربری:' %}</label>
+                <input type="text" id="user-text" class="c-gold text-center" value="{{ request.user.username }}" disabled>
+            </div>
+        </div> 
+        <p class="font-very-small mx-1-2">{% translate 'توجه: ایمیل و نام‌کاربری حساب شما غیرقابل تغییر است.' %}</p>
 
         <div class="form-group-inline">
             <div>
@@ -49,25 +62,15 @@
             {% render_field form.phone value=request.user.phone %}
         </div>
         <div  class="form-group-chus">
-            <label for="{{ form.national_code.id_for_label }}">{{ form.national_code.label }}:</label>
-            {% render_field form.national_code value=request.user.national_code %}
-        </div>
-
-        <div  class="form-group-chus">
-            <div class="upload-file">
-                <img src="{% static 'img/edit-user/upload.svg' %}" alt="upload image">
-                <label class="cur-poi text-center px-1" for="{{ form.national_code_image.id_for_label }}">{% translate 'لطفا عکس کارت ملی خود را آپلود نمایید' %}</label>
-                {% if request.user.national_code_image %}
-                    <p class="font-small mt-1-2"><a href="{{ request.user.national_code_image.url }}">{% translate 'مشاهده ی تصویر فعلی' %}</a></p>
-                {% endif %}
-                <div class="d-none">{{ form.national_code_image }}</div>
-            </div>
+            <label for="{{ form.backup_email.id_for_label }}">{{ form.backup_email.label }}:</label>
+            {% if request.user.backup_email %}
+                {% render_field form.backup_email value=request.user.backup_email %}
+            {% else %}
+                {% render_field form.backup_email %}
+            {% endif %}
         </div>
 
         <div>
-            {% for err in form.national_code_image.errors %}
-                <span class="c-red font-small">{{ err }}</span><br />
-            {% endfor %}
             {% for err in form.avatar.errors %}
                 <span class="c-red font-small">{{ err }}</span><br />
             {% endfor %}
@@ -80,12 +83,12 @@
             {% for err in form.phone.errors %}
                 <span class="c-red font-small">{{ err }}</span><br />
             {% endfor %}
-            {% for err in form.national_code.errors %}
+            {% for err in form.backup_email.errors %}
                 <span class="c-red font-small">{{ err }}</span><br />
             {% endfor %}
         </div>
-
-        <button type="submit" class="btn">{% translate 'ویرایش' %}</button>
+        
+        <div class="mt-1-2"><button type="submit" class="btn">{% translate 'ویرایش' %}</button></div>
 
     </div>
 

@@ -44,13 +44,13 @@
                 <div class="ticket-user">
                     <div class="ticket-body">
                         {% if request.user.avatar %}
-                            <img class="avatar" src="{{ request.user.avatar.url }}" alt="{{ request.user }}">
+                            <div style="background: url('{{ request.user.avatar.url }}') no-repeat center center/ cover;" class="img-avatar-div" ></div>
                         {% else %}
-                            <img class="avatar" src="{% static 'img/logo.svg' %}" alt="logo">
+                            <img src="{% static 'img/logo.svg' %}" class="img-avatar"  alt="logo">
                         {% endif %}
                         <div class="msg">
                             <h4 class="mb-1 c-gold">{{ ticket.subject }}</h4>
-                            <p>{{ ticket.message }}</p>
+                            <p>{{ ticket.message|safe }}</p>
                         </div>
                     </div>
                     <div class="time">
@@ -65,7 +65,7 @@
                         <img class="avatar" src="{% static 'img/tickets/headphones.png' %}" alt="suppurter">
                         <div class="msg">
                             <h4 class="mb-1 c-gold">{{ ticket.subject }}</h4>
-                            <p>{{ ticket.message }}</p>
+                            <p>{{ ticket.message|safe }}</p>
                         </div>
                     </div>
                     <div class="time">
@@ -87,6 +87,4 @@
 <!-- end BODY -->
 {% endblock %}
 
-{% block scriptStatic %}
-    {% if '/fa/' in request.path %}<script src="{% static 'js/persianumber.min.js' %}"></script>{% endif %}
-{% endblock %}
+{% block scriptStatic %}{% endblock %}

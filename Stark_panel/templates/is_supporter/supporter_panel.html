@@ -17,34 +17,18 @@
 <!-- start BODY -->
 <article class="body-page m-1">
 
-    <div class="three-boxes-top-supp">
-
-        <div class="box-top-supp">
-            <a href="{% url 'pannel:su_all_tickets' %}">
-                <img src="{% static 'img/tickets/all-ticket.png' %}" alt="">
-                <span>{% translate 'مشاهده ی تمامی تیکت ها' %} </span>
-            </a>
-        </div>
-
-        <div class="box-top-supp">
-            <a href="{% url 'pannel:su_sendticket_auser' %}">
-                <img src="{% static 'img/tickets/all-ticket.png' %}" alt="">
-                <span>{% translate 'ارسال تیکت به کاربر' %} </span>
-            </a>
-        </div>
-
-        <div class="box-top-supp">
-            <a href="{% url 'pannel:su_useraccount' %}">
-                <img src="{% static 'img/tickets/all-ticket.png' %}" alt="">
-                <span>{% translate 'تنظیمات حساب' %} </span>
-            </a>
-        </div>
-        
-    </div>
+    <!-- load the navbar -->
+    {% include 'is_supporter/suppuert-navbar-partail.html' %}
 
     <br><br>
 
-    <h4 class="mb-1">{% translate 'تیکت های جدید' %}</h4>
+    <h4 class="mb-1">
+        <div class="d-flex-header">
+            {% translate 'تیکت های جدید' %}
+            <!-- load the guide div modal -->
+            {% include 'is_supporter/suppurt_guide_div.html' %}
+        </div>
+    </h4>
     <div class="all-tickets">
         
         {% for ticket in unread_tickets %}
@@ -58,7 +42,7 @@
                             {% else %}{% translate 'فروش ارز' %}{% endif %}
                         </h5>
                         <p class="username">({{ ticket.user.user_code }}): {{ ticket.subject }}</p>
-                        <p>{{ ticket.message|truncatewords:50 }}</p>
+                        <div class="px-2"><p>{{ ticket.message|truncatewords:50|safe }}</p></div>
                         <a href="{% url 'pannel:su_sendticket' ticket.id %}">{% translate 'ارسال پاسخ' %}</a>
                     </div>
                 </div>
@@ -73,9 +57,7 @@
             </div>
         {% endfor %}
 
-        
     </div>
-
 </article>
 <!-- end BODY -->
 

@@ -5,6 +5,7 @@ from .models import (
 )
 
 # get total
+# this function used from account.models.py
 def get_userStoke_func(thisUser, tokenTitle):
 	user_stw_stoke = UserStoke.objects.filter(user=thisUser, token__title__iexact=tokenTitle).first()
 	if user_stw_stoke:
@@ -32,6 +33,7 @@ def get_final_total(thisUser):
 	# return thisUser.stoke + ( user_st1w_stoke * pr_dollar )
 	return (thisUser.stoke + st1_out + st2_out + st3_out + st4_out)
 
+
 # todo: get sood
 def get_profit(thisUser, typeOut):
 	user = User.objects.get(username=thisUser.username)
@@ -46,14 +48,6 @@ def get_profit(thisUser, typeOut):
 			# format(, '.6f')
 		return format( (((final_total + user.impression_total) / (user.payment_total - user.robot_sub_total)) - 1) * 100, '.2f')
 
-def get_profit_color(profit_number):
-	profit_number = float(profit_number)
-	if profit_number > 0:
-		return 'green'
-	elif profit_number < 0:
-		return 'red'
-	elif profit_number == 0:
-		return 'white'
 
 # get chart: price-date
 def get_chart(tokenName, typeOut, fa_lang_code, num_last=15):
@@ -87,8 +81,10 @@ def get_chart(tokenName, typeOut, fa_lang_code, num_last=15):
 				prices_dollar = list(prices_get)[-num_last:]
 				return prices_dollar
 
+
 # get last price token
 def get_last_price_token(tokenName):
 	if ChartTokenPrice.objects.filter(token__title=tokenName).last():
 		return ChartTokenPrice.objects.filter(token__title=tokenName).last().price_dollar
 	return 0
+

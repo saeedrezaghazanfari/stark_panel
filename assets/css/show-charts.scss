@@ -13,7 +13,7 @@ aside {
     display: none !important;
 }
 .container {
-    width: 1500px !important;
+    max-width: 1500px;
     margin: auto !important;
     display: flex !important;
     justify-content: center !important;
@@ -29,13 +29,22 @@ a.parg-link {
 }
 
 section#showchart-sec {
-    width: 1300px;
-    background-color: #111;
+    overflow-x: auto;
+    background-color: #131216;
     padding: 0.5rem;
+    width: 70vw !important;
     border-radius: 10px;
     margin: auto;
-    canvas {
-        height: 100%;
-        width: 100%;
+    .charts-styles {
+        width: 1300px;
+    }
+}
+.apexcharts-menu {
+    .apexcharts-menu-item {
+        background-color: #0c0b10 !important;
+        color: white !important;
+        &:hover {
+            color: $c-gold !important;
+        }
     }
 }

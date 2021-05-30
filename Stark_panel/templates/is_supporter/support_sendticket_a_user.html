@@ -1,5 +1,5 @@
 {% extends 'shared/__main_layout.html' %}
-{% load static i18n humanize  %}
+{% load static i18n humanize widget_tweaks %}
 
 {% block keywordContent %}
     <meta name="keywords" content="{% translate 'استارک، پنل کاربری استارک، ارز دیجیتال، رمز ارز، پشتیبان' %}">
@@ -17,46 +17,64 @@
 <!-- start BODY -->
 <article class="body-page m-1">
 
-    <div class="three-boxes-top-supp">
-
-        <div class="box-top-supp bg-box-gold">
-            <a href="{% url 'pannel:su_home' %}">
-                <span class="c-dark">{% translate 'بازگشت به صفحه ی اصلی' %} </span>
-            </a>
-        </div>
-
-        <div class="box-top-supp">
-            <a href="{% url 'pannel:su_all_tickets' %}">
-                <img src="{% static 'img/tickets/all-ticket.png' %}" alt="">
-                <span>{% translate 'مشاهده ی تمامی تیکت ها' %} </span>
-            </a>
-        </div>
-
-        <div class="box-top-supp">
-            <a href="{% url 'pannel:su_useraccount' %}">
-                <img src="{% static 'img/tickets/all-ticket.png' %}" alt="">
-                <span>{% translate 'تنظیمات حساب' %} </span>
-            </a>
-        </div>
-        
-    </div>
+    <!-- load the navbar -->
+    {% include 'is_supporter/suppuert-navbar-partail.html' %}
 
     <br><br>
 
-    <h4 class="mb-1">{% translate 'ارسال تیکت به کاربر' %}</h4>
+    <h4 class="mb-1">
+        <div class="d-flex-header">
+            {% translate 'ارسال تیکت به کاربر' %}
+            <!-- load the guide div modal -->
+            {% include 'is_supporter/suppurt_guide_div.html' %}
+        </div>
+    </h4>
     <div class="all-tickets">
         
         <form id="form-send-a-ticket" method="POST">
             {% csrf_token %}
-            {{sendticket_form}}
-            <div class="container-btn btn"><button type="submit">ارسال تیکت</button></div>
+
+            <label for="{{sendticket_form.user.id_for_label}}">{{sendticket_form.user.label}}</label>
+            {% render_field sendticket_form.user class="input-styles-form" %}
+
+            <label for="{{sendticket_form.title.id_for_label}}">{{sendticket_form.title.label}}</label>
+            {% render_field sendticket_form.title class="input-styles-form" %}
+
+            <label for="{{sendticket_form.subject.id_for_label}}">{{sendticket_form.subject.label}}</label>
+            {% render_field sendticket_form.subject class="input-styles-form" %}
+            {% for err in sendticket_form.subject.errors %}
+                <span class="c-red mt-1 font-very-small digit">{{ err }}</span><br>
+            {% endfor %}
+
+            <section id="peaka-editor" >
+                <div id="pk-editor-options">
+                    <div class="pk-editor-wrapper">
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('italic',false,null);" ><i class="fa fa-italic"></i></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('bold',false,null);" ><i class="fa fa-bold"></i></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('underline',false,null);"><i class="fa fa-underline"></i></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('justifyLeft',false,null);"><justifyLeft><i class="fa fa-align-left"></i></justifyLeft></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('justifyCenter',false,null);"><justifyCenter><i class="fa fa-align-center"></i></justifyCenter></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('justifyRight',false,null);"><justifyRight><i class="fa fa-align-right"></i></justifyRight></a>    
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('cut',false,null);" ><i class="fa fa-cut"></i></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('copy',false,null);" ><i class="fa fa-copy"></i></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('redo',false,null);"><redo><i class="fa fa-redo"></i></redo></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('undo',false,null);"><undo><i class="fa fa-undo"></i></undo></a>
+                    </div>
+                </div>
+                <div id="pk-editor-area" contenteditable="true"></div>
+            </section>
+
+            {% render_field sendticket_form.message id="pk-editor-my-textarea" class="input-styles-form d-none" %}
+            
+            <div class="container-btn btn mt-2"><button type="submit" onclick="save()">ارسال تیکت</button></div>
         </form>
         
     </div>
-
 </article>
 <!-- end BODY -->
 
 {% endblock %}
 
-{% block scriptStatic %}{% endblock %}
+{% block scriptStatic %}
+    <script src="{% static 'js/peaka_editor.js' %}"></script>
+{% endblock %}

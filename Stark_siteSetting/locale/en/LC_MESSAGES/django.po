@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-03 22:37+0430\n"
+"POT-Creation-Date: 2021-05-30 09:49+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,93 +18,141 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\apps.py:8
+#: .\apps.py:7
 msgid "تنظیمات وبسایت"
 msgstr "Panel Settings"
 
-#: .\models.py:18
+#: .\models.py:30
+msgid "انگیلیسی"
+msgstr "English"
+
+#: .\models.py:30
+msgid "فارسی"
+msgstr "Persian"
+
+#: .\models.py:30
+msgid "عربی"
+msgstr "Arabic"
+
+#: .\models.py:31
+msgid "زبان ویدئو"
+msgstr "Video language"
+
+#: .\models.py:32
 msgid "ویدئوی راهنما"
 msgstr "Video guide"
 
-#: .\models.py:19
+#: .\models.py:33
 msgid "فرمت ویدئو"
 msgstr "Video Format"
 
-#: .\models.py:20
+#: .\models.py:34
 msgid "پوستر ویدئوی راهنما"
 msgstr "Help Video Poster"
 
-#: .\models.py:23
+#: .\models.py:37
 msgid "تنظیمات ویدئو"
 msgstr "Video setting"
 
-#: .\models.py:24
+#: .\models.py:38
 msgid "تنظیمات ویدئوها"
 msgstr "Videos setting"
 
-#: .\models.py:31
+#: .\models.py:45
 msgid "تعداد روزها"
 msgstr "Number of days"
 
-#: .\models.py:32
+#: .\models.py:46
 msgid "تعداد روزهای هدیه"
 msgstr "Number of gift days"
 
-#: .\models.py:33
+#: .\models.py:47
 msgid "قیمت تعرفه بر حسب تتر"
 msgstr "Tariff price in terms of USDT"
 
-#: .\models.py:36
+#: .\models.py:50
 msgid "تنظیمات تعرفه"
 msgstr "Tariff setting"
 
-#: .\models.py:37
+#: .\models.py:51
 msgid "تنظیمات تعرفه ها"
 msgstr "Tariffs setting"
 
-#: .\models.py:44
+#: .\models.py:58
+msgid "آدرس کیف پول"
+msgstr "Wallet address"
+
+#: .\models.py:59
+msgid "تصویر کد کیوآر"
+msgstr "QR code image"
+
+#: .\models.py:60
+msgid "آیا این تنظیمات در پنل نشان داده شود؟"
+msgstr "Show these settings in the panel?"
+
+#: .\models.py:63 .\models.py:64
+msgid "تنظیمات استارک"
+msgstr "Stark settings"
+
+#: .\models.py:71
 msgid "عنوان اعلان به فارسی"
 msgstr "Notify subject in Persian"
 
-#: .\models.py:45
+#: .\models.py:72
 msgid "عنوان اعلان به انگلیسی"
 msgstr "Notify subject in English"
 
-#: .\models.py:46
+#: .\models.py:73
 msgid "عنوان اعلان به عربی"
 msgstr "Notify subject in Arabic"
 
-#: .\models.py:47
+#: .\models.py:74
 msgid "متن اعلان به فارسی"
 msgstr "Notify text in Persian"
 
-#: .\models.py:48
+#: .\models.py:75
 msgid "متن اعلان به انگلیسی"
 msgstr "Notify text in English"
 
-#: .\models.py:49
+#: .\models.py:76
 msgid "متن اعلان به عربی"
 msgstr "Notify text in Arabic"
 
-#: .\models.py:50
+#: .\models.py:77
 msgid "لینک پیوست"
 msgstr "Attached Link"
 
-#: .\models.py:51 .\models.py:60
+#: .\models.py:78 .\models.py:88
 msgid "تاریخ و زمان"
 msgstr "date and time"
 
-#: .\models.py:52
+#: .\models.py:79
+msgid "آیا ایمیل ارسال شود؟"
+msgstr "Should an email be sent?"
+
+#: .\models.py:79
+msgid ""
+"توجه: درنظر داشته باشید که بعد از زدن دکمه‌ی ذخبره، ایمیل به تمامی کاربران "
+"ارسال میشود."
+msgstr ""
+"Note: Keep in mind that after hitting the save button, an email will be sent "
+"to all users."
+
+#: .\models.py:80
 msgid "فعال / غیرفعال"
 msgstr "Active/InActive"
 
-#: .\models.py:54
+#: .\models.py:82
 msgid "اعلان"
 msgstr "Notification"
 
-#: .\models.py:55
+#: .\models.py:83
 msgid "اعلانات"
 msgstr "Notifications"
+
+#: .\models.py:97
+msgid "استارک | اطلاعیه"
+msgstr "Stark | Notifications"
 
 #~ msgid "عنوان اعلان"
 #~ msgstr "Notify title"

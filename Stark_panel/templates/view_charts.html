@@ -23,74 +23,81 @@
         <a class="parg-link cur-poi" onclick="window.history.back()">{% translate 'بازگشت' %}</a>
         <br>
         <br>
+
         <section id="showchart-sec">
-            <canvas id="stark-chart"></canvas>
+            <div id="chart-line2" class="charts-styles"></div>
         </section>
 
     </article>
+    
     <!-- end BODY -->
 
 {% endblock %}
 
 {% block scriptStatic %}
-<script type="text/javascript" src="{% static 'frameworks/chart.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'frameworks/apexchart.js' %}"></script>
 
 <!-- charts -->
 <script type="text/javascript">
-    var ctx = document.getElementById('stark-chart').getContext('2d');
 
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: [
-                {% for date in dates %}
-                    '{{ date }}',
-                {% endfor %}
-            ],
-            datasets: [{
-
-                label: '',
-
-                data: [
-                    {% localize off %}
-                        {% for price in prices_dollar %}
-                            {{ price }},
-                        {% endfor %}
-                    {% endlocalize %}
-                ], 
-
-                backgroundColor: [
-                    'transparent',
-                ],
-                
-                pointBackgroundColor: '#eeb00e',
-                pointBorderColor: '#eeb00e',
-                pointBorderWidth: '5',
-                borderColor: [
-                    'rgba(255, 255, 255, 0.5)',
-                ],
-                borderWidth: 1
-            }]
+    var options = {
+        series: [{
+            data: [{% localize off %}{% for price in prices_dollar %}{{ price }},{% endfor %}{% endlocalize %}]
+        }],
+        chart: {
+            id: 'chart2',
+            type: 'area',
+            height: 520,
+            foreColor: '#ccc',
+            toolbar: {
+                show: false,
+                // autoSelected: 'pan',
+                // offsetY: -10,
+                // offsetX: -40,
+                // colors: ['#ccc', '#fff'],
+            },
         },
-        options: {
-            legend: {
-                display: true,
+        tooltip: {
+            enabled: true,
+            theme: 'dark',
+            style: {
+                fontSize: '12px',
+                fontFamily: 'IRANSanse',
             },
-            title: {
-                display: true,
-                text: '{% translate "نمودار قیمت توکن" %} {{ tokenTitle }}',
-                position: 'right',
-                fontFamily: 'IRANSanse'
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        min: 0
-                    }
-                }]
-            },
+            custom: function({series, seriesIndex, dataPointIndex, w}) {
+                return '<div class="arrow_box">' +
+                        '<span style="padding: 1.5rem 2rem; direction: rtl;">' + series[seriesIndex][dataPointIndex] + '</span>' +
+                    '</div>'
+            }
+        },
+        colors: ['#eeb00e'],
+        stroke: {
+            width: 2,
+            colors: ['#eeb00e', '#eeb00e', '#eeb00e'],
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        fill: {
+            type: "gradient",
+            gradient: {
+                opacityFrom: 1,
+                opacityTo: 0,
+                stops: [0, 100]
+            }
+        },
+        
+        markers: {
+            size: 1,
+            colors: ['#eeb00e', '#eeb00e', '#eeb00e']
+        },
+        xaxis: {
+            categories: [ {% for date in dates %} '{{ date }}', {% endfor %} ]
         }
-    });
+    };
 
+    var chart = new ApexCharts(document.querySelector("#chart-line2"), options);
+    chart.render();
 </script>
 {% endblock %}

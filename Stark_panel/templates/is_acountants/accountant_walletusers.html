@@ -31,10 +31,17 @@
     </div>
     <br>
 
-    <h4 class="mb-1">{% translate 'لیست عملیات کیف پول کاربران' %}</h4>
+    <div class="d-inline-elements">
+        <div class="d-flex-header">
+            <h4>{% translate 'لیست عملیات کیف پول کاربران' %}</h4>
+            <!-- load the guide div modal -->
+            {% include 'is_acountants/accountant_guide.html' %}
+        </div>
+        <a class="cur-poi" onclick="javascript:window.history.back()">{% translate 'بازگشت به حسابداری' %}</a>
+    </div>
     <p class="font-very-small my-1">{% translate 'هشدار: بعد از اضافه کردن و یا تغییر هرکدام از آیتم های جدول، در صورتی که آیکون پرداخت شده مثبت باشد، بلافاصله میزان پرداختی کل و یا برداشتی کل کاربر تغییر خواهد کرد.' %}</p>
 
-    <div id="list-chart">
+    <div id="list-chart" class="table-wrapper">
         <table>
             <tr>
                 <th>#</th>

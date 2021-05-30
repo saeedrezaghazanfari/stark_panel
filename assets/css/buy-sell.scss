@@ -102,7 +102,11 @@
     width: 100%;
     margin-top: 5px;
 }
-
+.form-group-inline {
+    display: flex;
+    div { flex: 1; }
+    div:first-child { margin-right: 5px; margin-left: 5px; }
+}
 label {
     font-size: 10pt;
     color: #dbdbdb;

@@ -1,5 +1,6 @@
 
 @import '../variables';
+@import '../layouts';
 
 /* start WALLET */
 .body-page {
@@ -9,6 +10,54 @@
     min-height: calc(100vh - 14%);
     overflow-y: auto;
     min-width: 300px !important;
+}
+
+div#stark-wallet {
+    box-shadow: $box-shdow;
+    border-radius: 25px;
+    padding: 1rem 1.5rem;
+    margin: 0.75rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    div:first-child {
+        flex: 3;
+        p:nth-child(1) {
+            color: white;
+            font-size: 10pt;
+        }
+        p:nth-child(2) {
+            color: $c-gold;
+            text-align: center;
+            min-width: 200px;
+            word-break: break-all;
+            margin: 1rem 0;
+        }
+        p#p-wrapper-a { 
+            text-align: center;
+
+            a {
+                font-size: 10pt;
+                color: black;
+                background-color: $c-gold;
+                padding: 0.25rem 0.75rem;
+                border-radius: 5px;
+            }
+        }
+    }
+    div:last-child {
+        flex: 1;
+        justify-self: center;
+        align-items: center;
+        text-align: center;
+        margin: 1rem;
+        img {
+            height: 200px;
+            width: 200px;
+            border-radius: 8px;
+        }
+    }
 }
 
 #wallet-user {
@@ -39,6 +88,12 @@
                 a, i {
                     color: #777;
                     font-size: 11pt;
+                }
+                i.hover-slow {
+                    transition: all 0.3s ease;
+                    &:hover {
+                        color: $c-gold;
+                    }
                 }
             }
             .card-data {
@@ -241,15 +296,15 @@ div.last-activities ul {
         width: 100% !important; 
         height: 100%; 
         transition: all 0.3s ease;
-        background: url('../../img/auth/btc-quicknav.jpg') no-repeat right / cover;
+        background: url('../../img/auth/btc.png') no-repeat right / cover;
     }
     
     .modal-content {
         border-radius: 8px;
-        background-color: #fefefe;
+        background-color: $bgc-all;
         margin: auto;
         padding: 10px;
-        border: 1px solid #888;
+        border: 1px solid $bgc-all;
         transition: all 0.3s;
         width: 500px;
         transform: translateY(-500px);
@@ -281,7 +336,11 @@ div.last-activities ul {
         .modal-body {
             direction: ltr;
             padding: 1rem 0.4rem;
+            overflow: auto;
+            max-height: 400px;
+            padding: 1rem 0.4rem;
             div.c-black {
+                label { color: #fff !important; }
                 .btn-center {
                     display: flex;
                     justify-content: center;

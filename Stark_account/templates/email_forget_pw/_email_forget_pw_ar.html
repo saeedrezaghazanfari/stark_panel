@@ -1,0 +1,23 @@
+<div style="direction: rtl; background-color: rgb(245, 245, 245); padding: 10px; color: black;">
+    <!-- body -->
+    <div style="text-align: justify; font-size: 11pt; padding: 0 20px;">
+        <h1 style="font-weight: bolder; text-align: center;">استارك</h1>
+        <p style="color: rgb(68, 68, 68); text-align: left;">{{ date }}</p>
+        <p style="font-weight: bolder;">
+            تحية ومجاملة <span style="color: #6e90ff;">{{ username }}</span> العزيز:
+        </p>
+        <p>
+            يوجد أدناه الرابط إلى صفحة تسجيل الدخول لتغيير كلمة مرور حسابك. يمكنك النقر فوق الارتباط أدناه للدخول إلى صفحة تغيير كلمة المرور في لوحة المستخدم الخاصة بك:
+        </p>
+        <br>
+        <a href="https://{{ domain }}{% url 'account:forget_pw_email' uidb64=uid token=token %}" style="color: #6e90ff; text-decoration: none; font-weight: bolder;">
+            نسيت رابط كلمة المرور
+        </a>
+        <br><br>
+        <p style="text-align: center;">
+            <a href="st4w.net/fa" style="font-weight: bolder; color: #6e90ff; text-decoration: none; margin: 0 10px; ">موقع استارك</a>
+            <a href="panel.st4w.net/fa" style="font-weight: bolder; color: #6e90ff; text-decoration: none; margin: 0 10px;">لوحة استارك</a>
+        </p>
+    </div>
+
+</div>

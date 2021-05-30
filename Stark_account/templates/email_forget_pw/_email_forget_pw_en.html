@@ -1,0 +1,23 @@
+<div style="direction: ltr; background-color: rgb(245, 245, 245); padding: 10px; color: black;">
+    <!-- body -->
+    <div style="text-align: justify; font-size: 11pt; padding: 0 20px;">
+        <h1 style="font-weight: bolder; text-align: center;">STARK</h1>
+        <p style="color: rgb(68, 68, 68); text-align: left;">{{ date }}</p>
+        <p style="font-weight: bolder;">
+            Greetings and Courtesy of the dear <span style="color: #6e90ff;">{{ username }}</span>:
+        </p>
+        <p>
+            The link to enter the password change page of your account is below. You can click on the link below to enter the password change page of your user panel:
+        </p>
+        <br>
+        <a href="https://{{ domain }}{% url 'account:forget_pw_email' uidb64=uid token=token %}" style="color: #6e90ff; text-decoration: none; font-weight: bolder;">
+            Forget Password Link
+        </a>
+        <br><br>
+        <p style="text-align: center;">
+            <a href="st4w.net/fa" style="font-weight: bolder; color: #6e90ff; text-decoration: none; margin: 0 10px; ">Stark WebSite</a>
+            <a href="panel.st4w.net/fa" style="font-weight: bolder; color: #6e90ff; text-decoration: none; margin: 0 10px;">Stark UserPanel</a>
+        </p>
+    </div>
+
+</div>

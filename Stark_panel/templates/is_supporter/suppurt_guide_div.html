@@ -1,0 +1,28 @@
+{% load static i18n %}
+
+<div class="guide-the-div mx-1-2" onclick="openModal('modal-support-guide')">
+    <img src="{% static 'img/information-button.svg' %}" alt="go to guide">
+</div>
+
+<!-- modal: view notification -->
+<div class="modal" id="modal-support-guide">
+    <div class="bg-img-wrapper">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="mt-1-2 c-gold">{% translate 'راهنمای پشتیبانی' %}</h4>
+                <button class="modal-close" onclick="closeModal('modal-support-guide')">&times;</button>
+            </div>
+            <div class="modal-body text-justify">
+                <br>
+                <div class="mx-1-2 notify-classmodal bgc-all lh-2 font-small">
+                    <p class="mb-1-2 c-light hover-white"><i class="fa fa-info c-gold mx-1-2"></i>
+                        {% translate 'در صفحه‌ی اصلی تیکت های جدیدی که از کاربران ارسال شده است قرار دارد و با زدن دکمه پاسخ، به تیکت آنها پاسخ دهید.' %}
+                    </p>
+                    <p class="mb-1-2 c-light hover-white"><i class="fa fa-info c-gold mx-1-2"></i>
+                        {% translate 'از قسمت تنظیمات حساب میتوانید موجودی نقد، مبلغ پرداختی و برداشتی کل و اشتراک ربات کاربران را تغییر دهید.' %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

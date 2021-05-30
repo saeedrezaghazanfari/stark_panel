@@ -33,7 +33,7 @@
             <div class="detail-ticket">
                 <div>
                     <h5 class="mb-1-2">{{ unreaduser_ticket.subject }}</h5>
-                    <p>{{ unreaduser_ticket.message }}</p>
+                    <p>{{ unreaduser_ticket.message|safe }}</p>
                 </div>
                 {% if unreaduser_ticket.title == 'crashPay' %}
                     <div class="counter"><a href="{% url 'pannel:detailTicket' 'bot-sub' %}" class="btn-gold-detail d-block">{% translate 'مشاهده' %}</a></div>
@@ -90,6 +90,4 @@
 <!-- end BODY -->
 {% endblock %}
 
-{% block scriptStatic %}
-    {% if '/fa/' in request.path %}<script src="{% static 'js/persianumber.min.js' %}"></script>{% endif %}
-{% endblock %}
+{% block scriptStatic %}{% endblock %}

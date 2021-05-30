@@ -1,0 +1,37 @@
+{% load static i18n %}
+
+<div class="guide-the-div mx-1-2" onclick="openModal('modal-account-guide')">
+    <img src="{% static 'img/information-button.svg' %}" alt="go to guide">
+</div>
+
+<!-- modal: view notification -->
+<div class="modal" id="modal-account-guide">
+    <div class="bg-img-wrapper">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="mt-1-2 c-gold">{% translate 'راهنمای حسابداری' %}</h4>
+                <button class="modal-close" onclick="closeModal('modal-account-guide')">&times;</button>
+            </div>
+            <div class="modal-body text-justify">
+                <br>
+                <div class="mx-1-2 notify-classmodal bgc-all lh-2 font-small">
+                    <p class="mb-1-2 c-light hover-white">
+                        {% translate 'صفحه‌هایی مثل لیست عملیات کیف پول، لیست توکن کاربران،  لیست اشتراک ربات ها و لیست خرید و فروش ها که میتوان اطلاعات کاربر را ویرایش و یا به اطلاعات اضافه کرد، در این صفحات با انجام ثبت عملیات، تغییراتی در دیگر دیتاهای کاربر ویا سیستم اتفاق می افتد:' %}
+                    </p>
+                    <p class="mb-1-2 c-light hover-white"><i class="fa fa-info c-gold mx-1-2"></i>
+                        {% translate 'با ویرایش و یا ایجاد دیتا در صفحه‌ی لیست عملیات کیف پول، زمانی که گزینه ی پرداخت شده فعال باشد، بر اساس نوع درخواست، پرداختی و یا برداشتی کل کاربر افزایش میابد.' %}
+                    </p>
+                    <p class="mb-1-2 c-light hover-white"><i class="fa fa-info c-gold mx-1-2"></i>
+                        {% translate 'با ویرایش و یا ایجاد دیتا در صفحه‌ی لیست توکن کاربران، تغییری ایجاد نمیشود و تنها در نمایش دارایی کل و تعداد توکن‌های کاربر اثر میگذارد.' %}
+                    </p>
+                    <p class="mb-1-2 c-light hover-white"><i class="fa fa-info c-gold mx-1-2"></i>
+                        {% translate 'با ویرایش و یا ایجاد دیتا در صفحه‌ی لیست اشتراک ربات ها، تغییری در سیستم رخ نمیدهد. نکته ای که در این قسمت وجود دارد این است که اگر درخواست ربات کاربر موفقت آمیز بود، در همان ابتدا هزینه ربات از حساب کاربر کسر خواهد شد و بعلاوه تاریخ انقضای ربات هم تنظیم خواهد شد ولی باید در نظر داشته باشید که ربات فقط با تایید حسابدار فعال ویا منقضی میشود.  لازم به ذکر است که مدت اشتراک همان تعداد روز تعرفه میباشد.' %}
+                    </p>
+                    <p class="mb-1-2 c-light hover-white"><i class="fa fa-info c-gold mx-1-2"></i>
+                        {% translate 'با ویرایش و یا ایجاد دیتا در صفحه‌ی لیست خرید و فروش ها، اگر گزینه ی پرداخت شده فعال باشد تنها تغییری که صورت میگیرد این است که در دارایی کاربر طبق نوع عملیات که همان خرید ویا فروش میباشد، تعداد توکن کاربر را تغییرمیدهد.لازم به ذکر است در این قسمت بر خلاف قسمت اشتراک ربات، از حساب کاربر کسری صورت نخواهد گرفت و برای انجام این امر باید با پشتیبان هماهنگ شود.' %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

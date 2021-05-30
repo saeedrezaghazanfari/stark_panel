@@ -27,8 +27,9 @@ open_sidebar=() => {
         $('section.top-div-navbar').hide();
     }, 800) 
 }
+// close sidebar
 close_sidebar=() => {
-    $('section.quick-navbar div').css({'transform': 'translateX(3000px)'});
+    $('section.quick-navbar div').css({'transform': 'translateX(2000px)'});
     $('aside').show();
     $('article').show();
     $('section.top-div-navbar').show();
@@ -48,7 +49,7 @@ openModal = (modalID) => {
 }
 closeModal = (modalID) => { 
     setTimeout( () => {
-        $('#' + modalID + ' .modal-content').css({'transform': 'translateY(-500px)'}); 
+        $('#' + modalID + ' .modal-content').css({'transform': 'translateY(-900px)'}); 
     }, 200)
     setTimeout( () => {
         $('#' + modalID + ' .bg-img-wrapper').css({'opacity': '0'})
@@ -83,15 +84,39 @@ close_msg = (number) => {
     document.getElementsByClassName('msg-msgs')[number-1].style.animation = 'fadeOut 1s forwards';
 }
 
-function copy_text(textCp, divId) {
+function copy_text(textCp, divId, msg) {
     const el = document.createElement('textarea');
     el.value = textCp;
     document.body.appendChild(el);
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
-    document.getElementById(divId).innerText = 'Copied';
+    document.getElementById(divId).innerText = msg;
     setTimeout( ()=> {
         document.getElementById(divId).innerText = textCp;
     }, 5000)
 }
+
+const items = document.querySelectorAll("nav#ray-lists-nav ul#ray-lists-ul li");
+
+const light = document.querySelector("nav#ray-lists-nav .tubelight");
+items.forEach(item => {
+    item.addEventListener("click" , () =>{
+        items.forEach(i => {i.classList.remove("active-li-light")});
+        item.classList.add("active-li-light")
+        light.style.left = `${(item.offsetLeft + light.offsetWidth / 3) - 25}px`;
+
+        let pars = document.querySelectorAll("div.user-div-under");
+        pars.forEach( par => {
+            par.style.display = 'none';
+        })
+
+        if ( item.id == 'mojodinaghd-pars') {
+            document.getElementById('user-stoke-div-under').style.display = 'flex';
+        }else if ( item.id == 'final-toatal-pars') {
+            document.getElementById('user-finaltotal-div-under').style.display = 'flex';
+        }else if ( item.id == 'sood-khales-pars') {
+            document.getElementById('user-profit-div-under').style.display = 'flex';
+        }
+    })
+});

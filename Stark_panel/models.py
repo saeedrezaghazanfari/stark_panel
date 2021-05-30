@@ -1,8 +1,11 @@
 from datetime import datetime
 from django.core.validators import RegexValidator
+from django.core import validators
 from django.db import models
+from Stark_siteSetting.models import SettingCategory
 from Extentions.utils import jalali_convertor_tokens, jalali_convertor, get_bot_code
 from Stark_account.models import User
+from datetime import datetime, timedelta
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
@@ -152,7 +155,7 @@ class Ticket(models.Model):
 	is_suppurt = models.BooleanField( _('آیا این پیام از طرف پشتیبان ارسال شود؟'), default=False )
 	user = models.ForeignKey( User, on_delete=models.CASCADE, related_name='tickets', blank=True, null=True)
 	title = models.CharField( _('عنوان تیکت'), max_length=15, default='crashPay', choices=CHOICE_TITLE )
-	subject = models.CharField( _('موضوع پیام'), max_length=150, blank=True, null=True)
+	subject = models.CharField( _('موضوع پیام'), max_length=150, validators=[ validators.MinLengthValidator(5, _('موضوع تیکت نباید کمتر از 5 کاراکتر باشد.')) ])
 	message = models.TextField( _('متن پیام') )
 	date = models.DateTimeField( _('تاریخ و زمان'), default=datetime.now() )
 	is_seen = models.BooleanField( _('دیده شده توسط پشتیبان:'), default=False )
@@ -170,6 +173,7 @@ class Ticket(models.Model):
 	def __str__(self):
 		return f'{self.j_date()}'
 
+# ///  SIGNALS
 
 # update ST1 2 3 4 Token
 @receiver(post_save, sender=ChartTokenPrice)
@@ -240,4 +244,3 @@ def save_userStokes(sender, instance, **kwargs):
 			elif instance.type_order == 'dec':
 				user.impression_total += instance.price
 				user.save()
-

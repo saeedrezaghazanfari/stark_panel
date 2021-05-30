@@ -1,4 +1,5 @@
 @import '../variables';
+@import '../layouts';
 
 // start login
 body {
@@ -103,7 +104,14 @@ body {
                             margin-top: 6px;
                             order: 3;
                         }
-
+                    }
+                }
+                .save-me-division {
+                    display: flex;
+                    margin-top: 1rem;
+                    label:first-child {
+                        margin: 0 0.5rem;
+                        color: $c-gold;
                     }
                 }
             }

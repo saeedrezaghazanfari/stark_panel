@@ -135,6 +135,20 @@
         border-radius: 15px;
         padding: 2rem 2.5rem;
     }
+    div.img-avatar-div {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        margin-left: 1rem;
+        margin-right: 0.25rem;
+    }
+    img.img-avatar { 
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        margin-left: 1rem;
+        margin-right: 0.25rem;
+    }
     .tickets {
         margin: 1rem;
         .ticket-user, .ticket-suppurt {
@@ -148,13 +162,6 @@
                 flex: 4;
                 display: flex;
 
-                img.avatar {
-                    height: 60px;
-                    width: 60px;
-                    border-radius: 50%;
-                    margin-left: 1rem;
-                    margin-right: 0.25rem;
-                }
                 .msg {
                     background-color: $bg-field;
                     border-radius: 15px 0 15px 15px;
@@ -258,7 +265,7 @@
 .ticket-add {
     width: 100%;
     form {
-        max-width: 600px;
+        max-width: 700px;
         min-width: 250px;
         margin: auto;
         box-shadow: $box-shdow;
@@ -266,11 +273,62 @@
         padding: 2rem;
         margin-top: 3rem;
 
+        // start PEAKA_Editor
+        section#peaka-editor {
+            margin: 0.5rem 0;
+        
+            div#pk-editor-area {
+                overflow-y: auto;
+                height: 200px;
+                background-color: #1b1a1f;
+                padding: 1rem 1.5rem;
+                margin: 3px 0;
+                border-radius: 5px;
+            }
+            div#pk-editor-options {
+                width: 100%;
+                margin: 0.5rem 0;  
+                div.pk-editor-wrapper {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+            
+                    a.fontStyle {
+                        cursor: pointer;
+                        text-align: center;
+                        padding: 0.25rem 0.75rem;
+                        height:30px;
+                        border-radius: 3px;
+                        background-color: #1b1a1f;
+                        border:none;
+                        margin: 3px;
+                        i { color: #dbdbdb; }
+                        span {
+                            display: flex;
+                            justify-content: center;
+                            input { height: 20px !important; }
+                            img { display: none;}
+                        }
+                        label {
+                            cursor: pointer;
+                            font-size: 10pt;
+                            color: #dbdbdb;
+                        }
+                        select#pk-editor-fontSize {
+                            background-color: #1b1a1f;
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+        // end PEAKA_Editor
+
         label {
             font-size: 10pt;
             color: #dbdbdb;
         }
-        select, input, textarea {
+        .input-styles-add {
             background-color: #1b1a1f !important;
             border: none;
             border-radius: 6px;

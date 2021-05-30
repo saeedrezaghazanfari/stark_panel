@@ -17,33 +17,18 @@
 <!-- start BODY -->
 <article class="body-page m-1">
 
-    <div class="three-boxes-top-supp">
-
-        <div class="box-top-supp bg-box-gold">
-            <a href="{% url 'pannel:su_home' %}">
-                <span class="c-dark">{% translate 'بازگشت به صفحه ی اصلی' %} </span>
-            </a>
-        </div>
-
-        <div class="box-top-supp">
-            <a href="{% url 'pannel:su_sendticket_auser' %}">
-                <img src="{% static 'img/tickets/all-ticket.png' %}" alt="">
-                <span>{% translate 'ارسال تیکت به کاربر' %} </span>
-            </a>
-        </div>
-
-        <div class="box-top-supp">
-            <a href="{% url 'pannel:su_useraccount' %}">
-                <img src="{% static 'img/tickets/all-ticket.png' %}" alt="">
-                <span>{% translate 'تنظیمات حساب' %} </span>
-            </a>
-        </div>
-        
-    </div>
+    <!-- load the navbar -->
+    {% include 'is_supporter/suppuert-navbar-partail.html' %}
 
     <br><br>
 
-    <h4 class="mb-1">{% translate 'تمامی تیکت ها' %}</h4>
+    <h4 class="mb-1">
+        <div class="d-flex-header">
+            {% translate 'تمامی تیکت ها' %}
+            <!-- load the guide div modal -->
+            {% include 'is_supporter/suppurt_guide_div.html' %}
+        </div>
+    </h4>
     <div class="all-tickets">
         
         {% for ticket in tickets %}
@@ -56,8 +41,8 @@
                             {% elif ticket.title == 'buytoken' %}{% translate 'خرید ارز' %}
                             {% else %}{% translate 'فروش ارز' %}{% endif %}
                         </h5>
-                        <p class="username">({{ ticket.user_code }}): {{ ticket.subject }}</p>
-                        <p>{{ ticket.message|truncatewords:50 }}</p>
+                        <p class="username">({{ ticket.user.user_code }}): {{ ticket.subject }}</p>
+                        <div class="mx-1"><p>{{ ticket.message|truncatewords:50|safe }}</p></div>
                     </div>
                 </div>
                 <div class="time-ticket">
@@ -70,10 +55,8 @@
                 {% translate 'هیچ تیکتی موجود نیست.' %}
             </div>
         {% endfor %}
-
         
     </div>
-
 </article>
 <!-- end BODY -->
 

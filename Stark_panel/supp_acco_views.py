@@ -14,7 +14,7 @@ from .models import (
 	RobotSubscription, BuyAndSell, Ticket, UserStoke, WalletOrder, UserWallet, ChartTokenPrice
 ) 
 from .forms import (
-	RobotSubscriptionForm, TicketForm, TicketResponseForm, AddToChart, SendTicket_OneUser, UserStoke_Form, BuyAndSell_Form, AddBotSubForm, WalletOrderAddForm
+	RobotSubscriptionForm, TicketForm, TicketResponseForm, AddToChart, SendTicket_OneUser, UserStoke_Form, BuyAndSell_Form, WalletOrderAddForm
 )
 from .mixins import (
 	AcountantPermision, acountants_required_decorator, suppurt_required_decorator, active_required_decorator
@@ -177,17 +177,9 @@ class AccountantUserWalletAddress(AcountantPermision, LoginRequiredMixin, ListVi
 @active_required_decorator(login_url='/sign-in')
 @acountants_required_decorator(login_url='/')
 def accountant_bots_page(request):
-	AddBotSubForm_form = AddBotSubForm(request.POST or None)
 	context = {
-		'add_form': AddBotSubForm_form,
 		'object_list': RobotSubscription.objects.order_by('-id')
 	}	
-	if AddBotSubForm_form.is_valid():
-		AddBotSubForm_form_obj = AddBotSubForm_form.save(commit=False)
-		AddBotSubForm_form_obj.date = datetime.now()
-		AddBotSubForm_form_obj.save()
-		messages.info(request, _('اشتراک ربات کاربر ذخیره شد.') )
-		return redirect('pannel:ac_bots')
 	return render(request, 'is_acountants/accountant_bots.html', context)
 
 # Wallet AddForm

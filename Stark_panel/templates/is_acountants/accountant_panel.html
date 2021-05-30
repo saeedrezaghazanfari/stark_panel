@@ -16,8 +16,12 @@
 
 <!-- start BODY -->
 <article class="body-page m-1">
-    <h4 class="mb-1">{% translate 'پنل حسابدار' %}</h4>
 
+    <div class="d-flex-header">
+        <h4 class="mb-1">{% translate 'پنل حسابدار' %}</h4>
+        <!-- load the guide div modal -->
+        {% include 'is_acountants/accountant_guide.html' %}
+    </div>
     <div class="chart-tables">
         <div class="add-chart">
             <form method="POST" class="add-form">
@@ -70,7 +74,6 @@
 
         </div>
     </div>
-
 </article>
 <!-- end BODY -->
 

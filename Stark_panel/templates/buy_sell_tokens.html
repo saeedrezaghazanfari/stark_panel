@@ -28,21 +28,21 @@
                 <div class="boxes-tokens">
                     <div class="box-token">
                         <p class="c-gold font-bold">ST<span class="c-white">1</span></p>
-                        <p class="c-light">{{ user_token_st1_count }}</p>
+                        <p class="c-light">{{ request.user.get_st1_userStoke }}</p>
                     </div>
 
                     <div class="box-token">
                         <p class="c-gold font-bold">ST<span class="c-white">2</span></p>
-                        <p class="c-light">{{ user_token_st2_count }}</p>
+                        <p class="c-light">{{ request.user.get_st2_userStoke }}</p>
                     </div>
                     <div class="box-token">
                         <p class="c-gold font-bold">ST<span class="c-white">3</span></p>
-                        <p class="c-light">{{ user_token_st3_count }}</p>
+                        <p class="c-light">{{ request.user.get_st3_userStoke }}</p>
                     </div>
 
                     <div class="box-token">
                         <p class="c-gold font-bold">ST<span class="c-white">4</span></p>
-                        <p class="c-light">{{ user_token_st4_count }}</p>
+                        <p class="c-light">{{ request.user.get_st4_userStoke }}</p>
                     </div>
 
                 </div>
@@ -50,38 +50,37 @@
 
             <form method="POST" action="{% url 'pannel:buySellTicketsend' %}">
                 {% csrf_token %}
-                {% verbatim %}
-                <div class="form-group">
-                    <label for="type-token">{% endverbatim %}{% translate 'عنوان ارز' %}{% verbatim %}:</label>
-                    <select v-model="typeToken" name="type-token" id="type-token">
-                        <option value="st1">ST1</option> <!-- مسکن -->
-                        <option value="st2">ST2</option> <!--  -->
-                        <option value="st3">ST3</option> <!--  -->
-                        <option value="st4">ST4</option>  <!-- ارزدیجیتال -->
-                    </select>
+                <div class="form-group form-group-inline">
+                    <div>
+                        <label for="type-token">{% translate 'عنوان ارز' %}:</label>
+                        <select name="type-token" id="type-token" >
+                            <option value="st1">ST1</option> <!-- مسکن -->
+                            <option value="st2">ST2</option> <!--  -->
+                            <option value="st3">ST3</option> <!--  -->
+                            <option value="st4">ST4</option>  <!-- ارزدیجیتال -->
+                        </select>
+                    </div>
+                    <div>
+                        <label for="type-order">{% translate 'نوع درخواست' %}:</label>
+                        <select name="type-order" id="type-order">
+                            <option value="buytoken">{% translate 'خرید' %}</option>
+                            <option value="selltoken">{% translate 'فروش' %}</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="type-order">{% endverbatim %}{% translate 'نوع درخواست' %}{% verbatim %}:</label>
-                    <select v-model="typeOrder" name="type-order" id="type-order">
-                        <option value="buytoken">{% endverbatim %}{% translate 'خرید' %}{% verbatim %}</option>
-                        <option value="selltoken">{% endverbatim %}{% translate 'فروش' %}{% verbatim %}</option>
-                    </select>
+                    <label for="opacity-order">{% translate 'حجم درخواستی (بر حسب تتر)' %}:</label>
+                    <input onkeyup="get_total_price()" name="opacity-order" type="number" step="0.01" id="opacity-order" class="text-center">
                 </div>
 
                 <div class="form-group">
-                    <label for="opacity-order">{% endverbatim %}{% translate 'حجم درخواستی (بر حسب تتر)' %}{% verbatim %}:</label>
-                    <input @keydown="get_total_token" name="opacity-order" v-model="opacityOrder" type="number" id="opacity-order" class="text-center">
+                    <label for="total">{% translate 'مبلغ سفارش (برحسب توکن)' %}:</label>
+                    <input type="text" id="total" disabled class="text-center">
                 </div>
-
-                <div class="form-group">
-                    <label for="total">{% endverbatim %}{% translate 'مبلغ سفارش (برحسب توکن)' %}{% verbatim %}:</label>
-                    <input v-model="total" type="text" id="total" disabled class="text-center">
-                </div>
-                <p class="font-small c-muted pt-1">{% endverbatim %}{% translate 'حجم درخواستی شما بر حسب قیمت آخرین توکن موجود محاسبه میشود.' %}{% verbatim %}</p>
-                <button class="btn" type="submit">{% endverbatim %}{% translate 'ارسال درخواست' %}{% verbatim %}</button>
+                <p class="font-small c-muted pt-1">{% translate 'حجم درخواستی شما بر حسب قیمت آخرین توکن موجود محاسبه میشود.' %}</p>
+                <button class="btn" type="submit">{% translate 'ارسال درخواست' %}</button>
             
-                {% endverbatim %}
             </form>
         </div>
 
@@ -141,11 +140,37 @@
 
 {% block scriptStatic %}
 <script type="text/javascript" src="{% static 'frameworks/chart.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/buysell_vueaxios.js' %}"></script>
 
-<!-- chart -->
+<!-- get the price -->
+<script>
+    function get_total_price(){
+        let st1_price = {{ last_st1_price }};
+        let st2_price = {{ last_st2_price }};
+        let st3_price = {{ last_st3_price }};
+        let st4_price = {{ last_st4_price }};   
+
+        let type_token = document.getElementById("type-token");
+        let tokenName = type_token.options[type_token.selectedIndex].value;
+        let opacityOrder = document.getElementById('opacity-order').value;
+
+        if(tokenName == 'st1') {
+            document.getElementById('total').value = tokenName.toUpperCase() + ' : ' + (opacityOrder / st1_price).toFixed(2);
+        }else if(tokenName == 'st2') {
+            document.getElementById('total').value = tokenName.toUpperCase() + ' : ' + (opacityOrder / st2_price).toFixed(2);
+        }else if(tokenName == 'st3') {
+            document.getElementById('total').value = tokenName.toUpperCase() + ' : ' + (opacityOrder / st3_price).toFixed(2);
+        }else if(tokenName == 'st4') {
+            document.getElementById('total').value = tokenName.toUpperCase() + ' : ' + (opacityOrder / st4_price).toFixed(2);
+        }
+    }
+</script>
+
+<!-- get the chart -->
 <script type="text/javascript">
 var ctx = document.getElementById('stark-chart').getContext('2d');
+var gradientFill = ctx.createLinearGradient(0,0,0,700);
+gradientFill.addColorStop(0, "#131216");
+gradientFill.addColorStop(1, "transparent");
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -166,16 +191,12 @@ var myChart = new Chart(ctx, {
                 {% endlocalize %}
             ], 
 
-            backgroundColor: [
-                'transparent',
-            ],
-            
+            fill: true,
+            backgroundColor: gradientFill,
             pointBackgroundColor: '#eeb00e',
             pointBorderColor: '#eeb00e',
             pointBorderWidth: '1',
-            borderColor: [
-                'rgba(255, 255, 255, 0.5)',
-            ],
+            borderColor: '#eeb00e',
             borderWidth: 1
         }]
     },

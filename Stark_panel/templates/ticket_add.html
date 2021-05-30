@@ -26,25 +26,51 @@
     </div>
 
     <div class="ticket-add">
-        <form action="" method="post">
+        <form method="POST" id="pk-editor-save">
             {% csrf_token %}
             <div class="form-group-ticket">
                 <label for="{{ ticket_form.title.id_for_label }}">{% translate 'موضوع پیام' %}:</label>
-                {% render_field ticket_form.title %}
+                {% render_field ticket_form.title class="input-styles-add" %}
+                {% for err in ticket_form.title.errors %}
+                    <span class="c-red mt-1 font-very-small">{{ err }}</span><br>
+                {% endfor %}
             </div>
             
             <div class="form-group-ticket">
                 <label for="{{ ticket_form.subject.id_for_label }}">{% translate 'عنوان پیام' %}:</label>
-                {% render_field ticket_form.subject %}
+                {% render_field ticket_form.subject class="input-styles-add"  %}
+                {% for err in ticket_form.subject.errors %}
+                    <span class="c-red mt-1 font-very-small digit">{{ err }}</span><br>
+                {% endfor %}
             </div>
             
-            <div class="form-group-ticket">
-                <label for="msg-ticket">{% translate 'متن تیکت' %}:</label>
-                {% render_field ticket_form.message id="msg-ticket" rows="5" %}
+            <section id="peaka-editor" >
+                <div id="pk-editor-options">
+                    <div class="pk-editor-wrapper">
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('italic',false,null);" ><i class="fa fa-italic"></i></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('bold',false,null);" ><i class="fa fa-bold"></i></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('underline',false,null);"><i class="fa fa-underline"></i></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('justifyLeft',false,null);"><justifyLeft><i class="fa fa-align-left"></i></justifyLeft></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('justifyCenter',false,null);"><justifyCenter><i class="fa fa-align-center"></i></justifyCenter></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('justifyRight',false,null);"><justifyRight><i class="fa fa-align-right"></i></justifyRight></a>   
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('cut',false,null);" ><i class="fa fa-cut"></i></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('copy',false,null);" ><i class="fa fa-copy"></i></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('redo',false,null);"><redo><i class="fa fa-redo"></i></redo></a>
+                        <a href="javascript:void(0);" class="fontStyle" onclick="document.execCommand('undo',false,null);"><undo><i class="fa fa-undo"></i></undo></a>
+                    </div>
+                </div>
+                <div id="pk-editor-area" contenteditable="true"></div>
+                {% for err in ticket_form.subject.message %}
+                    <span class="c-red mt-1 font-very-small">{{ err }}</span><br>
+                {% endfor %}
+            </section>
+            
+            <div class="form-group-ticket mb-1">
+                {% render_field ticket_form.message id="pk-editor-my-textarea" class="input-styles-add d-none" %}
             </div>
 
             <div class="container-btn">
-                <button type="submit" class="btn">{% translate 'ارسال تیکت' %}</button>
+                <button type="submit" class="btn"  onclick="save()">{% translate 'ارسال تیکت' %}</button>
             </div>
 
         </form>
@@ -55,5 +81,5 @@
 {% endblock %}
 
 {% block scriptStatic %}
-    {% if '/fa/' in request.path %}<script src="{% static 'js/persianumber.min.js' %}"></script>{% endif %}
+    <script src="{% static 'js/peaka_editor.js' %}"></script>
 {% endblock %}

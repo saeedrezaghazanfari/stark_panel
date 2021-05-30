@@ -1,0 +1,61 @@
+{% extends 'shared/__main_layout.html' %}
+{% load static widget_tweaks i18n %}
+
+{% block keywordContent %}
+    <meta name="keywords" content="{% translate 'استارک، پنل کاربری استارک، ارز دیجیتال' %}">
+    <meta name="description" content="{% translate 'پنل کاربری استارک' %}">
+{% endblock %}
+
+{% block titlePage %}{% translate 'استارک | تغییر رمزعبور' %}{% endblock %}
+
+{% block linkStatic %}
+    {% if '/en/' in request.path %}
+        <link rel="stylesheet" href="{% static 'css/ltr-style/auth-ltr.css' %}">
+        {% else %}
+        <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    {% endif %}
+{% endblock %}
+
+{% block AuthContent %}
+    <section class="login-page"> 
+        <div class="top-change-lang">
+            <a href="{% url 'pannel:ch_lang' %}?lang=en&next=/fa/{{ request.path|slice:'4:' }}" {% if '/fa/' in request.path %}class="c-gold"{% endif %}>fa</a> | 
+            <a href="{% url 'pannel:ch_lang' %}?lang=en&next=/en/{{ request.path|slice:'4:' }}" {% if '/en/' in request.path %}class="c-gold"{% endif %}>en</a> | 
+            <a href="{% url 'pannel:ch_lang' %}?lang=en&next=/ar/{{ request.path|slice:'4:' }}" {% if '/ar/' in request.path %}class="c-gold"{% endif %}>ar</a>
+        </div>
+
+        <div class="bg-img"></div>
+
+        <div class="login-form">
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <p class="mb-1 c-gold">{% translate 'تغییر رمزعبور:' %}</p>
+                    <label for="{{ password_form.new_password1.id_for_label }}">{% translate 'رمزعبور:' %}</label>
+                    {% render_field password_form.new_password1 autofocus="" %} 
+                    <br>
+                    {% for err in password_form.new_password1.errors %}
+                        <span class="err-msg">{{ err }}</span><br>
+                    {% endfor %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="{{ password_form.new_password2.id_for_label }}">{% translate 'تایید رمزعبور:' %}</label>
+                    {% render_field password_form.new_password2 autofocus="" %} 
+                    <br>
+                    {% for err in password_form.new_password2.errors %}
+                        <span class="err-msg">{{ err }}</span>
+                    {% endfor %}
+                </div>
+                <br>
+                <button type="submit" class="btn">{% translate 'اعمال' %}</button>
+
+            </form>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block scriptStatic %}{% endblock %}

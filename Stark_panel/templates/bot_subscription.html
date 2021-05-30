@@ -66,7 +66,7 @@
                 <div class="form-group-send-req">
                     <label for="type-bot-sub">{% translate 'نوع اشتراک' %}:</label>
                     <select id="type-bot-sub" name="type-bot-sub">
-                        <option value="none">---------</option>
+                        <option value="none">-------</option>
                         {% for i in bot_categories.values %}
                             {% if i.price < request.user.stoke %}
                                 <option value="{{ i.days }}">{{ i.days }} {% translate 'روزه' %} + {{ i.free_days }} {% translate 'روز هدیه' %} ( {{ i.price }} {% translate 'تتر' %} )</option>
@@ -75,8 +75,10 @@
                     </select>
                 </div>
                 <div class="form-group-send-req-sure">
-                    <input type="checkbox" id="ensure-pay-bot" name="ensure-pay-bot">&nbsp;
-                    
+                    <label class="switch-box">
+                        <input type="checkbox" id="ensure-pay-bot" name="ensure-pay-bot" class="switch-box-input">
+                        <span class="switch-box-slider round"></span>
+                    </label>
                     <label for="ensure-pay-bot">{% translate 'آیا مطمئن هستید؟' %}</label>
                 </div>
                 <br>
@@ -92,5 +94,4 @@
 
 {% block scriptStatic %}
     <script type="text/javascript" src="{% static 'frameworks/video-js.js' %}"></script>
-    {% if not '/en/' in request.path %}<script type="text/javascript" src="{% static 'js/persianumber.min.js' %}"></script>{% endif %}
 {% endblock %}

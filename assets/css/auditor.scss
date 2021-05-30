@@ -10,20 +10,21 @@
     min-width: 300px !important;
 }
 
-article.edit-body-page {
-    .d-inline-elements {
-        display: flex;
-        justify-content: space-between;
-        a {
-            background-color: $c-gold;
-            color: $bgc-card;
-            font-family: 'IRANSanse';
-            padding: 0.5rem 0.75rem;
-            border-radius: 26px;
-            font-size: 10pt;
-            text-align: center;
-        }
+.d-inline-elements {
+    display: flex;
+    justify-content: space-between;
+    a {
+        background-color: $c-gold;
+        color: $bgc-card;
+        font-family: 'IRANSanse';
+        padding: 0.5rem 0.75rem;
+        border-radius: 26px;
+        font-size: 10pt;
+        text-align: center;
     }
+}
+
+article.edit-body-page {
     .two-box-elemens {
         display: flex;
         padding: 1rem;
@@ -190,11 +191,14 @@ div#form-div-wrapper {
 }
 
 // start viewtable auditor
+.table-wrapper {
+    width: calc(100vw - 470px);
+    overflow: auto;
+}
 div#list-chart {
-    overflow-x: auto !important;
-    
     table { 
         width: 100%;
+        overflow: auto;
         text-align: center;
         border-collapse: collapse; /* for one border */
 

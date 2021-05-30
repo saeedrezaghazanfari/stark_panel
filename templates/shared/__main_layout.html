@@ -73,6 +73,10 @@
 
 {% include 'shared/__footer_ref.html' %}
 
+{% if not '/charts/show/st' in request.path %}
+    {% if '/fa/' in request.path %}<script src="{% static 'js/persianumber.min.js' %}"></script>{% endif %}
+{% endif %}
+
 <!-- start script static files -->
 {% block scriptStatic %}{% endblock %}
 <!-- end script static files -->

@@ -31,7 +31,7 @@
 
             <div class="top-logo">
                 <img src="{%static 'img/logo.svg' %}" alt="stark logo">
-                <p>{% translate 'ثبت نام در استارک' %}</p>
+                <br>
             </div>
 
             <form method="POST">
@@ -47,14 +47,15 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="{{ form.email.id_for_label }}">{% translate 'ایمیل' %}:</label>
-                    {% render_field form.email %}
-                </div>
-
-                <div class="form-group">
-                    <label for="{{ form.username.id_for_label }}">{% translate 'نام کاربری' %}:</label>
-                    {% render_field form.username %}
+                <div class="form-group-two">
+                    <div>
+                        <label for="{{ form.email.id_for_label }}">{% translate 'ایمیل' %}:</label>
+                        {% render_field form.email %}
+                    </div>
+                    <div>
+                        <label for="{{ form.username.id_for_label }}">{% translate 'نام کاربری' %}:</label>
+                        {% render_field form.username %} 
+                    </div>
                 </div>
 
                 <div class="form-group-two">
@@ -63,8 +64,8 @@
                         {% render_field form.phone %}   
                     </div>
                     <div>
-                        <label for="{{ form.national_code.id_for_label }}">{% translate 'کدملی' %}:</label>
-                        {% render_field form.national_code %}   
+                        <label for="{{ form.backup_email.id_for_label }}">{% translate 'ایمیل پشتیبان' %}:</label>
+                        {% render_field form.backup_email %}   
                     </div>
                 </div>
 
@@ -99,7 +100,7 @@
                     <span class="c-red font-small">{{ err }}</span><br>
                 {% endfor %}
 
-                {% for err in form.national_code.errors %}
+                {% for err in form.backup_email.errors %}
                     <span class="c-red font-small">{{ err }}</span><br>
                 {% endfor %}
 
