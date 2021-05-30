@@ -29,15 +29,11 @@
             <div id="stark-wallet">
                 <div>
                     <p><i class="fa fa-eye"></i> {% translate 'کاربر گرامی، در صورتی که ویدیو راهنمای پنل را مشاهده نکرده‌اید، ابتدا ویدیو رو با دقت مشاهده کنید. سپس اقدام به پرداخت یا برداشت نمایید.' %}</p>
-                    <p id="addrr-to-copy">{{ stark_img_and_wallet.wallet_addr }}</p>
-                    <p id="p-wrapper-a"><a href="javascript:void(0);" onclick="copy_text('{{ stark_img_and_wallet.wallet_addr }}', 'addrr-to-copy', '{% blocktranslate %}کپی شد!{% endblocktranslate %}')"> <i class="fa fa-copy c-dark"></i> {% translate 'برای کپی کردن کلیک کنید' %}</a></p>
+                    <p id="addrr-to-copy">TYjMSwZRofPNBXL1vcQQEjWCpZCWZNRxpJ</p>
+                    <p id="p-wrapper-a"><a href="javascript:void(0);" onclick="copy_text('TYjMSwZRofPNBXL1vcQQEjWCpZCWZNRxpJ', 'addrr-to-copy', '{% blocktranslate %}کپی شد!{% endblocktranslate %}')"> <i class="fa fa-copy c-dark"></i> {% translate 'برای کپی کردن کلیک کنید' %}</a></p>
                 </div>
                 <div>
-                    {% if stark_img_and_wallet.img_qrcode %}
-                        <a href="{{ stark_img_and_wallet.img_qrcode.url }}"><img src="{{ stark_img_and_wallet.img_qrcode.url }}" alt="stark qr code image"></a>
-                    {% else %}
-                        <img src="{% static 'img/logo.svg' %}" alt="logo stark">
-                    {% endif %}
+                    <a href="{% static 'img/wallet/qr_stark.jpg' %}"><img src="{% static 'img/wallet/qr_stark.jpg' %}" alt="stark qr code image"></a>
                 </div>
             </div>
 

@@ -10,7 +10,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.views.generic import View, UpdateView
 from django.db.models import Q
 from Stark_account.models import User
-from Stark_siteSetting.models import SettingVideo, SettingCategory, Stark_Setting
+from Stark_siteSetting.models import SettingVideo, SettingCategory
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from Extentions.utils import jalali_convertor
@@ -105,17 +105,11 @@ def user_wallet(request):
 	
 	thisUser = request.user
 	orderwallet_form = OrderWalletUserForm(request.POST or None)
-
-	stark_img_and_wallet = Stark_Setting.objects.filter(is_active=True).last()
-	if not stark_img_and_wallet:
-		stark_img_and_wallet = None
-
 	context = {
 		'wallet_LAs': WalletOrder.objects.filter(user__id=request.user.id).order_by('-id')[:30],
 		'wallets': UserWallet.objects.filter(user=thisUser).order_by('-id'),
 		'orderwallet_form': orderwallet_form,
 		'counter_wallets': UserWallet.objects.filter(user=thisUser).count(),
-		'stark_img_and_wallet': stark_img_and_wallet,
 	}
 	if orderwallet_form.is_valid():
 		orderWallet = orderwallet_form.save(commit=False)

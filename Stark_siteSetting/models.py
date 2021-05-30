@@ -54,19 +54,6 @@ class SettingCategory(models.Model):
     def __str__(self):
         return f'{self.days}'
 
-class Stark_Setting(models.Model):
-    wallet_addr = models.CharField( _('آدرس کیف پول'), max_length=60, default='no data' )
-    img_qrcode = models.ImageField( _('تصویر کد کیوآر'), upload_to=upload_qrcode_image_path, null=True, blank=True)
-    is_active = models.BooleanField( _('آیا این تنظیمات در پنل نشان داده شود؟'), default=False)
-
-    class Meta:
-        verbose_name = _('تنظیمات استارک')
-        verbose_name_plural = _('تنظیمات استارک')
-        ordering = ['id']
-    
-    def __str__(self):
-        return self.wallet_addr
-
 class NotifyModel(models.Model):
     title_fa = models.CharField( _('عنوان اعلان به فارسی'), max_length=60, blank=True, null=True)
     title_en = models.CharField( _('عنوان اعلان به انگلیسی'), max_length=60, blank=True, null=True)
