@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 09:43+0430\n"
+"POT-Creation-Date: 2021-05-30 14:23+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -281,7 +281,7 @@ msgstr "أسهم المستخدم"
 #: .\templates\is_acountants\accountant_wallet_addr.html:34
 #: .\templates\is_acountants\accountant_walletusers.html:51
 #: .\templates\is_acountants\list-editor\audit-user-wallets.html:42
-#: .\templates\wallet.html:137 .\templates\wallet.html:167
+#: .\templates\wallet.html:133 .\templates\wallet.html:163
 msgid "آدرس کیف پول"
 msgstr "عنوان محفظة النقود"
 
@@ -301,11 +301,11 @@ msgstr "محفظة جيب"
 msgid "کیف پول های کاربران"
 msgstr "محافظ نقود المستخدمين"
 
-#: .\models.py:104 .\templates\user_panel.html:123 .\templates\wallet.html:83
+#: .\models.py:104 .\templates\user_panel.html:123 .\templates\wallet.html:79
 msgid "افزایش موجودی"
 msgstr "زيادة الرصيد"
 
-#: .\models.py:104 .\templates\user_panel.html:123 .\templates\wallet.html:83
+#: .\models.py:104 .\templates\user_panel.html:123 .\templates\wallet.html:79
 msgid "برداشت از موجودی"
 msgstr "سحب من الرصيد"
 
@@ -1238,18 +1238,18 @@ msgid "آخرین خرید و فروش ها"
 msgstr "أحدث المبيعات والمشتريات"
 
 #: .\templates\user_panel.html:103 .\templates\user_panel.html:137
-#: .\templates\user_panel.html:167 .\templates\wallet.html:97
+#: .\templates\user_panel.html:167 .\templates\wallet.html:93
 msgid "خرید موفق"
 msgstr "ناجح"
 
 #: .\templates\user_panel.html:105 .\templates\user_panel.html:139
 #: .\templates\user_panel.html:169 .\templates\user_panel.html:176
-#: .\templates\wallet.html:99
+#: .\templates\wallet.html:95
 msgid "در انتظار پشتیبان"
 msgstr "منتظر"
 
 #: .\templates\user_panel.html:110 .\templates\user_panel.html:144
-#: .\templates\user_panel.html:185 .\templates\wallet.html:104
+#: .\templates\user_panel.html:185 .\templates\wallet.html:100
 msgid "شما هیچ گونه فعالیتی انجام نداده اید."
 msgstr "لم تقم بأي نشاط."
 
@@ -1306,10 +1306,10 @@ msgid "کیف پول داشته باشید."
 msgstr "محفظة نقود."
 
 #: .\templates\wallet.html:31
-msgid "کاربر گرامی، در صورتی که ویدیو راهنمای پنل را مشاهده نکرده‌اید، ابتدا ویدیو رو با دقت مشاهده کنید. سپس اقدام به پرداخت یا برداشت نمایید."
-msgstr "عزيزي المستخدم ، إذا لم تكن قد شاهدت فيديو دليل اللوحة ، شاهد الفيديو بعناية أولاً. ثم انتقل إلى الدفع أو السحب."
+msgid "کاربر گرامی، در صورتی که ویدیو راهنمای پنل را مشاهده نکرده‌اید، ابتدا از طریق منو، وارد بخش ویدیو راهنما شوید و ویدیو را با دقت مشاهده کنید. سپس اقدام به پرداخت یا برداشت نمایید."
+msgstr "عزيزي المستخدم ، إذا لم تكن قد شاهدت فيديو دليل اللوحة ، ادخل أولاً إلى قسم مساعدة الفيديو من القائمة وشاهد الفيديو بعناية. ثم انتقل إلى الدفع أو السحب."
 
-#: .\templates\wallet.html:33 .\templates\wallet.html:54
+#: .\templates\wallet.html:33 .\templates\wallet.html:50
 msgid "کپی شد!"
 msgstr "نسخ!"
 
@@ -1317,143 +1317,143 @@ msgstr "نسخ!"
 msgid "برای کپی کردن کلیک کنید"
 msgstr "انقر للنسخ"
 
-#: .\templates\wallet.html:62
+#: .\templates\wallet.html:58
 msgid "افزودن کیف پول جدید"
 msgstr "إضافة محفظة نقود جديدة"
 
-#: .\templates\wallet.html:67
+#: .\templates\wallet.html:63
 msgid "رفتن به عملیات پرداخت / برداشت"
 msgstr "Go to payment / withdrawal operation"
 
-#: .\templates\wallet.html:73
+#: .\templates\wallet.html:69
 msgid "آخرین فعالیت ها"
 msgstr "أحدث الأنشطة"
 
-#: .\templates\wallet.html:127
+#: .\templates\wallet.html:123
 msgid "مبلغ بر حسب تتر "
 msgstr "المبلغ حسب USDT"
 
-#: .\templates\wallet.html:132
+#: .\templates\wallet.html:128
 msgid "انتخاب عملیات"
 msgstr "تحديد العمليات"
 
-#: .\templates\wallet.html:146
+#: .\templates\wallet.html:142
 msgid "ثبت عملیات"
 msgstr "سجل العمليات"
 
-#: .\templates\wallet.html:148
+#: .\templates\wallet.html:144
 msgid "ابتدا کیف پول اضافه کنید."
 msgstr "أضف محفظة نقود أولاً."
 
-#: .\templates\wallet.html:160
+#: .\templates\wallet.html:156
 msgid "افزودن کیف پول"
 msgstr "إضافة محفظة نقود"
 
-#: .\templates\wallet.html:172
+#: .\templates\wallet.html:168
 msgid "شما نمیتوانید بیشتر از 6 کیف پول برای خود انتخاب کنید."
 msgstr "لا يمكنك اختيار أكثر من 6 محافظ لنفسك."
 
-#: .\templates\wallet.html:174
+#: .\templates\wallet.html:170
 msgid "تعداد کاراکترهای لازم برای هر آدرس کیف پول"
 msgstr "عدد الأحرف المطلوبة لكل عنوان محفظة"
 
-#: .\templates\wallet.html:174
+#: .\templates\wallet.html:170
 msgid "تا میباشد."
 msgstr "لا يمكن أن يتجاوز."
 
-#: .\templates\wallet.html:176
+#: .\templates\wallet.html:172
 msgid "آدرس هر کیف پول باید با سایر آدرس ها متفاوت باشد."
 msgstr "يجب أن يكون عنوان كل محفظة مختلفاً عن العناوين الأخرى."
 
-#: .\templates\wallet.html:180
+#: .\templates\wallet.html:176
 msgid "اضافه کردن"
 msgstr "إضافة"
 
-#: .\templates\wallet.html:194
+#: .\templates\wallet.html:190
 msgid "حذف کیف پول"
 msgstr "إزالة المحفظة"
 
-#: .\templates\wallet.html:208
+#: .\templates\wallet.html:204
 msgid "آیا از حذف این کیف پول مطمئن هستید؟"
 msgstr "هل أنت متأكد أنك تريد حذف هذه المحفظة؟"
 
-#: .\templates\wallet.html:211
+#: .\templates\wallet.html:207
 msgid "حذف"
 msgstr "حذف"
 
-#: .\views.py:123 .\views.py:458
+#: .\views.py:117 .\views.py:452
 msgid "میزان درخواستی را کنترل کنید."
 msgstr "التحكم في المبلغ المطلوب."
 
-#: .\views.py:168 .\views.py:253 .\views.py:454
+#: .\views.py:162 .\views.py:247 .\views.py:448
 msgid "درخواست شما ارسال شد. نتیجه‌ی عملیات از طریق تیکت ارسال میشود."
 msgstr "تم ارسال طلبك. يتم إرسال نتيجة العملية عبر التذكرة."
 
-#: .\views.py:193
+#: .\views.py:187
 msgid "آدرس کیف پول شما با موفقیت اضافه شد."
 msgstr "تمت إضافة عنوان محفظتك بنجاح."
 
-#: .\views.py:196
+#: .\views.py:190
 msgid "حداکثر تعداد کیف پول 6 عدد میباشد."
 msgstr "الحد الأقصى لعدد المحافظ هو 6."
 
-#: .\views.py:200
+#: .\views.py:194
 msgid "خطایی در ثبت کیف پول به وجود آمد."
 msgstr "حدث خطأ في تسجيل المحفظة."
 
-#: .\views.py:207
+#: .\views.py:201
 msgid "کیف پول با موفقیت حذف شد."
 msgstr "تمت إزالة المحفظة بنجاح."
 
-#: .\views.py:210
+#: .\views.py:204
 msgid "از حذف کیف پول خود مطمئن شوید."
 msgstr "تأكد من حذف محفظتك."
 
-#: .\views.py:236
+#: .\views.py:230
 msgid "شما یک بار از تعرفه‌ی رایگان ما استفاده کرده‌اید."
 msgstr "لقد استخدمت تعريفتنا المجانية مرة واحدة."
 
-#: .\views.py:257
+#: .\views.py:251
 msgid "شما درحال حاظر یک ربات فعال دارید."
 msgstr "لديك بالفعل روبوت نشط."
 
-#: .\views.py:260
+#: .\views.py:254
 msgid "باید یک تعرفه انتخاب کنید."
 msgstr "يجب عليك تحديد التعريفة."
 
-#: .\views.py:263
+#: .\views.py:257
 msgid "برای نهایی کردن خرید باید از خرید خود مطمئن باشید."
 msgstr "لإنهاء عملية الشراء ، يجب أن تكون متأكدًا من عملية الشراء."
 
-#: .\views.py:294
+#: .\views.py:288
 msgid "تیکت شما با موفقیت ارسال شد."
 msgstr "تم إرسال تذكرتك بنجاح."
 
-#: .\views.py:331
+#: .\views.py:325
 msgid "اطلاعات شما با موفقیت ذخیره شد."
 msgstr "تم حفظ المعلومات الخاصة بك بنجاح."
 
-#: .\views.py:352
+#: .\views.py:346
 msgid "رمزعبور باید شامل حروف انگلیسی، اعداد و علامت‌ها باشد."
 msgstr "يجب أن تتضمن كلمة المرور أحرفًا وأرقامًا ورموزًا باللغة الإنجليزية."
 
-#: .\views.py:360
+#: .\views.py:354
 msgid "پسورد شما با موفقیت تغییر کرد."
 msgstr "تم تغيير كلمة المرور الخاصة بك بنجاح."
 
-#: .\views.py:361
+#: .\views.py:355
 msgid "برای ورود اطلاعات خود را وارد کنید."
 msgstr "أدخل المعلومات الخاصة بك للدخول."
 
-#: .\views.py:363
+#: .\views.py:357
 msgid "پسورد شما اشتباه می‌باشد."
 msgstr "كلمة مرورك غير صحيحة."
 
-#: .\views.py:382
+#: .\views.py:376
 msgid "حجم درخواستی نباید منفی باشد."
 msgstr "يجب ألا يكون الحجم المطلوب سالبًا."
 
-#: .\views.py:386
+#: .\views.py:380
 msgid "حجم درخواستی نباید صفر باشد."
 msgstr "يجب ألا يكون الحجم المطلوب صفرًا."
 

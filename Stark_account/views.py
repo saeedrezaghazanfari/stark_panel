@@ -120,52 +120,60 @@ def signup_page(request):
 		max_id = User.objects.values('id').order_by('-id').first()
 		get_max_id = dict(max_id)['id']
 		form = SignUpForm(request.POST)
-		if form.is_valid():
-			user = form.save(commit=False)
-			user.user_code = get_user_code()
-			user.is_active = False
-			user.id = int(get_max_id) + 1
-			user.save()
 
-			current_site = get_current_site(request)    # get domain site
+		# check the sured form
+		if request.POST.get('sure-from-stark'):
+			
+			if form.is_valid():
+				user = form.save(commit=False)
+				user.user_code = get_user_code()
+				user.is_active = False
+				user.id = int(get_max_id) + 1
+				user.save()
 
-			# send mail
-			mail_subject = _('به پنل کاربری استارک خوش آمدید')
-			if get_language() == 'fa':
-				messagee = render_to_string('email_activate/_email_activate_fa.html', {
-					'username': user,
-					'domain': current_site.domain,
-					'uid':urlsafe_base64_encode(force_bytes(user.pk)),
-					'token':account_activation_token.make_token(user),
-					'date': datetime.now(),
-				})
-			elif get_language() == 'en':
-				messagee = render_to_string('email_activate/_email_activate_en.html', {
-					'username': user,
-					'domain': current_site.domain,
-					'uid':urlsafe_base64_encode(force_bytes(user.pk)),
-					'token':account_activation_token.make_token(user),
-					'date': datetime.now(),
-				})
-			elif get_language() == 'ar':
-				messagee = render_to_string('email_activate/_email_activate_ar.html', {
-					'username': user,
-					'domain': current_site.domain,
-					'uid':urlsafe_base64_encode(force_bytes(user.pk)),
-					'token':account_activation_token.make_token(user),
-					'date': datetime.now(),
-				})
-			to_email = form.cleaned_data.get('email')
-			msg_EMAIL = EmailMessage(
-				mail_subject, messagee, from_email=settings.EMAIL_HOST_USER, to=[to_email]
-			)
-			msg_EMAIL.content_subtype = "html"
-			msg_EMAIL.send()
+				current_site = get_current_site(request)    # get domain site
 
-			form = SignUpForm()
-			messages.info(request, _('ساخت اکانت شما موفقیت آمیز بود') )
-			messages.info(request, _('برای فعالسازی حساب به ایمیل خود مراجعه کنید.') )
-			return redirect('account:signin')
+				# send mail
+				mail_subject = _('به پنل کاربری استارک خوش آمدید')
+				if get_language() == 'fa':
+					messagee = render_to_string('email_activate/_email_activate_fa.html', {
+						'username': user,
+						'domain': current_site.domain,
+						'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+						'token':account_activation_token.make_token(user),
+						'date': datetime.now(),
+					})
+				elif get_language() == 'en':
+					messagee = render_to_string('email_activate/_email_activate_en.html', {
+						'username': user,
+						'domain': current_site.domain,
+						'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+						'token':account_activation_token.make_token(user),
+						'date': datetime.now(),
+					})
+				elif get_language() == 'ar':
+					messagee = render_to_string('email_activate/_email_activate_ar.html', {
+						'username': user,
+						'domain': current_site.domain,
+						'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+						'token':account_activation_token.make_token(user),
+						'date': datetime.now(),
+					})
+				to_email = form.cleaned_data.get('email')
+				msg_EMAIL = EmailMessage(
+					mail_subject, messagee, from_email=settings.EMAIL_HOST_USER, to=[to_email]
+				)
+				msg_EMAIL.content_subtype = "html"
+				msg_EMAIL.send()
+
+				form = SignUpForm()
+				messages.info(request, _('ساخت اکانت شما موفقیت آمیز بود') )
+				messages.info(request, _('برای فعالسازی حساب به ایمیل خود مراجعه کنید.') )
+				return redirect('account:signin')
+		else:
+			messages.info(request, _('برای ثبت نام باید با قوانین و مقررات موافق باشید.') )
+			return redirect('account:signup')	
+
 	else:
 		form = SignUpForm()
 	return render(request, 'signup.html', {'form': form})

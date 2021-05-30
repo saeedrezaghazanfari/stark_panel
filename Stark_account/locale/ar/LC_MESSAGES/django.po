@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 09:41+0430\n"
+"POT-Creation-Date: 2021-05-30 14:26+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,7 +103,7 @@ msgstr "حدد بريدًا إلكترونيًا آخر."
 msgid "شماره همراه دیگری انتخاب کنید"
 msgstr "اختر رقم هاتف محمول آخر"
 
-#: .\forms.py:103 .\views.py:193
+#: .\forms.py:103 .\views.py:201
 msgid "رمزعبور باید شامل حروف انگلیسی، اعداد و علامت‌ها باشد."
 msgstr "يجب أن تتضمن كلمة المرور أحرفًا وأرقامًا ورموزًا باللغة الإنجليزية."
 
@@ -291,15 +291,19 @@ msgstr "كلمه السر"
 msgid "تایید رمزعبور"
 msgstr "التحقق من كلمة المرور"
 
-#: .\templates\signup.html:115
+#: .\templates\signup.html:88
+msgid "من با قوانین و مقررات استارک موافقم"
+msgstr "أوافق على شروط وأحكام استارك"
+
+#: .\templates\signup.html:123
 msgid "ثبت نام"
 msgstr "تسجيل"
 
-#: .\templates\signup.html:118
+#: .\templates\signup.html:126
 msgid "حساب کاربری دارید؟ "
 msgstr "هل لديك حساب؟"
 
-#: .\templates\signup.html:119
+#: .\templates\signup.html:127
 msgid "ورود به سایت"
 msgstr "تسجيل الدخول إلى الموقع"
 
@@ -323,39 +327,43 @@ msgstr "مرحبًا بك في لوحة مستخدم استارک."
 msgid "ایمیل فراموشی رمزعبور برای شما ارسال شد."
 msgstr "تم إرسال بريد إلكتروني ينسى كلمة المرور إليك."
 
-#: .\views.py:133
+#: .\views.py:137
 msgid "به پنل کاربری استارک خوش آمدید"
 msgstr "مرحبًا بك في لوحة مستخدم استارك"
 
-#: .\views.py:166
+#: .\views.py:170
 msgid "ساخت اکانت شما موفقیت آمیز بود"
 msgstr "لقد ثم انشاء حسابك بنجاح"
 
-#: .\views.py:167
+#: .\views.py:171
 msgid "برای فعالسازی حساب به ایمیل خود مراجعه کنید."
 msgstr "تحقق من بريدك الإلكتروني لتفعيل حسابك."
 
-#: .\views.py:198
+#: .\views.py:174
+msgid "برای ثبت نام باید با قوانین و مقررات موافق باشید."
+msgstr "للتسجيل ، يجب أن توافق على الشروط والأحكام."
+
+#: .\views.py:206
 msgid "رمزعبور شما بروزرسانی شد."
 msgstr "لقد تم تحديث كلمة السر الخاصة بك."
 
-#: .\views.py:199
+#: .\views.py:207
 msgid "برای ورود اطلاعات خود را وارد کنید."
 msgstr "أدخل المعلومات الخاصة بك للدخول."
 
-#: .\views.py:205
+#: .\views.py:213
 msgid "لینکی که با آن وارد شده‌اید، نامعتبر است."
 msgstr "الرابط الذي أدخلته غير صالح."
 
-#: .\views.py:220
+#: .\views.py:228
 msgid "حساب کاربری شما فعال گردید."
 msgstr "تم تنشيط حسابك."
 
-#: .\views.py:221
+#: .\views.py:229
 msgid "برای ورود به حساب، اطلاعات خود را وارد کنید."
 msgstr "أدخل معلوماتك لتسجيل الدخول."
 
-#: .\views.py:224
+#: .\views.py:232
 msgid "لینک فعالسازی شما نامعتبر است."
 msgstr "رابط التنشيط الخاص بك غير صالح."
 

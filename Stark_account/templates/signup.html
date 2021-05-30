@@ -79,7 +79,15 @@
                         {% render_field form.password2 %}   
                     </div>
                 </div>
-                <br>
+
+                <div class="mt-1 font-small">
+                    <label class="switch-box">
+                        <input type="checkbox" id="sure-from-stark" name="sure-from-stark" class="switch-box-input">
+                        <span class="switch-box-slider round"></span>
+                    </label>
+                    <label for="sure-from-stark">{% translate 'من با قوانین و مقررات استارک موافقم' %}</label>
+                </div>
+
                 {% for err in form.first_name.errors %}
                     <span class="c-red font-small">{{ err }}</span><br>
                 {% endfor %}
