@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 14:23+0430\n"
+"POT-Creation-Date: 2021-06-06 00:37+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -394,40 +394,48 @@ msgstr "Ticket"
 msgid "تیکت ها"
 msgstr "Ticket"
 
-#: .\supp_acco_views.py:60
+#: .\supp_acco_views.py:65
 msgid "مشکلی رخ داده است."
 msgstr "A problem has occurred."
 
-#: .\supp_acco_views.py:70
+#: .\supp_acco_views.py:75
 msgid "اطلاعات کاربر با موفقیت ذخیره شد."
 msgstr "User information Saved Successfully."
 
-#: .\supp_acco_views.py:98
+#: .\supp_acco_views.py:106
+msgid "استارک | پاسخ تیکت"
+msgstr "STARK | Ticket answer"
+
+#: .\supp_acco_views.py:135
 msgid "پیام شما با موفقیت ارسال شد."
 msgstr "Your Message has been Sent Successfully."
 
-#: .\supp_acco_views.py:127
+#: .\supp_acco_views.py:167
+msgid "استارک | دریافت تیکت"
+msgstr "STARK | Get a ticket"
+
+#: .\supp_acco_views.py:199
 msgid "پیام با موفقیت ارسال شد."
 msgstr "Your Message has been Sent Successfully."
 
-#: .\supp_acco_views.py:155
+#: .\supp_acco_views.py:228
 msgid "با موفقیت اضافه شد."
 msgstr "Added Successfully."
 
-#: .\supp_acco_views.py:198
+#: .\supp_acco_views.py:272
 msgid "عملیات کیف پول اضافه شد."
 msgstr "Wallet Operation added."
 
-#: .\supp_acco_views.py:215
+#: .\supp_acco_views.py:290
 msgid "خرید و فروش توکن کاربر ذخیره شد."
 msgstr "Buy and sell user tokens saved."
 
-#: .\supp_acco_views.py:239 .\supp_acco_views.py:245
+#: .\supp_acco_views.py:314 .\supp_acco_views.py:320
 msgid "توکن کاربر ذخیره شد."
 msgstr "User information Saved Successfully."
 
-#: .\supp_acco_views.py:259 .\supp_acco_views.py:271 .\supp_acco_views.py:283
-#: .\supp_acco_views.py:296 .\supp_acco_views.py:308
+#: .\supp_acco_views.py:334 .\supp_acco_views.py:346 .\supp_acco_views.py:358
+#: .\supp_acco_views.py:371 .\supp_acco_views.py:383
 msgid "تغییرات اعمال شد."
 msgstr "Changes were applied."
 
@@ -1310,8 +1318,14 @@ msgid "کیف پول داشته باشید."
 msgstr "wallets"
 
 #: .\templates\wallet.html:31
-msgid "کاربر گرامی، در صورتی که ویدیو راهنمای پنل را مشاهده نکرده‌اید، ابتدا از طریق منو، وارد بخش ویدیو راهنما شوید و ویدیو را با دقت مشاهده کنید. سپس اقدام به پرداخت یا برداشت نمایید."
-msgstr "Dear user, if you have not seen the panel guide video, first enter the video help section through the menu and watch the video carefully. Then proceed to pay or withdraw."
+msgid ""
+"کاربر گرامی، در صورتی که ویدیو راهنمای پنل را مشاهده نکرده‌اید، ابتدا از طریق "
+"منو، وارد بخش ویدیو راهنما شوید و ویدیو را با دقت مشاهده کنید. سپس اقدام به "
+"پرداخت یا برداشت نمایید."
+msgstr ""
+"Dear user, if you have not seen the panel guide video, first enter the video "
+"help section through the menu and watch the video carefully. Then proceed to "
+"pay or withdraw."
 
 #: .\templates\wallet.html:33 .\templates\wallet.html:50
 msgid "کپی شد!"
@@ -1385,80 +1399,80 @@ msgstr "Are you sure you want to delete this wallet?"
 msgid "حذف"
 msgstr "Delete"
 
-#: .\views.py:117 .\views.py:452
+#: .\views.py:117 .\views.py:449
 msgid "میزان درخواستی را کنترل کنید."
 msgstr "Control the amount requested."
 
-#: .\views.py:162 .\views.py:247 .\views.py:448
+#: .\views.py:165 .\views.py:242 .\views.py:445
 msgid "درخواست شما ارسال شد. نتیجه‌ی عملیات از طریق تیکت ارسال میشود."
 msgstr ""
 "Your request has been sent. The result of the operation is sent via ticket."
 
-#: .\views.py:187
+#: .\views.py:182
 msgid "آدرس کیف پول شما با موفقیت اضافه شد."
 msgstr "Your Wallet Address added Successfully."
 
-#: .\views.py:190
+#: .\views.py:185
 msgid "حداکثر تعداد کیف پول 6 عدد میباشد."
 msgstr "The maximum number of wallets is 6."
 
-#: .\views.py:194
+#: .\views.py:189
 msgid "خطایی در ثبت کیف پول به وجود آمد."
 msgstr "There was an Error Registering the Wallet."
 
-#: .\views.py:201
+#: .\views.py:196
 msgid "کیف پول با موفقیت حذف شد."
 msgstr "Wallet removed Successfully."
 
-#: .\views.py:204
+#: .\views.py:199
 msgid "از حذف کیف پول خود مطمئن شوید."
 msgstr "Be sure to Delete your Wallet."
 
-#: .\views.py:230
+#: .\views.py:225
 msgid "شما یک بار از تعرفه‌ی رایگان ما استفاده کرده‌اید."
 msgstr "You have used our free tariff once."
 
-#: .\views.py:251
+#: .\views.py:246
 msgid "شما درحال حاظر یک ربات فعال دارید."
 msgstr "You Already have an active Robot."
 
-#: .\views.py:254
+#: .\views.py:249
 msgid "باید یک تعرفه انتخاب کنید."
 msgstr "You must select a tariff."
 
-#: .\views.py:257
+#: .\views.py:252
 msgid "برای نهایی کردن خرید باید از خرید خود مطمئن باشید."
 msgstr "To Finalize the Purchase, you must be Sure of your Purchase."
 
-#: .\views.py:288
+#: .\views.py:284
 msgid "تیکت شما با موفقیت ارسال شد."
 msgstr "Your Ticket was sent Successfully."
 
-#: .\views.py:325
+#: .\views.py:321
 msgid "اطلاعات شما با موفقیت ذخیره شد."
 msgstr "Your Information has been Saved Successfully."
 
-#: .\views.py:346
+#: .\views.py:342
 msgid "رمزعبور باید شامل حروف انگلیسی، اعداد و علامت‌ها باشد."
 msgstr "Password must include English letters, numbers and symbols."
 
-#: .\views.py:354
+#: .\views.py:350
 msgid "پسورد شما با موفقیت تغییر کرد."
 msgstr "Your Password was Changed Successfully."
 
-#: .\views.py:355
+#: .\views.py:351
 msgid "برای ورود اطلاعات خود را وارد کنید."
 msgstr "Enter your Information to Enter."
 
-#: .\views.py:357
+#: .\views.py:353
 msgid "پسورد شما اشتباه می‌باشد."
 msgstr "Your password is incorrect."
 
-#: .\views.py:376
+#: .\views.py:372
 msgid "حجم درخواستی نباید منفی باشد."
 msgstr "The requested volume should not be negative."
 
-#: .\views.py:380
+#: .\views.py:376
 msgid "حجم درخواستی نباید صفر باشد."
 msgstr "The requested volume should not be zero."
 

@@ -1,0 +1,29 @@
+<div style="direction: ltr; background-color: rgb(245, 245, 245); padding: 10px; color: black;">
+    <!-- body -->
+    <div style="text-align: justify; font-size: 11pt; padding: 0 20px;">
+        <h1 style="font-weight: bolder; text-align: center;">STARK</h1>
+        <p style="color: rgb(68, 68, 68); text-align: left;">{{ date }}</p>
+        {% if a_user %}
+            <p style="font-weight: bolder;">
+                Hello and courtesy <span style="color: #6e90ff;"> {{username}} </span> Dear, a ticket was sent to you:
+            </p>
+        {% else %}
+            <p style="font-weight: bolder;">
+                Hello and courtesy <span style="color: #6e90ff;"> {{username}} </span> Dear, your ticket reply was sent:
+            </p>
+        {% endif %}
+        <p>
+            {{ meessage | safe }}
+        </p>
+        <br>
+        <a href="{{ link }}" style="color: #6e90ff; text-decoration: none; font-weight: bolder;">
+            View ticket
+        </a>
+        <br><br>
+        <p style="text-align: center;">
+            <a href="st4w.net/fa" style="font-weight: bolder; color: #6e90ff; text-decoration: none; margin: 0 10px; ">Stark WebSite</a>
+            <a href="panel.st4w.net/fa" style="font-weight: bolder; color: #6e90ff; text-decoration: none; margin: 0 10px;">Stark UserPanel</a>
+        </p>
+    </div>
+
+</div>

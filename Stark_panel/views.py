@@ -116,6 +116,7 @@ def user_wallet(request):
 		if orderWallet.price == 0:
 			messages.info(request, _('میزان درخواستی را کنترل کنید.') )
 			return redirect('pannel:userWallet')
+		orderWallet.id = get_new_data_id(modelname='WalletOrder')
 		orderWallet.wallet_address = request.POST.get('userwalletaddress')
 		orderWallet.user = thisUser
 		orderWallet.date = datetime.now()
@@ -133,6 +134,7 @@ def user_wallet(request):
 				sub = 'طلب زيادة رصيد المحفظة'
 
 			Ticket.objects.create(
+				id=get_new_data_id(modelname='Ticket'),
 				user=thisUser, 
 				subject=sub, 
 				title='InOut', 
@@ -151,6 +153,7 @@ def user_wallet(request):
 				sub = 'طلب سحب من رصيد المحفظة'
 
 			Ticket.objects.create(
+				id=get_new_data_id(modelname='Ticket'),
 				user=thisUser, 
 				subject=sub, 
 				title='InOut', 
@@ -175,15 +178,7 @@ class UserWallet_GetCreate(LoginRequiredMixin, View):
 			if checkForm.is_valid():
 				counter = UserWallet.objects.filter(user=request.user).count()
 				if counter < 6:
-					max_id = UserWallet.objects.values('id').order_by('-id').first()
-					
-					if max_id:
-						get_max_id = dict(max_id)['id']
-						newWallet = UserWallet.objects.create(id=int(get_max_id) + 1, user=request.user, address=walletAddr, date=datetime.now())
-					
-					else:
-						newWallet = UserWallet.objects.create(id=1, user=request.user, address=walletAddr, date=datetime.now())
-						
+					newWallet = UserWallet.objects.create(id=get_new_data_id(modelname='UserWallet'), user=request.user, address=walletAddr, date=datetime.now())	
 					messages.info(request, _('آدرس کیف پول شما با موفقیت اضافه شد.'))
 					return redirect('pannel:userWallet')
 				else:
@@ -230,19 +225,19 @@ def robot_subscription(request):
 						messages.info(request, _('شما یک بار از تعرفه‌ی رایگان ما استفاده کرده‌اید.') )
 						return redirect('pannel:robot')
 					
-					bot_reserve = RobotSubscription.objects.create(user=thisUser, time_subscription=time_subscription, is_paid=True, date=datetime.now(), last_date=datetime.now() + timedelta(days=days_bot_to_expire))
+					bot_reserve = RobotSubscription.objects.create(id=get_new_data_id(modelname='RobotSubscription'), user=thisUser, time_subscription=time_subscription, is_paid=True, date=datetime.now(), last_date=datetime.now() + timedelta(days=days_bot_to_expire))
 					thisUser.stoke -= priceCate
 					thisUser.save()
 					
 					if '/en/' in request.path:
 						msg = f'My UserID {thisUser.user_code}; I am requesting a robot subscription {time_subscription}. Thanks'
-						Ticket.objects.create(user=thisUser, subject='Request a Robot Subscription', title='crashPay', message=msg, date=datetime.now())
+						Ticket.objects.create(id=get_new_data_id(modelname='Ticket'), user=thisUser, subject='Request a Robot Subscription', title='crashPay', message=msg, date=datetime.now())
 					elif '/fa/' in request.path:
 						msg = f'اینجانب با کد کاربری {thisUser.user_code} درخواست اشتراک ربات { time_subscription }روزه را دارم. باتشکر'
-						Ticket.objects.create(user=thisUser, subject='درخواست اشتراک ربات', title='crashPay', message=msg, date=datetime.now())
+						Ticket.objects.create(id=get_new_data_id(modelname='Ticket'), user=thisUser, subject='درخواست اشتراک ربات', title='crashPay', message=msg, date=datetime.now())
 					elif '/ar/' in request.path:
 						msg = f'لدي اسم مستخدم {thisUser.user_code} أطلب اشتراكًا في الروبوت {time_subscription} سريعًا. شكرا'
-						Ticket.objects.create(user=thisUser, subject='طلب اشتراك روبوت', title='crashPay', message=msg, date=datetime.now())
+						Ticket.objects.create(id=get_new_data_id(modelname='Ticket'), user=thisUser, subject='طلب اشتراك روبوت', title='crashPay', message=msg, date=datetime.now())
 					
 					messages.info(request, _('درخواست شما ارسال شد. نتیجه‌ی عملیات از طریق تیکت ارسال میشود.') )
 					return redirect('pannel:robot')
@@ -281,6 +276,7 @@ def add_tickets(request):
 	if request.POST:
 		if ticket_form.is_valid():
 			ticketForm = ticket_form.save(commit=False)
+			ticketForm.id = get_new_data_id(modelname='Ticket')
 			ticketForm.user = request.user
 			ticketForm.date = datetime.now()
 			ticketForm.save()
@@ -438,6 +434,7 @@ def buy_sell_sendticket(request):
 					msg =f'لدي اسم الرمز طلب {thisUser.user_code} لبیع {typeToken} کن تعداد {audited} به بالسعر المحسوب {opacityOrder} USDT. شكرا'
 
 			Ticket.objects.create(
+				id=get_new_data_id(modelname='Ticket'),
 				user=thisUser, 
 				title=typeOrder, 
 				subject= sub,

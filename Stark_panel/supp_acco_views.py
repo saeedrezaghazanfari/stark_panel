@@ -1,24 +1,29 @@
 
 from django.contrib import messages
-from datetime import datetime
+from datetime import date, datetime
 from django.shortcuts import render, redirect
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import View, ListView
-from django.db.models import Q
+from django.views.generic import ListView
 from django.utils.translation import get_language
 from Stark_account.models import User
 from django.views.generic import UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .st_modules import get_new_data_id
 from .models import (
 	RobotSubscription, BuyAndSell, Ticket, UserStoke, WalletOrder, UserWallet, ChartTokenPrice
 ) 
 from .forms import (
-	RobotSubscriptionForm, TicketForm, TicketResponseForm, AddToChart, SendTicket_OneUser, UserStoke_Form, BuyAndSell_Form, WalletOrderAddForm
+	TicketResponseForm, AddToChart, SendTicket_OneUser, UserStoke_Form, BuyAndSell_Form, WalletOrderAddForm
 )
 from .mixins import (
 	AcountantPermision, acountants_required_decorator, suppurt_required_decorator, active_required_decorator
 )
+
+
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+from django.conf import settings
 
 # define get absoulute url handle
 def get_url_absolute():
@@ -89,12 +94,44 @@ def ticket_of_user_page(request, ticketID):
 	# send ticket to user
 	if ticket_form.is_valid():
 		res = ticket_form.save(commit=False)
+		res.id = get_new_data_id(modelname='Ticket')
 		res.user = thisTicket.user
 		res.title = thisTicket.title
 		res.is_suppurt = True
 		res.is_seen = True
 		res.date = datetime.now()
 		res.save()
+
+		# send mail
+		mail_subject = _('استارک | پاسخ تیکت')
+		if get_language() == 'fa':
+			messagee = render_to_string('is_supporter/send-email/send-touser-fa.html', {
+				'date': datetime.now(),
+				'username': res.user.username,
+				'link': 'https://panel.st4w.net/fa/ticket/all/',
+				'meessage': ticket_form.cleaned_data.get('message'),
+			})
+		elif get_language() == 'en':
+			messagee = render_to_string('is_supporter/send-email/send-touser-en.html', {
+				'date': datetime.now(),
+				'username': res.user.username,
+				'link': 'https://panel.st4w.net/en/ticket/all/',
+				'meessage': ticket_form.cleaned_data.get('message'),
+			})
+		elif get_language() == 'ar':
+			messagee = render_to_string('is_supporter/send-email/send-touser-ar.html', {
+				'date': datetime.now(),
+				'username': res.user.username,
+				'link': 'https://panel.st4w.net/ar/ticket/all/',
+				'meessage': ticket_form.cleaned_data.get('message'),
+			})
+		to_email = res.user.email
+		msg_EMAIL = EmailMessage(
+			mail_subject, messagee, from_email=settings.EMAIL_HOST_USER, to=[to_email]
+		)
+		msg_EMAIL.content_subtype = "html"
+		msg_EMAIL.send()
+
 		messages.info(request, _('پیام شما با موفقیت ارسال شد.') )
 		return redirect('pannel:su_home')
 
@@ -121,9 +158,44 @@ def send_ticket_one_user_page(request):
 	}
 	if sendticket_form.is_valid():
 		obj_ticket = sendticket_form.save(commit=False)
+		obj_ticket.id = get_new_data_id(modelname='Ticket')
 		obj_ticket.date = datetime.now()
 		obj_ticket.is_suppurt = True
 		obj_ticket.save()
+
+		# send mail
+		mail_subject = _('استارک | دریافت تیکت')
+		if get_language() == 'fa':
+			messagee = render_to_string('is_supporter/send-email/send-touser-fa.html', {
+				'date': datetime.now(),
+				'username': sendticket_form.cleaned_data.get('user').username,
+				'link': 'https://panel.st4w.net/fa/ticket/all/',
+				'meessage': sendticket_form.cleaned_data.get('message'),
+				'a_user': True,
+			})
+		elif get_language() == 'en':
+			messagee = render_to_string('is_supporter/send-email/send-touser-en.html', {
+				'date': datetime.now(),
+				'username': sendticket_form.cleaned_data.get('user').username,
+				'link': 'https://panel.st4w.net/en/ticket/all/',
+				'meessage': sendticket_form.cleaned_data.get('message'),
+				'a_user': True,
+			})
+		elif get_language() == 'ar':
+			messagee = render_to_string('is_supporter/send-email/send-touser-ar.html', {
+				'date': datetime.now(),
+				'username': sendticket_form.cleaned_data.get('user').username,
+				'link': 'https://panel.st4w.net/ar/ticket/all/',
+				'meessage': sendticket_form.cleaned_data.get('message'),
+				'a_user': True,
+			})
+		to_email = sendticket_form.cleaned_data.get('user').email
+		msg_EMAIL = EmailMessage(
+			mail_subject, messagee, from_email=settings.EMAIL_HOST_USER, to=[to_email]
+		)
+		msg_EMAIL.content_subtype = "html"
+		msg_EMAIL.send()
+
 		messages.info(request, _('پیام با موفقیت ارسال شد.') )
 		return redirect('pannel:su_home')
 	return render(request, 'is_supporter/support_sendticket_a_user.html', context)
@@ -151,6 +223,7 @@ def acountants_home_page(request):
 	if addtocharrt_form.is_valid():
 		newprice = addtocharrt_form.save(commit=False)
 		newprice.date = datetime.now()
+		newprice.id = get_new_data_id(modelname='ChartTokenPrice')
 		newprice.save()
 		messages.info(request, _('با موفقیت اضافه شد.') )
 		return redirect('pannel:ac_home')
@@ -194,6 +267,7 @@ def accountant_walletuser_page(request):
 	if WalletOrderAddForm_form.is_valid():
 		WalletOrderAddForm_obj = WalletOrderAddForm_form.save(commit=False)
 		WalletOrderAddForm_obj.date = datetime.now()
+		WalletOrderAddForm_obj.id = get_new_data_id(modelname='WalletOrder')
 		WalletOrderAddForm_obj.save()
 		messages.info(request, _('عملیات کیف پول اضافه شد.') )
 		return redirect('pannel:ac_walletorders')
@@ -211,6 +285,7 @@ def accountant_buy_sells_page(request):
 	if buyandsell_form.is_valid():
 		buyandsell_form_obj = buyandsell_form.save(commit=False)
 		buyandsell_form_obj.date = datetime.now()
+		buyandsell_form_obj.id = get_new_data_id(modelname='BuyAndSell')
 		buyandsell_form_obj.save()
 		messages.info(request, _('خرید و فروش توکن کاربر ذخیره شد.') )
 		return redirect('pannel:ac_buysells')

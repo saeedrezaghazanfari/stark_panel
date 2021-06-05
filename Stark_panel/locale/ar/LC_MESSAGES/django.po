@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 14:23+0430\n"
+"POT-Creation-Date: 2021-06-06 00:37+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -395,40 +395,48 @@ msgstr "الملاحظات"
 msgid "تیکت ها"
 msgstr "الملاحظات"
 
-#: .\supp_acco_views.py:60
+#: .\supp_acco_views.py:65
 msgid "مشکلی رخ داده است."
 msgstr "حدثت مشكلة."
 
-#: .\supp_acco_views.py:70
+#: .\supp_acco_views.py:75
 msgid "اطلاعات کاربر با موفقیت ذخیره شد."
 msgstr "تم حفظ معلومات المستخدم بنجاح."
 
-#: .\supp_acco_views.py:98
+#: .\supp_acco_views.py:106
+msgid "استارک | پاسخ تیکت"
+msgstr "استارک | إجابة التذكرة"
+
+#: .\supp_acco_views.py:135
 msgid "پیام شما با موفقیت ارسال شد."
 msgstr "تم إرسال رسالتك بنجاح."
 
-#: .\supp_acco_views.py:127
+#: .\supp_acco_views.py:167
+msgid "استارک | دریافت تیکت"
+msgstr "استارک | خذ التذكرة"
+
+#: .\supp_acco_views.py:199
 msgid "پیام با موفقیت ارسال شد."
 msgstr "تم إرسال رسالتك بنجاح."
 
-#: .\supp_acco_views.py:155
+#: .\supp_acco_views.py:228
 msgid "با موفقیت اضافه شد."
 msgstr "أضيف بنجاح."
 
-#: .\supp_acco_views.py:198
+#: .\supp_acco_views.py:272
 msgid "عملیات کیف پول اضافه شد."
 msgstr "تمت إضافة عملية المحفظة."
 
-#: .\supp_acco_views.py:215
+#: .\supp_acco_views.py:290
 msgid "خرید و فروش توکن کاربر ذخیره شد."
 msgstr "شراء وبيع رموز المستخدم المحفوظة."
 
-#: .\supp_acco_views.py:239 .\supp_acco_views.py:245
+#: .\supp_acco_views.py:314 .\supp_acco_views.py:320
 msgid "توکن کاربر ذخیره شد."
 msgstr "تم حفظ رمز المستخدم."
 
-#: .\supp_acco_views.py:259 .\supp_acco_views.py:271 .\supp_acco_views.py:283
-#: .\supp_acco_views.py:296 .\supp_acco_views.py:308
+#: .\supp_acco_views.py:334 .\supp_acco_views.py:346 .\supp_acco_views.py:358
+#: .\supp_acco_views.py:371 .\supp_acco_views.py:383
 msgid "تغییرات اعمال شد."
 msgstr "تم تطبيق التغييرات."
 
@@ -1306,8 +1314,13 @@ msgid "کیف پول داشته باشید."
 msgstr "محفظة نقود."
 
 #: .\templates\wallet.html:31
-msgid "کاربر گرامی، در صورتی که ویدیو راهنمای پنل را مشاهده نکرده‌اید، ابتدا از طریق منو، وارد بخش ویدیو راهنما شوید و ویدیو را با دقت مشاهده کنید. سپس اقدام به پرداخت یا برداشت نمایید."
-msgstr "عزيزي المستخدم ، إذا لم تكن قد شاهدت فيديو دليل اللوحة ، ادخل أولاً إلى قسم مساعدة الفيديو من القائمة وشاهد الفيديو بعناية. ثم انتقل إلى الدفع أو السحب."
+msgid ""
+"کاربر گرامی، در صورتی که ویدیو راهنمای پنل را مشاهده نکرده‌اید، ابتدا از طریق "
+"منو، وارد بخش ویدیو راهنما شوید و ویدیو را با دقت مشاهده کنید. سپس اقدام به "
+"پرداخت یا برداشت نمایید."
+msgstr ""
+"عزيزي المستخدم ، إذا لم تكن قد شاهدت فيديو دليل اللوحة ، ادخل أولاً إلى قسم "
+"مساعدة الفيديو من القائمة وشاهد الفيديو بعناية. ثم انتقل إلى الدفع أو السحب."
 
 #: .\templates\wallet.html:33 .\templates\wallet.html:50
 msgid "کپی شد!"
@@ -1381,79 +1394,79 @@ msgstr "هل أنت متأكد أنك تريد حذف هذه المحفظة؟"
 msgid "حذف"
 msgstr "حذف"
 
-#: .\views.py:117 .\views.py:452
+#: .\views.py:117 .\views.py:449
 msgid "میزان درخواستی را کنترل کنید."
 msgstr "التحكم في المبلغ المطلوب."
 
-#: .\views.py:162 .\views.py:247 .\views.py:448
+#: .\views.py:165 .\views.py:242 .\views.py:445
 msgid "درخواست شما ارسال شد. نتیجه‌ی عملیات از طریق تیکت ارسال میشود."
 msgstr "تم ارسال طلبك. يتم إرسال نتيجة العملية عبر التذكرة."
 
-#: .\views.py:187
+#: .\views.py:182
 msgid "آدرس کیف پول شما با موفقیت اضافه شد."
 msgstr "تمت إضافة عنوان محفظتك بنجاح."
 
-#: .\views.py:190
+#: .\views.py:185
 msgid "حداکثر تعداد کیف پول 6 عدد میباشد."
 msgstr "الحد الأقصى لعدد المحافظ هو 6."
 
-#: .\views.py:194
+#: .\views.py:189
 msgid "خطایی در ثبت کیف پول به وجود آمد."
 msgstr "حدث خطأ في تسجيل المحفظة."
 
-#: .\views.py:201
+#: .\views.py:196
 msgid "کیف پول با موفقیت حذف شد."
 msgstr "تمت إزالة المحفظة بنجاح."
 
-#: .\views.py:204
+#: .\views.py:199
 msgid "از حذف کیف پول خود مطمئن شوید."
 msgstr "تأكد من حذف محفظتك."
 
-#: .\views.py:230
+#: .\views.py:225
 msgid "شما یک بار از تعرفه‌ی رایگان ما استفاده کرده‌اید."
 msgstr "لقد استخدمت تعريفتنا المجانية مرة واحدة."
 
-#: .\views.py:251
+#: .\views.py:246
 msgid "شما درحال حاظر یک ربات فعال دارید."
 msgstr "لديك بالفعل روبوت نشط."
 
-#: .\views.py:254
+#: .\views.py:249
 msgid "باید یک تعرفه انتخاب کنید."
 msgstr "يجب عليك تحديد التعريفة."
 
-#: .\views.py:257
+#: .\views.py:252
 msgid "برای نهایی کردن خرید باید از خرید خود مطمئن باشید."
 msgstr "لإنهاء عملية الشراء ، يجب أن تكون متأكدًا من عملية الشراء."
 
-#: .\views.py:288
+#: .\views.py:284
 msgid "تیکت شما با موفقیت ارسال شد."
 msgstr "تم إرسال تذكرتك بنجاح."
 
-#: .\views.py:325
+#: .\views.py:321
 msgid "اطلاعات شما با موفقیت ذخیره شد."
 msgstr "تم حفظ المعلومات الخاصة بك بنجاح."
 
-#: .\views.py:346
+#: .\views.py:342
 msgid "رمزعبور باید شامل حروف انگلیسی، اعداد و علامت‌ها باشد."
 msgstr "يجب أن تتضمن كلمة المرور أحرفًا وأرقامًا ورموزًا باللغة الإنجليزية."
 
-#: .\views.py:354
+#: .\views.py:350
 msgid "پسورد شما با موفقیت تغییر کرد."
 msgstr "تم تغيير كلمة المرور الخاصة بك بنجاح."
 
-#: .\views.py:355
+#: .\views.py:351
 msgid "برای ورود اطلاعات خود را وارد کنید."
 msgstr "أدخل المعلومات الخاصة بك للدخول."
 
-#: .\views.py:357
+#: .\views.py:353
 msgid "پسورد شما اشتباه می‌باشد."
 msgstr "كلمة مرورك غير صحيحة."
 
-#: .\views.py:376
+#: .\views.py:372
 msgid "حجم درخواستی نباید منفی باشد."
 msgstr "يجب ألا يكون الحجم المطلوب سالبًا."
 
-#: .\views.py:380
+#: .\views.py:376
 msgid "حجم درخواستی نباید صفر باشد."
 msgstr "يجب ألا يكون الحجم المطلوب صفرًا."
 

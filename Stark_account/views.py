@@ -80,7 +80,7 @@ def forgetPassword_page(request):
 		mail_subject = _('استارک | فراموشی رمزعبور')
 		if get_language() == 'fa':
 			messagee = render_to_string('email_forget_pw/_email_forget_pw_fa.html', {
-				'username': user_get,
+				'username': user_get.username,
 				'domain': current_site.domain,
 				'uid':urlsafe_base64_encode(force_bytes(user_get.pk)),
 				'token':account_activation_token.make_token(user_get),
@@ -88,7 +88,7 @@ def forgetPassword_page(request):
 			})
 		elif get_language() == 'en':
 			messagee = render_to_string('email_forget_pw/_email_forget_pw_en.html', {
-				'username': user_get,
+				'username': user_get.username,
 				'domain': current_site.domain,
 				'uid':urlsafe_base64_encode(force_bytes(user_get.pk)),
 				'token':account_activation_token.make_token(user_get),
@@ -96,7 +96,7 @@ def forgetPassword_page(request):
 			})
 		elif get_language() == 'ar':
 			messagee = render_to_string('email_forget_pw/_email_forget_pw_ar.html', {
-				'username': user_get,
+				'username': user_get.username,
 				'domain': current_site.domain,
 				'uid':urlsafe_base64_encode(force_bytes(user_get.pk)),
 				'token':account_activation_token.make_token(user_get),
@@ -137,7 +137,7 @@ def signup_page(request):
 				mail_subject = _('به پنل کاربری استارک خوش آمدید')
 				if get_language() == 'fa':
 					messagee = render_to_string('email_activate/_email_activate_fa.html', {
-						'username': user,
+						'username': user.username,
 						'domain': current_site.domain,
 						'uid':urlsafe_base64_encode(force_bytes(user.pk)),
 						'token':account_activation_token.make_token(user),
@@ -145,7 +145,7 @@ def signup_page(request):
 					})
 				elif get_language() == 'en':
 					messagee = render_to_string('email_activate/_email_activate_en.html', {
-						'username': user,
+						'username': user.username,
 						'domain': current_site.domain,
 						'uid':urlsafe_base64_encode(force_bytes(user.pk)),
 						'token':account_activation_token.make_token(user),
@@ -153,7 +153,7 @@ def signup_page(request):
 					})
 				elif get_language() == 'ar':
 					messagee = render_to_string('email_activate/_email_activate_ar.html', {
-						'username': user,
+						'username': user.username,
 						'domain': current_site.domain,
 						'uid':urlsafe_base64_encode(force_bytes(user.pk)),
 						'token':account_activation_token.make_token(user),

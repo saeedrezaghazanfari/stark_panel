@@ -77,7 +77,7 @@ class NotifyModel(models.Model):
     def __str__(self):
         return f'{self.date}'
 
-# update ST1 2 3 4 Token
+# send email
 @receiver(post_save, sender=NotifyModel)
 def send_mail_toall(sender, instance, **kwargs):
     if instance.send_mail == True:

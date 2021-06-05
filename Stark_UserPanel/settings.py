@@ -144,6 +144,9 @@ MEDIA_ROOT = Path("static_cdn", "media_root")
 # custom user
 AUTH_USER_MODEL = 'Stark_account.User'
 
+# for captcha Error
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
 # custom capcha
 CAPTCHA_FONT_SIZE = 80
 CAPTCHA_BACKGROUND_COLOR = '#000'

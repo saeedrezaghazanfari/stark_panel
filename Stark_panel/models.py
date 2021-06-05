@@ -224,7 +224,13 @@ def save_userToken(sender, instance, **kwargs):
 				user_stoke.date = datetime.now()
 				user_stoke.save()
 			else:
+				max_id = ChartTokenPrice.objects.values('id').order_by('-id').first()	
+				if not max_id:
+					max_id = {'id': 0}
+				get_max_id = dict(max_id)['id']
+				
 				UserStoke.objects.create(
+					id=int(get_max_id) + 1,
 					user=user, 
 					token=instance.token, 
 					count=instance.count,

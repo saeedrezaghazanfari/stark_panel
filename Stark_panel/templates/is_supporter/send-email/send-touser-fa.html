@@ -1,0 +1,29 @@
+<div style="direction: rtl; background-color: rgb(245, 245, 245); padding: 10px; color: black;">
+    <!-- body -->
+    <div style="text-align: justify; font-size: 11pt; padding: 0 20px;">
+        <h1 style="font-weight: bolder; text-align: center;">استارک</h1>
+        <p style="color: rgb(68, 68, 68); text-align: left;">{{ date }}</p>
+        {% if a_user %}
+            <p style="font-weight: bolder;">
+                با سلام و عرض ادب خدمت <span style="color: #6e90ff;">{{ username }}</span> عزیز، تیکتی برای شما ارسال شد:
+            </p>
+        {% else %}
+            <p style="font-weight: bolder;">
+                با سلام و عرض ادب خدمت <span style="color: #6e90ff;">{{ username }}</span> عزیز، پاسخ تیکت شما ارسال شد:
+            </p>
+        {% endif %}
+        <p>
+            {{ meessage | safe }}
+        </p>
+        <br>
+        <a href="{{ link }}" style="color: #6e90ff; text-decoration: none; font-weight: bolder;">
+            مشاهده‌ی تیکت
+        </a>
+        <br><br>
+        <p style="text-align: center;">
+            <a href="st4w.net/fa" style="font-weight: bolder; color: #6e90ff; text-decoration: none; margin: 0 10px; ">وبسایت استارک</a>
+            <a href="panel.st4w.net/fa" style="font-weight: bolder; color: #6e90ff; text-decoration: none; margin: 0 10px;">پنل استارک</a>
+        </p>
+    </div>
+
+</div>

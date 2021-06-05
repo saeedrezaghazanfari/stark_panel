@@ -6,7 +6,7 @@ from django.contrib.auth.models import Group
 
 class User_Admin(UserAdmin):
 	UserAdmin.fieldsets[2][1]['fields'] = ('is_active', 'is_staff', 'is_acountants', 'is_suppurt', 'groups', 'user_permissions', 'avatar', 'phone', 'backup_email', 'user_code', 'stoke', 'payment_total', 'impression_total', 'robot_sub_total')
-	list_display = ('user_code' ,'username', 'email', 'tag_avatar', 'is_staff', 'is_suppurt', 'is_acountants', 'stoke')
+	list_display = ('id', 'user_code' ,'username', 'email', 'tag_avatar', 'is_staff', 'is_suppurt', 'is_acountants', 'stoke')
 
 	search_fields = ['user_code', 'username']
 	ordering = ['-id']

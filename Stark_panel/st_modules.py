@@ -1,7 +1,7 @@
 from Stark_account.models import User
 from Extentions.utils import jalali_convertor_tokens, jalali_convertor
 from .models import (
-    ChartTokenPrice, Token, UserStoke
+    ChartTokenPrice, Token, UserStoke, Ticket, UserWallet, RobotSubscription, WalletOrder, BuyAndSell
 )
 
 # get total
@@ -81,6 +81,37 @@ def get_chart(tokenName, typeOut, fa_lang_code, num_last=15):
 				prices_dollar = list(prices_get)[-num_last:]
 				return prices_dollar
 
+
+# add a data with id + 1   """ i'm not like this way """
+def get_new_data_id(modelname):
+	if modelname == 'User':
+		max_id = User.objects.values('id').order_by('-id').first()
+
+	if modelname == 'UserStoke':
+		max_id = UserStoke.objects.values('id').order_by('-id').first()
+
+	if modelname == 'Ticket':
+		max_id = Ticket.objects.values('id').order_by('-id').first()
+
+	if modelname == 'UserWallet':
+		max_id = UserWallet.objects.values('id').order_by('-id').first()
+
+	if modelname == 'RobotSubscription':
+		max_id = RobotSubscription.objects.values('id').order_by('-id').first()
+
+	if modelname == 'WalletOrder':
+		max_id = WalletOrder.objects.values('id').order_by('-id').first()
+
+	if modelname == 'ChartTokenPrice':
+		max_id = ChartTokenPrice.objects.values('id').order_by('-id').first()
+		
+	if modelname == 'BuyAndSell':
+		max_id = BuyAndSell.objects.values('id').order_by('-id').first()
+
+	if not max_id:
+		max_id = {'id': 0}
+	get_max_id = dict(max_id)['id']
+	return int(get_max_id) + 1
 
 # get last price token
 def get_last_price_token(tokenName):
