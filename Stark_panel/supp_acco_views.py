@@ -189,7 +189,8 @@ def send_ticket_one_user_page(request):
 				'meessage': sendticket_form.cleaned_data.get('message'),
 				'a_user': True,
 			})
-		to_email = sendticket_form.cleaned_data.get('user').email
+		theUser = User.objects.filter(user_code=sendticket_form.cleaned_data.get('user')).first()
+		to_email = theUser.email
 		msg_EMAIL = EmailMessage(
 			mail_subject, messagee, from_email=settings.EMAIL_HOST_USER, to=[to_email]
 		)
